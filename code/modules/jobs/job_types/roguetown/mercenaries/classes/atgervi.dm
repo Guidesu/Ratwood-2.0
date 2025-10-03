@@ -77,15 +77,19 @@
 	..()
 	H.set_blindness(0)
 	to_chat(H, span_warning("You are a Shaman of the Fjall, The Northern Empty. Savage combatants who commune with the Ecclesical Beast gods through ritualistic violence, rather than idle prayer."))
-	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+
 	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/tanning, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
+
+
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 
 	head = /obj/item/clothing/head/roguetown/helmet/leather/saiga/atgervi
@@ -110,6 +114,67 @@
 		/obj/item/rogueweapon/scabbard/sheath = 1
 		)
 	H.merctype = 1
+
+	// Patron-specific bonuses
+	switch(H.patron?.type)
+		if(/datum/patron/inhumen/zizo)
+			H.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+			ADD_TRAIT(H, TRAIT_MAGEARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_SEEDKNOW, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_GRAVEROBBER, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_INTELLECTUAL, TRAIT_GENERIC)
+			H.stats[STATKEY_INT] += 2
+			H.stats[STATKEY_STR] -= 1
+		if(/datum/patron/inhumen/graggar)
+			H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/labor/butchering, 3, TRUE)
+			ADD_TRAIT(H, TRAIT_NASTY_EATER, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_BREADY, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_PERFECT_TRACKER, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_OUTDOORSMAN, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_SLEUTH, TRAIT_GENERIC)
+			H.stats[STATKEY_SPD] -= 2
+			H.stats[STATKEY_WIL] += 2
+			H.stats[STATKEY_CON] += 2
+		if(/datum/patron/inhumen/matthios)
+			H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/stealing, 4, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/lockpicking, 4, TRUE)
+			ADD_TRAIT(H, TRAIT_PERFECT_TRACKER, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_LEAPER, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_OUTDOORSMAN, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_WOODWALKER, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_LIGHT_STEP, TRAIT_GENERIC)
+			H.stats[STATKEY_PER] += 2
+			H.stats[STATKEY_SPD] += 2
+			H.stats[STATKEY_CON] -= 2
+			H.stats[STATKEY_WIL] -= 1
+		if(/datum/patron/inhumen/baotha)
+			H.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/music, 4, TRUE)
+			H.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+			ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_DECEIVING_MEEKNESS, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_CICERONE, TRAIT_GENERIC)
+			H.stats[STATKEY_INT] += 2
+			H.stats[STATKEY_PER] += 2
+			H.stats[STATKEY_WIL] -= 1
+			H.stats[STATKEY_CON] -= 2
 
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/atgervi
