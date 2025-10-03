@@ -128,8 +128,8 @@
 			ADD_TRAIT(H, TRAIT_GRAVEROBBER, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_INTELLECTUAL, TRAIT_GENERIC)
-			H.stats[STATKEY_INT] += 2
-			H.stats[STATKEY_STR] -= 1
+			H.change_stat[STATKEY_INT] += 2
+			H.change_stat[STATKEY_STR] -= 1
 		if(/datum/patron/inhumen/graggar)
 			H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 			H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
@@ -140,9 +140,9 @@
 			ADD_TRAIT(H, TRAIT_PERFECT_TRACKER, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_OUTDOORSMAN, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_SLEUTH, TRAIT_GENERIC)
-			H.stats[STATKEY_SPD] -= 2
-			H.stats[STATKEY_WIL] += 2
-			H.stats[STATKEY_CON] += 2
+			H.change_stat[STATKEY_SPD] -= 2
+			H.change_stat[STATKEY_WIL] += 2
+			H.change_stat[STATKEY_CON] += 2
 		if(/datum/patron/inhumen/matthios)
 			H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 			H.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
@@ -154,10 +154,10 @@
 			ADD_TRAIT(H, TRAIT_OUTDOORSMAN, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_WOODWALKER, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_LIGHT_STEP, TRAIT_GENERIC)
-			H.stats[STATKEY_PER] += 2
-			H.stats[STATKEY_SPD] += 2
-			H.stats[STATKEY_CON] -= 2
-			H.stats[STATKEY_WIL] -= 1
+			H.change_stat[STATKEY_PER] += 2
+			H.change_stat[STATKEY_SPD] += 2
+			H.change_stat[STATKEY_CON] -= 2
+			H.change_stat[STATKEY_WIL] -= 1
 		if(/datum/patron/inhumen/baotha)
 			H.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 			H.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
@@ -171,10 +171,10 @@
 			ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_CICERONE, TRAIT_GENERIC)
-			H.stats[STATKEY_INT] += 2
-			H.stats[STATKEY_PER] += 2
-			H.stats[STATKEY_WIL] -= 1
-			H.stats[STATKEY_CON] -= 2
+			H.change_stat[STATKEY_INT] += 2
+			H.change_stat[STATKEY_PER] += 2
+			H.change_stat[STATKEY_WIL] -= 1
+			H.change_stat[STATKEY_CON] -= 2
 
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/atgervi
