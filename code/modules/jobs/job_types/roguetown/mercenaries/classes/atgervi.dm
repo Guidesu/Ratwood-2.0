@@ -175,7 +175,7 @@
 			H.change_stat(STATKEY_INT, 2)
 			H.change_stat(STATKEY_PER, 2)
 			H.change_stat(STATKEY_WIL,-1)
-			H.change_stat(STATKEY_CON,_2)
+			H.change_stat(STATKEY_CON,-2)
 
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/atgervi
