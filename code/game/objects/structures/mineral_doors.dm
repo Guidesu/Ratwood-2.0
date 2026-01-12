@@ -28,8 +28,8 @@
 	var/windowed = FALSE
 	var/base_state = null
 
-	locked = FALSE
-	var/lockdifficulty = 1
+	var/locked = FALSE
+	var/lockdifficulty = 1 // THIS SHOULD BE A # BETWEEN 1-2. VALUES ABOVE 2 WILL BE NIGH UNPICKABLE EVEN W/ LEGENDARY SKILL.
 	var/last_bump = null
 	var/brokenstate = 0
 	var/keylock = FALSE
@@ -1140,6 +1140,7 @@
 	ridethrough = TRUE
 	swing_closed = FALSE
 	lock_strength = 150
+	lockdifficulty = 1.5
 	repairable = TRUE
 	repair_cost_first = /obj/item/ingot/iron
 	repair_cost_second = /obj/item/ingot/iron
