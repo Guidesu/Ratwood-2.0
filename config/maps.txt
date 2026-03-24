@@ -27,3 +27,7 @@ map rockhill
 	default
 	votable
 endmap
+
+map byos
+	votable
+endmap

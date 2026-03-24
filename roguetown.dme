@@ -933,6 +933,7 @@
 #include "code\game\area\areas.dm"
 #include "code\game\area\basingrove.dm"
 #include "code\game\area\bograt.dm"
+#include "code\game\area\byos.dm"
 #include "code\game\area\generic_caves.dm"
 #include "code\game\area\hotsprings.dm"
 #include "code\game\area\miscareas.dm"

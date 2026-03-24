@@ -553,6 +553,56 @@
 	else if(advj)
 		return advj
 
+
+//old code for special byos steward items which I think I'll cut for now
+// /obj/item/steward/nervemaster_kit
+//     name = "Nerve Master Kit"
+//     desc = "A heavy crate containing the parts to assemble a Nerve Master with ease. How handy! (Right-Click to disassemble.)"
+//     icon = 'icons/roguetown/misc/structure.dmi'
+//     icon_state = "woodchest"
+//     w_class = 4
+//     color = "#5e0808"
+
+
+//okay I don't know if we even use the vault in apcode and it was throwing errors so probably doesn't matter
+//     attack_self(mob/user)
+//         var/turf/target = get_step(get_turf(user), user.dir)
+//         if(!isturf(target))
+//             to_chat(user, span_warning("You can't place a Nerve Master there!"))
+//             return
+//         if(!isfloorturf(target))
+//             to_chat(user, span_warning("You can't place a Nerve Master there!"))
+//             return
+//         if(locate(/obj/structure/roguemachine/steward) in target)
+//             to_chat(user, span_warning("There is already a Nerve Master here!"))
+//             return
+//         user.visible_message(span_notice("[user] begins assembling a Nerve Master."))
+//         if(do_after(user, 20 SECONDS, TRUE, src))
+//             var/obj/structure/roguemachine/steward/S = new /obj/structure/roguemachine/steward(target)
+//             S.created_by_kit = TRUE
+//             to_chat(user, span_notice("You finish assembling the Nerve Master!"))
+//             del(src)
+
+// /obj/structure/roguemachine/steward/attack_right(mob/user)
+//     if(!created_by_kit)
+//         return
+//     user.visible_message("<span class='notice'>[user] begins packing up the Nerve Master into a kit.</span>")
+//     if(do_after(user, 50 SECONDS, TRUE, src))
+//         new /obj/item/steward/nervemaster_kit(get_turf(src))
+//         to_chat(user, "<span class='notice'>You finish packing up the Nerve Master!</span>")
+//         del(src)
+
+// /datum/crafting_recipe/roguetown/structure/scomm/byos
+// 	name = "SCOMM - (rat, iron ingot, cog; EXPERT)"
+// 	result = /obj/structure/roguemachine/scomm/byos
+// 	reqs = list(/obj/item/reagent_containers/food/snacks/smallrat = 1,
+// 				/obj/item/ingot/iron = 1,
+// 				/obj/item/roguegear/bronze = 1)
+// 	verbage = "engineers"
+// 	skillcraft = /datum/skill/craft/engineering
+// 	wallcraft = TRUE
+// 	craftdiff = 4
+
 #undef TAB_MAIN
 #undef TAB_BANK
 #undef TAB_STOCK
