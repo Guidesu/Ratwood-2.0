@@ -3071,7 +3071,7 @@
 #include "modular_azurepeak\virtues\packs.dm"
 #include "modular_azurepeak\virtues\size.dm"
 #include "modular_azurepeak\virtues\thief.dm"
-#include "modular_azurepeak\virtues\utilityd.dm"
+#include "modular_azurepeak\virtues\utility.dm"
 #include "modular_azurepeak\virtues\weapon_specialist.dm"
 #include "modular_azurepeak\virtues\prosthetics\prosthetic_limbs.dm"
 #include "modular_azurepeak\virtues\prosthetics\prosthetic_specialist.dm"

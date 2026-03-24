@@ -1,4 +1,4 @@
-d/datum/job/roguetown/guardsman
+/datum/job/roguetown/guardsman
 	title = "City Guard"
 	flag = GUARDSMAN
 	department_flag = GARRISON
