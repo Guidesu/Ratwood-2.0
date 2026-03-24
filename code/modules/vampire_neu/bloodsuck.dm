@@ -60,6 +60,13 @@
 			H.adjust_hydration(35)
 			if(H.blood_volume < BLOOD_VOLUME_NORMAL)
 				H.blood_volume = min(H.blood_volume + 35, BLOOD_VOLUME_NORMAL)
+			
+			// Check if drinker has Astrata-Scorched virtue
+			if(HAS_TRAIT(H, TRAIT_ASTRATA_SCORCHED))
+				// The virtue manages its own blood_hunger through SSobj processing
+				// We just acknowledge that drinking blood helps
+				to_chat(H, span_green("The blood quenches the burning thirst..."))
+				// Note: The /datum/virtue/astrata_scorched handles hunger restoration
 		return
 
 	if(victim.mind?.has_antag_datum(/datum/antagonist/werewolf) || (victim.stat != DEAD && victim.mind?.has_antag_datum(/datum/antagonist/zombie)))

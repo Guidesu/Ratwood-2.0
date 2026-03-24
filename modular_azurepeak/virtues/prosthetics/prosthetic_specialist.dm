@@ -2,6 +2,8 @@
 	name = "Prosthetic Limbs"
 	desc = "Through wealth, connections, or misfortune, some of my limbs have been replaced with prosthetic ones. I can choose which limbs and what materials they appear to be made from."
 	custom_text = "Select up to 4 prosthetic limbs. Each limb grants +1 Engineering skill. You can choose bronze, iron, steel, or gold appearance for each limb. All prosthetics have the same performance as bronze limbs - only appearance differs."
+	category = "feats"
+	virtue_cost = 2
 	var/max_selections = 4
 	var/list/limb_options = list(
 		"Left Arm - Bronze" = list(

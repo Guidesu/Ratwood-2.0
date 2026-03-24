@@ -1,6 +1,7 @@
 // Virtue Packs - Triumph-cost combinations of virtues that make thematic sense together
 
 /datum/virtue/pack
+	category = "packs"
 	/// List of virtue types that this pack grants
 	var/list/granted_virtues = list()
 
@@ -25,9 +26,9 @@
 // Enchanting Performer Pack: Socialite + Performer + Second Voice
 // For entertainers, bards, and charismatic performers
 /datum/virtue/pack/enchanter
-	name = "Enchanting Performer (-8 TRI)"
+	name = "Enchanting Performer"
 	desc = "I am a master of the stage and salon alike - beautiful, talented, and able to become anyone through voice and charm. My performances captivate audiences, and my social graces open every door."
-	triumph_cost = 8
+	virtue_cost = 10
 	granted_virtues = list(
 		/datum/virtue/utility/socialite,
 		/datum/virtue/utility/performer,
@@ -41,9 +42,9 @@
 // Traveling Scholar Pack: Linguist + Rich and Shrewd + Equestrian
 // For worldly scholars who have traveled extensively and accumulated wealth and knowledge
 /datum/virtue/pack/travelingscholar
-	name = "Traveling Scholar (-15 TRI)"
+	name = "Traveling Scholar"
 	desc = "My travels across distant lands have made me wealthy in both coin and wisdom. I speak many tongues, understand the value of all things, and ride with practiced ease. The world is my library, and every road teaches me something new."
-	triumph_cost = 15
+	virtue_cost = 10
 	granted_virtues = list(
 		/datum/virtue/utility/linguist,
 		/datum/virtue/items/rich,
@@ -56,9 +57,9 @@
 
 // Feral Survivor Pack: Natural Armour + Pilgrim + Feral Appetite
 /datum/virtue/pack/scrappysurvivor
-	name = "Feral Survivor (-12 TRI)"
+	name = "Feral Survivor"
 	desc = "I've lived through hard times in the wilds - poverty, famine, or exile taught me to survive like an animal. My skin has grown thick from exposure to the elements, I know the basics of homesteading, and most importantly, I can stomach anything. Spoiled rations? Raw meat? Doesn't matter - I'll eat it and keep going."
-	triumph_cost = 10
+	virtue_cost = 10
 	granted_virtues = list(
 		/datum/virtue/combat/tough_hide,
 		/datum/virtue/utility/homesteader,
@@ -71,9 +72,9 @@
 
 	// Sturdy Giant Pack: Natural Armor + Giant
 /datum/virtue/pack/sturdygiant
-	name = "Sturdy Giant (-12 TRI)"
+	name = "Sturdy Giant"
 	desc = "I am both large and hardy — my size and thick skin make me difficult to wound."
-	triumph_cost = 12
+	virtue_cost = 5
 	granted_virtues = list(
 		/datum/virtue/combat/tough_hide,
 		/datum/virtue/size/giant
@@ -84,9 +85,9 @@
 
 // High Society Pack: Nobility + Socialite
 /datum/virtue/pack/highsociety
-	name = "High Society (-12 TRI)"
+	name = "High Society"
 	desc = "I was born into privilege and raised in the finest circles. Noble blood runs through my veins, I read the emotions of others with ease, and my charm opens every door. Wealth, beauty, and status are my birthright."
-	triumph_cost = 12
+	virtue_cost = 10
 	granted_virtues = list(
 		/datum/virtue/utility/noble,
 		/datum/virtue/utility/socialite
@@ -97,9 +98,9 @@
 
 // Trusted Housekeeper Pack: Resident + Cunning Provisioner
 /datum/virtue/pack/housekeeper
-	name = "Trusted Housekeeper (-6 TRI)"
+	name = "Trusted Housekeeper"
 	desc = "I've served the households of this city for years - cooking, cleaning, and managing provisions. I know every street, have a home here, and my skills in the kitchen are unmatched. The city trusts me, and I know how to make do."
-	triumph_cost = 6
+	virtue_cost = 10
 	granted_virtues = list(
 		/datum/virtue/utility/resident,
 		/datum/virtue/utility/granary,
@@ -112,9 +113,9 @@
 
 // Broken Soul Pack: Ugly + Tolerant + Deadened
 /datum/virtue/pack/brokensoul
-	name = "Broken Soul (-3 TRI)"
+	name = "Broken Soul"
 	desc = "Life has been cruel to me. My appearance drives others away, I've learned to endure what most cannot, and I've felt nothing for so long I can barely remember what emotions were like. I am a walking testament to survival through suffering."
-	triumph_cost = 3
+	virtue_cost = 10
 	granted_virtues = list(
 		/datum/virtue/utility/ugly,
 		/datum/virtue/utility/tolerant,

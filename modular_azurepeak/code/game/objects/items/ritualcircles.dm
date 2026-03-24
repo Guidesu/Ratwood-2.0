@@ -1886,7 +1886,8 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 				mark_color = "#[target.client.prefs.baotha_mark_color]"
 			
 			// Create and store the marking overlay persistently
-			target.baotha_mark_overlay = mutable_appearance('icons/roguetown/misc/baotha_marking.dmi', "marking_[target.gender == "male" ? "m" : "f"]", -BODY_LAYER)
+			// Use BODY_MARKINGS_LAYER (44) to render above bodyparts, below clothing
+			target.baotha_mark_overlay = mutable_appearance('icons/roguetown/misc/baotha_marking.dmi', "marking_[target.gender == "male" ? "m" : "f"]", -BODY_MARKINGS_LAYER)
 			target.baotha_mark_overlay.color = mark_color
 			target.update_body()
 			playsound(target, 'sound/health/fastbeat.ogg', 60)

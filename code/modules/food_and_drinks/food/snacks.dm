@@ -383,6 +383,35 @@ All foods are distributed among various categories. Use common sense.
 		if(extra_eat_effect)
 			eater.apply_status_effect(extra_eat_effect)
 	eater.taste(reagents)
+	
+	// Noc-Scorched can eat any raw meat to satisfy their bestial hunger
+	// (Skip this if it's a rogue/meat or organ, as they have their own handlers)
+	if(ishuman(eater) && HAS_TRAIT(eater, TRAIT_NOC_SCORCHED))
+		// Check if this food is raw meat (has both RAW and MEAT flags)
+		// And it's not already handled by specific subtypes
+		if((foodtype & RAW) && (foodtype & MEAT) && !istype(src, /obj/item/reagent_containers/food/snacks/rogue/meat) && !istype(src, /obj/item/reagent_containers/food/snacks/organ))
+			var/mob/living/carbon/human/H = eater
+			// Check for Noc-Scorched virtue (trait-based)
+			if(HAS_TRAIT(H, TRAIT_NOC_SCORCHED))
+				// Different amounts based on size/nutrition
+				var/heal_amount = 10
+				
+				// More nutritious items heal more
+				if(list_reagents)
+					var/nutriment_amount = list_reagents[/datum/reagent/consumable/nutriment]
+					if(nutriment_amount)
+						heal_amount = min(20, 5 + (nutriment_amount * 2))
+				
+				to_chat(H, span_green("The raw meat satisfies the beast's hunger..."))
+				
+				// Heal the character
+				H.heal_overall_damage(heal_amount, heal_amount)
+				
+				// Note: The /datum/virtue/noc_scorched manages hunger automatically through SSobj processing
+				// Always remove debuffs when eating raw meat, virtue will handle re-application if needed
+				H.remove_status_effect(/datum/status_effect/debuff/meat_hunger_t1)
+				H.remove_status_effect(/datum/status_effect/debuff/meat_hunger_t2)
+				H.remove_status_effect(/datum/status_effect/debuff/meat_hunger_t3)
 
 	if(!reagents.total_volume)
 		if(eat_effect == /datum/status_effect/debuff/rotfood)

@@ -2,6 +2,8 @@
 	name = "Weapon Specialist"
 	desc = "I trained with several weapons of my choice, mastering their use and keeping them close at hand."
 	custom_text = "Select weapons to specialize in (up to 3 points). You will receive each weapon stashed and a matching skill bonus."
+	category = "feats"
+	virtue_cost = 2
 	var/max_points = 3
 	var/list/weapon_options = list(
 		// CLASSIC COMBINATIONS FROM DELETED VIRTUES

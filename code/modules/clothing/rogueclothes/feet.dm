@@ -187,7 +187,7 @@
 	icon_state = "sandals"
 	item_state = "sandals"
 	sewrepair = TRUE
-	nudist_approved = TRUE
+	nudist_approved = TRUE //Simple sandals, minimal footwear
 
 /obj/item/clothing/shoes/roguetown/sandals/aalloy
 	name = "decrepit sandals"

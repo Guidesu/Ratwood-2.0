@@ -739,7 +739,7 @@
 	dropshrink = 0.5
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_MASK
 	body_parts_covered = NECK|FACE
-	nudist_approved = TRUE
+	nudist_approved = FALSE
 
 /obj/item/clothing/neck/roguetown/collar/surgcollar
 	name = "surgcollar"
@@ -752,7 +752,7 @@
 	dropshrink = 0.5
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_MASK
 	body_parts_covered = NECK|FACE
-	nudist_approved = TRUE
+	nudist_approved = FALSE
 
 /obj/item/clothing/neck/roguetown/luckcharm
 	name = "luck charm"

@@ -120,6 +120,11 @@
 #define TRAIT_DEATHSIGHT "Veiled Whispers" // Is notified when a player character dies, but not told exactly where or how.
 //Hearthstone/Azure end.
 
+// UNIQUE MECHANICAL VIRTUES
+#define TRAIT_FERAL_CLAWS "Feral Claws" //Can extend/retract natural claws
+#define TRAIT_FERAL_BITE "Feral Bite" //Can bite effectively (without STRONGBITE damage multiplier)
+#define TRAIT_TOXRESIST "Poison Resistant" //50% poison resistance (not full immunity)
+
 // ROGUEspecialTRAITS (description when rmb skills button)
 #define TRAIT_CIVILIZEDBARBARIAN "Expert Pugilist"
 #define TRAIT_COMICSANS "Annoying Face"
@@ -297,6 +302,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SPURNED = span_warning("The gods have forsaken me. Healing miracles have no effect on me."),
 	TRAIT_ILLITERATE = span_warning("I never learned to read and never will. The written word is forever beyond me."),
 	TRAIT_ASTRATA_SCORCHED = span_warning("Astrata's light burns through me. Silver cuts deep, the sun drains my resilience, and direct sunlight sears my flesh."),
+	TRAIT_NOC_SCORCHED = span_warning("The moon's curse marks me. Under the night sky I become feral, and the beast within hungers for raw flesh."),
+	TRAIT_NO_REFLECTION = span_warning("I cast no reflection in mirrors or water. A damning sign of my cursed nature."),
+	TRAIT_STAKE_VULNERABLE = span_warning("A wooden stake through my heart would be my end."),
 	TRAIT_STEELHEARTED = span_info("I have hardened nerves, and do not waiver from the sight of violence in battle."),
 	TRAIT_OUTLANDER = span_info("Those of the vale see me as not of their land."),
 	TRAIT_OUTLAW = span_info("This land's nervelocks and castificos reject my touch."),
@@ -394,6 +402,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_KAZENGUNITE_SMITH = span_info("I have studied the old Kazengunite smithing traditions — the folding of tamahagane, the shaping of kozane, the tempering of the yakiba. I can now craft their arms and armour at the anvil."),
 	TRAIT_CAUTIOUS_FISHER = span_info("I know my way around the dangers of fishing, and know how to avoid unwanted attention from the depths."),
 	TRAIT_DEATHSIGHT = span_info("I can feel when someone nearby draws the Undermaiden's attention."),
+	TRAIT_FERAL_CLAWS = span_warning("My hands bear sharp claws that I can extend and retract at will."),
+	TRAIT_FERAL_BITE = span_warning("My bite is fiercer than most, though not as devastating as a true predator's."),
+	TRAIT_TOXRESIST = span_info("My body has adapted to resist poisons, though I am not fully immune."),
 	TRAIT_FORGEBLESSED = span_info("Countless long nights spent forging metal have honed my endurance, allowing me to work an anvil far longer than most without tiring."),
 	TRAIT_XYLIX = span_info("I know how to speak in code that only fellow tricksters can understand."),
 	TRAIT_APRICITY = span_info("Astrata's light blesses and rejuvenates me, allowing me to regain my stamina quicker."),
@@ -625,6 +636,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SPURNED			"spurned"
 #define TRAIT_ILLITERATE		"illiterate"
 #define TRAIT_ASTRATA_SCORCHED	"astrata_scorched"
+#define TRAIT_NOC_SCORCHED		"noc_scorched"
+#define TRAIT_NO_REFLECTION		"no_reflection"
+#define TRAIT_STAKE_VULNERABLE	"stake_vulnerable"
 #define TRAIT_NEARSIGHT			"nearsighted"
 #define TRAIT_FAT				"fat"
 #define TRAIT_HUSK				"husk"

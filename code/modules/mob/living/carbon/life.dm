@@ -680,7 +680,7 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 					if(HAS_TRAIT(H, TRAIT_NUDE_SLEEPER))
 						trait_blocked = TRUE
 					if(trait_blocked && !fallingas)
-						to_chat(src, span_warning("I need to rest on something more comfortable!"))
+						to_chat(src, span_warning("I need to sleep on something more comfortable!"))
 						fallingas = TRUE
 					else if(armor_blocked && !fallingas)
 						to_chat(src, span_warning("I can't sleep like this. My armor is burdening me."))
