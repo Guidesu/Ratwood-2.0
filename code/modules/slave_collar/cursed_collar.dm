@@ -11,6 +11,7 @@
 	slot_flags = ITEM_SLOT_NECK
 	body_parts_covered = NECK
 	resistance_flags = INDESTRUCTIBLE
+	nudist_approved = TRUE
 	var/mob/living/carbon/human/victim = null
 	var/datum/mind/collar_master = null
 	var/silenced = FALSE
@@ -35,7 +36,7 @@
 		return
 
 	var/surrender_mod = 1
-	if(C.surrendering)
+	if(C.surrendering || C.compliance)
 		surrender_mod = 0.5
 
 	applying = TRUE

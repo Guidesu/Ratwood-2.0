@@ -55,6 +55,7 @@
 #define TRAIT_SEEDKNOW "Seed Knower"
 #define TRAIT_SQUIRE_REPAIR "Squire Knowledge"
 #define TRAIT_TRAINED_SMITH "Trained Smith"
+#define TRAIT_KAZENGUNITE_SMITH "Kazengunite Knowledge"
 #define TRAIT_CAUTIOUS_FISHER "Cautious Fisher"
 #define TRAIT_POLYTHEIST "Polytheist"
 #define TRAIT_MONOTHEIST "Monotheist"
@@ -96,11 +97,21 @@
 #define TRAIT_DRUNK_HEALING "Drunk Healing"//Having anything with booze power of 25 or more in your system slowly heals you.
 #define TRAIT_SIMPLESPEECH "Simple Speech" // Can only say the 1000 most common English-language words; other words get modified
 #define TRAIT_BLOODPOOL_BORN "Bloodpool Born"
-#define TRAIT_ROYALSERVANT "Household Insight" // Let's you see the royals liked/hated food/drink
+#define TRAIT_ROYALSERVANT "Household Insight" // Let's you see the keep inhabitants liked/hated food/drink
+#define TRAIT_FOOD_STIPEND "Vomitorium-known" //Allows keep servants to buy ingredients using money from the treasury directly in a vomitorium
 #define TRAIT_WAGES_SUSPENDED "Wages Suspended" //Stops nerve master daily pay for this guy
 #define TRAIT_SCALEARMOR "Weathered Scales"//Mage armor, refluffed to scales.
 #define TRAIT_HEMOPHAGE "Hemophage"//You can drink blood for heals, but normal food and water makes you ill. Shitty vampire.
 #define TRAIT_BAOTHA_FERTILITY_BOON "Marked and shaped by Baotha" //Able to be impregnated, has permanent womb tattoo and stronger version of nympho vice
+// chastity traits are defined in chastity_core.dm since they're pretty specific and it's easier to keep them there, but here are the trait defines for them:
+#define TRAIT_CHASTITY_FULL "Chastity Belt" //Prevents most penetrative sexual activity. Given by chastity belt.
+#define TRAIT_CHASTITY_CAGE "Chastity Cage" //Prevents most penis action sexual activity. Given by chastity cage.
+#define TRAIT_CHASTITY_PENIS_BLOCKED "Penis Shielded"
+#define TRAIT_CHASTITY_VAGINA_BLOCKED "Vagina Shielded"
+#define TRAIT_CHASTITY_ANAL "Anal Shield" //Prevents penetrative anal sex. Given by a chastity device with an anal shield.
+#define TRAIT_CHASTITY_SPIKED "Genital Spikes" // Causes discomfort during arousal.
+#define TRAIT_CHASTITY_LOCKED "Locked Chastity Device" // Prevents removal of the chastity device.
+#define TRAIT_EXTREME_TEMPERATURE_IMMUNE "Extreme Temperature Immunity" //immunitty to heatstroke and frostbite without damage reduction
 
 //Hearthstone port (Tracking)
 #define TRAIT_PERFECT_TRACKER "Huntmaster" //Will always find any tracks and analyzes them perfectly.
@@ -177,6 +188,7 @@
 #define TRAIT_SCARRED "Scarred"
 #define TRAIT_SIMPLE_WOUNDS "simple_wounds"
 #define TRAIT_BANDITCAMP "banditcamp"
+#define TRAIT_DUNGEONMASTER_LABOR_CAMP "dungeonmasterlaborcamp"
 #define TRAIT_VAMPMANSION "vampiremansion"
 #define TRAIT_VAMP_DREAMS "vamp_dreams"
 #define TRAIT_LIMPDICK "Limp Dick"
@@ -220,6 +232,7 @@
 #define TRAIT_NOHUNGER	"Foodless"
 #define TRAIT_DARKVISION "Darksight"
 #define TRAIT_NOCSHADES "Nocshaded"
+#define TRAIT_SANDSTORMED "Sandstormed"
 #define TRAIT_LIGHT_STEP	"Light Step"
 #define TRAIT_AZURENATIVE "Vale Native"
 #define TRAIT_SLEUTH	"Sleuth"
@@ -242,6 +255,8 @@
 #define TRAIT_SILVER_WEAK "Silver Weakness"
 #define TRAIT_ASSASSIN	"Assassin"
 #define TRAIT_EQUESTRIAN "Equestrian"
+#define TRAIT_GANG_A "Gang Rontz Ratz"
+#define TRAIT_GANG_B "Gang Blortz Volves"
 // ARMOR / CLOTHING GIVEN TRAITS (GIVEN BY WEARING CLOTHES/ARMOR PIECES)
 #define TRAIT_MONK_ROBE	"Holy Vestatures"
 #define TRAIT_RACISMISBAD "Heritage Vision"
@@ -376,6 +391,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_ABYSSOR_SWIM = span_info("I get far less tired when swimming than my peers."),
 	TRAIT_LONGSTRIDER = span_info("Each of my steps finds it's footing no matter how treacherous the terrain is."),
 	TRAIT_TRAINED_SMITH = span_info("I've spent long training, and with some more, I will be able to smith legendary items."),
+	TRAIT_KAZENGUNITE_SMITH = span_info("I have studied the old Kazengunite smithing traditions — the folding of tamahagane, the shaping of kozane, the tempering of the yakiba. I can now craft their arms and armour at the anvil."),
 	TRAIT_CAUTIOUS_FISHER = span_info("I know my way around the dangers of fishing, and know how to avoid unwanted attention from the depths."),
 	TRAIT_DEATHSIGHT = span_info("I can feel when someone nearby draws the Undermaiden's attention."),
 	TRAIT_FORGEBLESSED = span_info("Countless long nights spent forging metal have honed my endurance, allowing me to work an anvil far longer than most without tiring."),
@@ -500,6 +516,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_EQUESTRIAN = span_warning("I am a capable rider. My mount is an extension of me."),
 	TRAIT_BLOODPOOL_BORN = span_bloody("I emerged from the bloodpool of a Vampire Lord. There is no possibility for redemption for me in this land."),
 	TRAIT_ROYALSERVANT = span_greentext("I've been serving the royal family for long enough to know their exotic tastes."),
+	TRAIT_FOOD_STIPEND = span_notice("The creachers of the vomitorium know my touch, and will pull costs for their products directly from the treasury for me."),
 	TRAIT_SPELL_DISPERSION = span_necrosis("Spells are useless against me, so long as I maintain my arcyne barrier."),
 	TRAIT_CONVICTION = span_suppradio("My connection to the Ten is unwavering. Prayer alone keeps me alive, for I am a conduit of faith."),
 	TRAIT_WAGES_SUSPENDED = span_warning("The Stewardry has halted my daily wages!"),
@@ -508,6 +525,16 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_BAOTHA_FERTILITY_BOON = span_info("I have been marked by Baotha. I am branded visibly on my groin and am able to be impregnated regardless of physical states that would usually prevent this"),
 	TRAIT_FUSILIER = span_suppradio("I've been trained in the safe use of smokepowder. Additionally, knowledge above <b><u>journeyman</u></b> status is attainable."),
 	TRAIT_HEMOPHAGE = span_bloody("Nothing but lyfeblood will keep me alive..."),
+	TRAIT_CHASTITY_FULL = span_info("My chastity device prevents me from engaging in most penetrative sex."),
+	TRAIT_CHASTITY_CAGE = span_info("My chastity device prevents me getting an erection or engaging in penetrative sex."),
+	TRAIT_CHASTITY_PENIS_BLOCKED = span_info("My chastity device blocks access to my penis."),
+	TRAIT_CHASTITY_VAGINA_BLOCKED = span_info("My chastity device blocks access to my vagina."),
+	TRAIT_CHASTITY_ANAL = span_info("My chastity device is equipped with a shield that protects my anus from penetration."),
+	TRAIT_CHASTITY_SPIKED = span_info("My chastity device is equipped with spikes constantly pressing against my nethers."),
+	TRAIT_CHASTITY_LOCKED = span_info("My chastity device is locked, it's impossible to remove without the key."),
+	TRAIT_GANG_A = span_info("I belong to the Rontz Ratz gang"),
+	TRAIT_GANG_B = span_info("I belong to the Blortz Volves gang"),
+	TRAIT_EXTREME_TEMPERATURE_IMMUNE = span_info("I will not suffer ills from extreme temperatures, wether hot or cold, yet fire and ice can still harm me.")
 ))
 
 // trait accessor defines
@@ -698,6 +725,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_REFUSED_VAMP_CONVERT "refused_vampire_conversion"
 /// makes your footsteps completely silent
 #define TRAIT_SILENT_FOOTSTEPS "silent_footsteps"
+#define TRAIT_SANDSTORM_GOGGLES "sandstorm_eyeprotection"
 
 //bodypart traits
 #define TRAIT_PARALYSIS	"paralysis" //Used for limb-based paralysis and full body paralysis
@@ -764,6 +792,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define INNATE_TRAIT "innate"
 #define XYLIX_LUCK_TRAIT "xylixluck"
 #define POULTICE_TRAIT "poultice"
+#define TRAIT_SOURCE_CHASTITY "chastity" //source for chastity device traits
 
 // unique trait sources, still defines
 #define TRAIT_GUIDANCE "Guidance"

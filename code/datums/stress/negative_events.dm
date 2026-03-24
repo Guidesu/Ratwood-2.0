@@ -45,6 +45,15 @@
 	timer = 10 SECONDS
 	stressadd = 3
 	desc = list(span_boldred("Astrata's light sears through me!"),span_boldred("The sun burns me to the marrow!"),span_boldred("Get me out of the light!"))
+/datum/stressevent/chastity_frustration
+	timer = 999 MINUTES
+	stressadd = 1
+	desc = span_red("This restraint is maddening.")
+
+/datum/stressevent/chastity_flat_cramped
+	timer = 999 MINUTES
+	stressadd = 1
+	desc = span_red("This cage is too cramped for me.")
 
 /datum/stressevent/miasmagas
 	timer = 10 SECONDS
@@ -144,6 +153,11 @@
 	timer = 15 SECONDS
 	stressadd = 2
 	desc = span_red("I'm panicking!")
+
+/datum/stressevent/bloodrain
+	timer = 1 MINUTES
+	stressadd = 4
+	desc = span_red("It's raining blood! I'm covered in it!")
 
 /datum/stressevent/felldown
 	timer = 1 MINUTES
@@ -373,6 +387,15 @@
 	stressadd = 3
 	desc = span_red("Their face is unbearable!")
 	timer = 3 MINUTES
+
+/datum/stressevent/unseemly_made_love
+	stressadd = 3
+	desc = span_red("That ugly fiend... Touched me!")
+	timer = 30 MINUTES
+
+/datum/stressevent/unseemly_made_love/beautiful
+	desc = span_red("That ugly thing... RUINED me!")
+	timer = 45 MINUTES
 
 /datum/stressevent/leprosy
 	stressadd = 1
