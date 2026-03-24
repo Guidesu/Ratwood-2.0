@@ -765,7 +765,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 /mob/Stat()
 	..()
 	// && check_rights(R_ADMIN,0)
-	var/time_left = SSgamemode.round_ends_at - world.time
+	var/time_left = SSgamemode?.round_ends_at ? (SSgamemode.round_ends_at - world.time) : 0
 	var/days = "TWILIGHT"
 	switch(GLOB.dayspassed)
 		if(1)

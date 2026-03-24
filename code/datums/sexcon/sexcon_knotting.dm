@@ -21,27 +21,27 @@
 	return FALSE
 
 /datum/sex_controller/proc/knot_check_remove(action_path)
-	if(!user.sexcon.knotted_status && !target.sexcon.knotted_status)
+	if(!knotted_status && !target.sexcon.knotted_status)
 		return
 	var/datum/sex_action/action = SEX_ACTION(action_path)
-	if(action.user_sex_part & user.sexcon.knotted_part) // check if the knot is not blocking these actions, and thus requires a forceful removal
+	if(action.user_sex_part & knotted_part) // check if the knot is not blocking these actions, and thus requires a forceful removal
 		var/forced_insertion = force >= SEX_FORCE_EXTREME && speed >= SEX_SPEED_EXTREME
-		user.sexcon.knot_remove(forceful_removal = forced_insertion)
+		knot_remove(forceful_removal = forced_insertion)
 	if(action.target_sex_part & target.sexcon.knotted_part)
 		target.sexcon.knot_remove()
 
 /datum/sex_controller/proc/knot_try()
-	if(!user.sexcon.current_action)
+	if(!current_action)
 		return
-	var/datum/sex_action/action = SEX_ACTION(user.sexcon.current_action)
+	var/datum/sex_action/action = SEX_ACTION(current_action)
 	if(!action.knot_on_finish) // the current action does not support knot climaxing, abort
 		return
-	if(!user.sexcon.knot_penis_type()) // don't have that dog in 'em
+	if(!knot_penis_type()) // don't have that dog in 'em
 		return
 	if(!target.client?.prefs?.sexable)
 		return
-	if(user.sexcon.considered_limp())
-		if(!user.sexcon.knotted_status)
+	if(considered_limp())
+		if(!knotted_status)
 			to_chat(user, span_notice("My knot was too soft to tie."))
 		if(!target.sexcon.knotted_status)
 			to_chat(target, span_notice("I feel their deflated knot slip out."))
@@ -56,19 +56,19 @@
 		target.sexcon.knot_remove(notify = FALSE, keep_btm_status = target_is_a_bottom, keep_top_status = repeated_customer)
 		if(target_is_a_bottom && !target.has_status_effect(/datum/status_effect/knot_fucked_stupid)) // if the target is getting double teamed, give them the fucked stupid status
 			target.apply_status_effect(/datum/status_effect/knot_fucked_stupid)
-	if(user.sexcon.knotted_status)
-		var/top_still_topping = user.sexcon.knotted_status == KNOTTED_AS_TOP // top just reknotted a different character, don't retrigger the same status (this fixes a weird perma stat debuff if we try to remove/apply the same effect in the same tick)
-		user.sexcon.knot_remove(keep_top_status = top_still_topping)
+	if(knotted_status)
+		var/top_still_topping = knotted_status == KNOTTED_AS_TOP // top just reknotted a different character, don't retrigger the same status (this fixes a weird perma stat debuff if we try to remove/apply the same effect in the same tick)
+		knot_remove(keep_top_status = top_still_topping)
 	var/we_got_baothad = user.patron && istype(user.patron, /datum/patron/inhumen/baotha)
 	if(we_got_baothad && !target.has_status_effect(/datum/status_effect/knot_fucked_stupid)) // as requested, if the top is of the baotha faith
 		target.apply_status_effect(/datum/status_effect/knot_fucked_stupid)
 
-	user.sexcon.knotted_owner = user
-	user.sexcon.knotted_recipient = target
-	user.sexcon.knotted_status = KNOTTED_AS_TOP
-	user.sexcon.tugging_knot_blocked = FALSE
-	user.sexcon.knotted_part = action.user_sex_part
-	user.sexcon.knotted_part_partner = action.target_sex_part // we store the action bitflags so we can later apply damage based on area, and exclusive status unique to each orifice
+	knotted_owner = user
+	knotted_recipient = target
+	knotted_status = KNOTTED_AS_TOP
+	tugging_knot_blocked = FALSE
+	knotted_part = action.user_sex_part
+	knotted_part_partner = action.target_sex_part // we store the action bitflags so we can later apply damage based on area, and exclusive status unique to each orifice
 	target.sexcon.knotted_owner = user
 	target.sexcon.knotted_recipient = target
 	target.sexcon.knotted_status = KNOTTED_AS_BTM
@@ -105,8 +105,8 @@
 	if(!user.has_status_effect(/datum/status_effect/knotted)) // only apply status if we don't have it already
 		user.apply_status_effect(/datum/status_effect/knotted)
 	target.remove_status_effect(/datum/status_effect/knot_gaped)
-	RegisterSignal(user.sexcon.knotted_owner, COMSIG_MOVABLE_MOVED, PROC_REF(knot_movement), TRUE)
-	RegisterSignal(user.sexcon.knotted_recipient, COMSIG_MOVABLE_MOVED, PROC_REF(knot_movement), TRUE)
+	RegisterSignal(knotted_owner, COMSIG_MOVABLE_MOVED, PROC_REF(knot_movement), TRUE)
+	RegisterSignal(knotted_recipient, COMSIG_MOVABLE_MOVED, PROC_REF(knot_movement), TRUE)
 	GLOB.azure_round_stats[STATS_KNOTTED]++
 	if(!islupian(user)) // only add to counter if top isn't a Lupian (for lore reasons)
 		GLOB.azure_round_stats[STATS_KNOTTED_NOT_LUPIANS]++

@@ -1623,3 +1623,5 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
+
+	ADD_TRAIT(H, TRAIT_LITHOVORE, TRAIT_GENERIC)
