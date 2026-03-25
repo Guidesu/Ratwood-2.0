@@ -593,7 +593,7 @@
 
 /obj/item/rogueweapon/greataxe/steel/doublehead/minotaur
 	name = "minotaur greataxe"
-	desc = "An incredibly heavy and large axe, pried from the cold-dead hands of Dendor's most wicked of beasts."
+	desc = "An incredibly heavy and large axe, pried from the cold-dead hands of Silvanus's most wicked of beasts."
 	icon_state = "minotaurgreataxe"
 	max_blade_int = 250
 	minstr = 14 //Double-headed greataxe with extra durability. Rare dungeon loot in minotaur dungeons; no longer drops from every single minotaur.

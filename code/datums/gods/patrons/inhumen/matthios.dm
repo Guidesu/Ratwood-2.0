@@ -1,8 +1,8 @@
 /datum/patron/inhumen/matthios
-	name = "Matthios"
-	domain = "Greed, Theft, Dragons, True Freedom"
-	desc = "The Manyfaced Matthios has no true form. Some see Him as a merry highwayman, some as a god of beggars, and others the father of all dragons. One thing is certain: His followers despise Astrata's nobility."
-	worshippers = "Highwaymen, Downtrodden Peasants, Merchants, Slaves, Kobolds"
+	name = "Auron"
+	domain = "Greed, Wealth, Hoarding, Dragons, Survival"
+	desc = "The Gilded Serpent has no true form, appearing to each follower as their deepest desire made manifest - sometimes a dragon atop mountains of gold, sometimes a merry thief, sometimes a beggar king. He teaches that the Final Winter is inevitable, that the wounded gods will fail, and that only those who hoard wealth and power NOW will survive what comes next. His followers despise Solarius's nobility for hoarding privilege while preaching charity. True freedom comes through claiming what you need to endure."
+	worshippers = "Highwaymen, Merchants, Hoarders, Slaves, Kobolds, Survivors"
 	crafting_recipes = list(/datum/crafting_recipe/roguetown/sewing/bandithood)
 	mob_traits = list(TRAIT_COMMIE, TRAIT_MATTHIOS_EYES, TRAIT_SEEPRICES_SHITTY)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison					= CLERIC_ORI,
@@ -15,9 +15,9 @@
 					/obj/effect/proc_holder/spell/invoked/churnwealthy					= CLERIC_T3,
 	)
 	confess_lines = list(
-		"MATTHIOS STEALS FROM THE WORTHLESS!",
-		"MATTHIOS IS JUSTICE!",
-		"MATTHIOS IS MY LORD!",
+		"AURON STEALS FROM THE WORTHLESS!",
+		"AURON IS SURVIVAL!",
+		"AURON IS MY LORD!",
 	)
 	storyteller = /datum/storyteller/matthios
 
@@ -46,7 +46,7 @@
 	// Allows praying atop ritual chalk of the god.
 	for(var/obj/structure/ritualcircle/matthios in view(1, get_turf(follower)))
 		return TRUE
-	to_chat(follower, span_danger("For Matthios to hear my prayers I must either be in the church of the abandoned, near an inverted psycross, flaunting wealth upon me of at least 100 mammon, or offer a coin of at least five mammon up to him!"))
+		to_chat(follower, span_danger("For Auron to hear my prayers I must either be in the church of the abandoned, near an inverted psycross, flaunting wealth upon me of at least 100 mammon, or offer a coin of at least five mammon up to him!"))
 	return FALSE
 
 /datum/patron/inhumen/matthios/on_lesser_heal(

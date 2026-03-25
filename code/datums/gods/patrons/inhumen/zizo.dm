@@ -1,8 +1,8 @@
 /datum/patron/inhumen/zizo
-	name = "Zizo"
-	domain = "Necromancy, Progress, The Rot, Left-Handed Magicks"
-	desc = "The God-Head was the mortal snow elf Zinoviya, abandoned by Her Divine Father PSYDON. When She found out She was denied godhood, She struck PSYDON down and took it Herself, plunging the world into the Second Coming of the Rot. Burn the world to ash, and build it anew."
-	worshippers = "Necromancers, Maddened Mages, The Undead"
+	name = "Aethros"
+	domain = "Necromancy, Forbidden Knowledge, The Rot, Dark Magic"
+	desc = "The Voidgazer was once the mortal elf Aethreniel, who delved too deep into the secrets of the Pre-Cataclysm world. When She discovered what truly caused the Godswar - knowledge so terrible even the gods agreed to forget it - She tore out Her own eyes and ascended through sheer force of will. Now blind to the present but seeing all pasts and futures, She teaches that the wounded gods LIE about the Cataclysm. Only through necromancy and forbidden lore can mortals prepare for what's truly coming. Burn the world to ash, and build it anew from the truth."
+	worshippers = "Necromancers, Maddened Mages, The Undead, Truth-Seekers"
 	mob_traits = list(TRAIT_CABAL, TRAIT_ZIZOSIGHT)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison					= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/self/zizo_snuff						= CLERIC_T0,
@@ -14,9 +14,9 @@
 					/obj/effect/proc_holder/spell/invoked/rituos/miracle 				= CLERIC_T3,
 	)
 	confess_lines = list(
-		"PRAISE ZIZO!",
-		"LONG LIVE ZIZO!",
-		"ZIZO IS QUEEN!",
+		"PRAISE AETHROS!",
+		"LONG LIVE AETHROS!",
+		"AETHROS REVEALS THE TRUTH!",
 	)
 	storyteller = /datum/storyteller/zizo
 
@@ -49,7 +49,7 @@
 	// Allows praying atop ritual chalk of the god.
 	for(var/obj/structure/ritualcircle/zizo in view(1, get_turf(follower)))
 		return TRUE
-	to_chat(follower, span_danger("For Zizo to hear my prayers I must either be in the church of the abandoned, near an inverted psycross, atop a drawn Zizite symbol, or while the sun is blotted from the sky!"))
+		to_chat(follower, span_danger("For Aethros to hear my prayers I must either be in the church of the abandoned, near an inverted psycross, atop a drawn ritual symbol, or while the sun is blotted from the sky!"))
 	return FALSE
 
 /datum/patron/inhumen/zizo/on_lesser_heal(
@@ -63,7 +63,7 @@
 )
 	*is_inhumen = TRUE
 	*message_out = span_info("Vital energies are sapped towards [target]!")
-	*message_self = span_notice("The life around me pales as I am restored!")
+	*message_self = span_notice("The life around me withers as Aethros restores me!")
 
 	var/bonus = 0
 

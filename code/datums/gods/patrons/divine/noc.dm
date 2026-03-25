@@ -1,8 +1,8 @@
 /datum/patron/divine/noc
-	name = "Noc"
-	domain = "The Night, The Moon, Knowledge, Magic, Secrets"
-	desc = "The Father of Secrets is the glorious moonlight that grants us power through knowledge. We are granted visions of His vault of secrets, and given the ability to wield the Arcyne through His benevolence."
-	worshippers = "Wizards, Scholars, Night Owls"
+	name = "Luneth"
+	domain = "The Moon, Night, Knowledge, Magic, Secrets"
+	desc = "The Keeper of Mysteries was blinded in one eye during the Godswar, yet still sees all that is hidden. Through His fractured visions, mortals are granted glimpses of forbidden knowledge and the power to wield the Arcyne. Where Solarius brings order through light, Luneth reveals truth through shadow. The moon's phases mark His endless struggle to remember what was lost in the Cataclysm."
+	worshippers = "Wizards, Scholars, Night Owls, Seekers"
 	mob_traits = list(TRAIT_NIGHT_OWL, TRAIT_NOCSIGHT)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison			= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/invoked/noc_sight				= CLERIC_T0,
@@ -15,8 +15,8 @@
 					/obj/effect/proc_holder/spell/invoked/resurrect/noc			= CLERIC_T4,
 	)
 	confess_lines = list(
-		"NOC IS NIGHT!",
-		"NOC SEES ALL!",
+		"LUNETH ILLUMINATES THE DARK!",
+		"LUNETH SEES ALL SECRETS!",
 		"I SEEK THE MYSTERIES OF THE MOON!",
 	)
 	storyteller = /datum/storyteller/noc
@@ -39,7 +39,7 @@
 	// Allows praying atop ritual chalk of the god.
 	for(var/obj/structure/ritualcircle/noc in view(1, get_turf(follower)))
 		return TRUE
-	to_chat(follower, span_danger("For Noc to hear my prayer I must either be in his blessed moonlight, within the church, or near a psycross."))
+		to_chat(follower, span_danger("For Luneth to hear my prayer I must either be in His blessed moonlight, within the church, or near a holy symbol."))
 	return FALSE
 
 /datum/patron/divine/noc/on_lesser_heal(
@@ -50,8 +50,8 @@
 	conditional_buff,
 	situational_bonus
 )
-	*message_out = span_info("A shroud of soft moonlight falls upon [target]!")
-	*message_self = span_notice("I'm shrouded in gentle moonlight!")
+	*message_out = span_info("A shroud of silvery moonlight falls upon [target]!")
+	*message_self = span_notice("I'm shrouded in Luneth's grace!")
 
 	if(GLOB.tod == "night")
 		*conditional_buff = TRUE

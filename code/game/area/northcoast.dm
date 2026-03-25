@@ -25,7 +25,7 @@
 				/mob/living/carbon/human/species/goblin/npc/ambush/sea = 40)
 	first_time_text = "THE ROTWOOD COAST"
 	converted_type = /area/rogue/indoors/shelter/woods
-	deathsight_message = "somewhere betwixt Abyssor's realm and Dendor's bounty"
+	deathsight_message = "somewhere betwixt Tempestia's realm and Silvanus's bounty"
 	threat_region = THREAT_REGION_AZUREAN_COAST
 	detail_text = DETAIL_TEXT_NORTH_COAST
 
@@ -52,6 +52,6 @@
 	droning_sound_dusk = null
 	droning_sound_night = null
 	converted_type = /area/rogue/outdoors/dungeon1
-	deathsight_message = "somewhere betwixt Abyssor's realm and Dendor's bounty"
+	deathsight_message = "somewhere betwixt Tempestia's realm and Silvanus's bounty"
 	threat_region = THREAT_REGION_AZUREAN_COAST
 	detail_text = DETAIL_TEXT_MAD_DUKE_COURT

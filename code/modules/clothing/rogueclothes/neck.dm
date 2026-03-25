@@ -460,60 +460,60 @@
 	grid_height = 32
 
 /obj/item/clothing/neck/roguetown/psicross/astrata
-	name = "amulet of Astrata"
-	desc = "As sure as the sun rises, tomorrow will come."
+	name = "amulet of Solarius"
+	desc = "As sure as the sun rises, tomorrow will come. Though wounded, He endures."
 	icon_state = "astrata"
 
 /obj/item/clothing/neck/roguetown/psicross/silver/astrata
-	name = "imbued amulet of Astrata"
-	desc = "Similar to a normal amulet of Astrata. This one is blessed and made of silver. A queen does not bargain; she does not relent. Neither shall her followers - least of all the members of her clergy - for with PSYDON gone, Astrata bears the burden of His lineage. All of creation is within her scope, and so too is all of the realm within yours. Stay the course, lest she turn her gaze and everything falls to the scourge of heresy."
+	name = "imbued amulet of Solarius"
+	desc = "Similar to a normal amulet of Solarius. This one is blessed and made of silver. A king does not bargain; he does not relent. Neither shall His followers - least of all the members of His clergy - for with PSYDON gone, Solarius bears the burden of His lineage. All of creation is within His scope, and so too is all of the realm within yours. Stay the course, lest He turn His gaze and everything falls to the scourge of heresy."
 	icon_state = "astrata"
 
 /obj/item/clothing/neck/roguetown/psicross/noc
-	name = "amulet of Noc"
-	desc = "There is always more to know, more to learn, more to be."
+	name = "amulet of Luneth"
+	desc = "There is always more to know, more to learn, more to be. Shadows hide secrets worth finding."
 	icon_state = "noc"
 
 /obj/item/clothing/neck/roguetown/psicross/abyssor
-	name = "amulet of Abyssor"
-	desc = "To fear the unknown is to turn away from the greatest mysteries of all."
+	name = "amulet of Tempestia"
+	desc = "To fear the unknown is to turn away from the greatest mysteries of all. The Dreaming Tide calls."
 	icon_state = "abyssor"
 	salvage_result = /obj/item/pearl/blue
 	salvage_amount = 1
 
 /obj/item/clothing/neck/roguetown/psicross/dendor
-	name = "amulet of Dendor"
-	desc = "If you need something to worship, then worship life. Every last crawling bit of it."
+	name = "amulet of Silvanus"
+	desc = "If you need something to worship, then worship life. Every last crawling bit of it. The forests endure."
 	icon_state = "dendor"
 
 /obj/item/clothing/neck/roguetown/psicross/necra
-	name = "amulet of Necra"
-	desc = "The certainty of death is a reminder to enjoy the time you have."
+	name = "amulet of Mortara"
+	desc = "The certainty of death is a reminder to enjoy the time you have. The Shepherdess awaits all."
 	icon_state = "necra"
 
 /obj/item/clothing/neck/roguetown/psicross/pestra
-	name = "amulet of Pestra"
-	desc = "The healthy wear a crown only the sick can see."
+	name = "amulet of Verdan"
+	desc = "The healthy wear a crown only the sick can see. Through decay comes renewal."
 	icon_state = "pestra"
 
 /obj/item/clothing/neck/roguetown/psicross/ravox
-	name = "amulet of Ravox"
-	desc = "What are you fighting for?"
+	name = "amulet of Valorax"
+	desc = "What are you fighting for? Honor in battle, glory in death."
 	icon_state = "ravox"
 
 /obj/item/clothing/neck/roguetown/psicross/malum
-	name = "amulet of Malum"
-	desc = "From the ashes, creation."
+	name = "amulet of Forgemar"
+	desc = "From the ashes, creation. The anvil remembers."
 	icon_state = "malum"
 
 /obj/item/clothing/neck/roguetown/psicross/eora
-	name = "amulet of Eora"
-	desc = "In a world full of horror and hardship, all we have is each other."
+	name = "amulet of Aelis"
+	desc = "In a world full of horror and hardship, all we have is each other. Love endures."
 	icon_state = "eora"
 
 /obj/item/clothing/neck/roguetown/psicross/xylix
-	name = "amulet of Xylix"
-	desc = "In lyfe a smile is sharper than any blade."
+	name = "amulet of Fortis"
+	desc = "In lyfe a smile is sharper than any blade. Fortune favors the bold."
 	icon_state = "xylix"
 
 /obj/item/clothing/neck/roguetown/psicross/wood
@@ -553,7 +553,7 @@
 /obj/item/clothing/neck/roguetown/psicross/bpearl
 	name = "blue pearl amulet"
 	icon_state = "bpearlcross"
-	desc = "An amulet made of rare blue pearls, usually worn by priests and worshippers of Abyssor, or as lucky charms for captains of ships."
+	desc = "An amulet made of rare blue pearls, usually worn by priests and worshippers of Tempestia, or as lucky charms for captains of ships."
 	sellprice = 220
 	salvage_result = /obj/item/pearl/blue
 	salvage_amount = 3 // Pearls are easy to cut off from an amulet
@@ -561,7 +561,7 @@
 /obj/item/clothing/neck/roguetown/psicross/shell
 	name = "oyster shell necklace"
 	icon_state = "oyster_necklace"
-	desc = "A necklace of strung-up sea shells, the calming noise they make when they clack together is reminiscent of a shellfish's claws. They remind you that while men no longer live in water, Abyssor will always remember our origins."
+	desc = "A necklace of strung-up sea shells, the calming noise they make when they clack together is reminiscent of a shellfish's claws. They remind you that while men no longer live in water, Tempestia will always remember our origins."
 	sellprice = 25
 	salvage_result = /obj/item/oystershell
 	salvage_amount = 5
@@ -569,7 +569,7 @@
 /obj/item/clothing/neck/roguetown/psicross/shell/bracelet
 	name = "shell bracelet"
 	icon_state = "oyster_bracelet"
-	desc = "A beaded bracelet made from sea shells, their rough exterior and glossy interior reminding you that Abyssor's children hide the best gifts at the deepest spots beneath the waves."
+	desc = "A beaded bracelet made from sea shells, their rough exterior and glossy interior reminding you that Tempestia's children hide the best gifts at the deepest spots beneath the waves."
 	sellprice = 15
 	slot_flags = ITEM_SLOT_WRISTS
 	salvage_result = /obj/item/oystershell
@@ -915,7 +915,7 @@
 	for(var/name in GLOB.outlawed_players)
 		if(user.real_name == name)
 			GLOB.outlawed_players -= user.real_name
-			priority_announce("[user.real_name] has completed their penance. Justice has been served in the eyes of Ravox.", "PENANCE", 'sound/misc/bell.ogg')
+			priority_announce("[user.real_name] has completed their penance. Justice has been served in the eyes of Valorax.", "PENANCE", 'sound/misc/bell.ogg')
 	playsound(src.loc, pick('sound/items/pickgood1.ogg','sound/items/pickgood2.ogg'), 5, TRUE)
 	if(QDELETED(src))
 		return

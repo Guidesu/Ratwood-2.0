@@ -68,53 +68,53 @@
 //////////////////////
 
 /datum/curse/astrata
-	name = "Curse of Astrata"
-	description = "I am forsaken by the Sun. I will find no rest under Her unwavering gaze."
+	name = "Curse of Solarius"
+	description = "I am forsaken by the Sun. I will find no rest under His unwavering gaze."
 	trait = TRAIT_CURSE_ASTRATA
 
 /datum/curse/noc
-	name = "Curse of Noc"
+	name = "Curse of Luneth"
 	description = "I am forsaken by the Moon. I will find no salvation in His grace."
 	trait = TRAIT_CURSE_NOC
 
 /datum/curse/dendor
-	name = "Curse of Dendor"
+	name = "Curse of Silvanus"
 	description = "I am forsaken by the Treefather. Reason and common sense abandon me."
 	trait = TRAIT_CURSE_DENDOR //Needs something unique but come up with it later:tm:
 
 /datum/curse/abyssor
-	name = "Curse of Abyssor"
-	description = "I am forsaken by the Dreamer. His domain will surely become my grave."
+	name = "Curse of Tempestia"
+	description = "I am forsaken by the Dreaming Tide. Her domain will surely become my grave."
 	trait = TRAIT_CURSE_ABYSSOR
 
 /datum/curse/ravox
-	name = "Curse of Ravox"
-	description = "I am forsaken by the Justicar. My opponents will show me no clemency."
+	name = "Curse of Valorax"
+	description = "I am forsaken by the Battleborn. My opponents will show me no clemency."
 	trait = TRAIT_CURSE_RAVOX
 
 /datum/curse/necra
-	name = "Curse of Necra"
-	description = "I am forsaken by the Undermaiden. Even the lightest strike could send me into Her embrace."
+	name = "Curse of Mortara"
+	description = "I am forsaken by the Pale Shepherdess. Even the lightest strike could send me into Her embrace."
 	trait = TRAIT_CURSE_NECRA //Should be crit weakness still just flavour:tm:
 
 /datum/curse/xylix
-	name = "Curse of Xylix"
-	description = "I am forsaken by the Trickster. Misfortune follows me on every step."
+	name = "Curse of Fortis"
+	description = "I am forsaken by the Laughing Gambler. Misfortune follows me on every step."
 	trait = TRAIT_CURSE_XYLIX
 
 /datum/curse/pestra
-	name = "Curse of Pestra"
+	name = "Curse of Verdan"
 	description = "I am forsaken by the Plaguemother. Sickness overwhelms my body rendering even simplest of tasks into a challenge."
 	trait = TRAIT_CURSE_PESTRA
 
 /datum/curse/malum
-	name = "Curse of Malum"
-	description = "I am forsaken by the Maker. My hands tremble and fog overwhelms my mind."
+	name = "Curse of Forgemar"
+	description = "I am forsaken by the Lord of the Forge. My hands tremble and fog overwhelms my mind."
 	trait = TRAIT_CURSE_MALUM
 
 /datum/curse/eora
-	name = "Curse of Eora"
-	description = "I am forsaken by the Lover. There is no beauty to be found for me in this world."
+	name = "Curse of Aelis"
+	description = "I am forsaken by the Lady of the Hearth. There is no beauty to be found for me in this world."
 	trait = TRAIT_CURSE_EORA
 
 ////////////////////////////

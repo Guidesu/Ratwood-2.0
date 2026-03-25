@@ -426,7 +426,7 @@
 //................	Lumber essence	............... //
 /obj/item/grown/log/tree/small/essence
 	name = "essence of lumber"
-	desc = "A mystical essence embued with the power of Dendor. Very good source of fuel."
+	desc = "A mystical essence embued with the power of Silvanus. Very good source of fuel."
 	icon_state = "lessence"
 	static_debris = null
 	firefuel = 60 MINUTES // Extremely poweful fuel.

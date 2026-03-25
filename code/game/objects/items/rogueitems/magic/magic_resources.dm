@@ -190,7 +190,7 @@
 /obj/item/magic/elemental/mote
 	name = "elemental mote"
 	icon_state = "mote"
-	desc = "A mystical essence embued with the power of Dendor. Merely holding it transports one's mind to ancient times."
+	desc = "A mystical essence embued with the power of Silvanus. Merely holding it transports one's mind to ancient times."
 	sellprice = T1SELLPRICE
 	tier = 1
 

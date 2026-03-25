@@ -1,8 +1,8 @@
 /datum/patron/divine/pestra
-	name = "Pestra"
-	domain = "Medicine, Pestilence, Decay"
-	desc = "The Panacea is the only of the Ten to be born to a wildkin, She taught us the arts of medicine and surgery. Her followers are obsessed with rot and decay to a concerning degree to the other Tennites."
-	worshippers = "The Sick, Chirurgeons, Apothecaries"
+	name = "Verdan"
+	domain = "Medicine, Pestilence, Decay, Transformation"
+	desc = "The Plaguemother was born from the rot and decay that festered in the Cataclysm's wake. Unlike the wounded gods, She is entirely new - a divine manifestation of disease given purpose. She teaches that decay is merely transformation, that rot nourishes new growth, and that illness purges weakness. Her followers are obsessed with the cycle of death and renewal, seeing Her plagues not as punishment but as gifts that strengthen survivors. Through suffering comes evolution."
+	worshippers = "The Sick, Chirurgeons, Apothecaries, Plague Doctors"
 	mob_traits = list(TRAIT_EMPATH, TRAIT_ROT_EATER)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison			= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/invoked/diagnose				= CLERIC_ORI,
@@ -18,7 +18,7 @@
 					/obj/effect/proc_holder/spell/invoked/resurrect/pestra		= CLERIC_T4,
 	)
 	confess_lines = list(
-		"PESTRA SOOTHES ALL ILLS!",
+		"VERDAN SOOTHES ALL ILLS!",
 		"DECAY IS A CONTINUATION OF LIFE!",
 		"MY AFFLICTION IS MY TESTAMENT!",
 	)
@@ -42,7 +42,7 @@
 	// Allows prayer near wells. Weird one, but makes sense for health and disease. Miasma, water, etc.
 	for(var/obj/structure/well/W in view(4, get_turf(follower)))
 		return TRUE
-	to_chat(follower, span_danger("For Pestra to hear my prayer I must either pray within the church, phyisican's building, near a psycross, or near a well to observe the full circle of life.."))
+		to_chat(follower, span_danger("For Verdan to hear my prayer I must either pray within the church, physician's building, near a holy symbol, or near a well to observe the full cycle of transformation.."))
 	return FALSE
 
 /datum/patron/divine/pestra/on_lesser_heal(
@@ -54,7 +54,7 @@
 	situational_bonus
 )
 	*message_out = span_info("An aura of clinical care encompasses [target]!")
-	*message_self = span_notice("I'm sewn back together by sacred medicine!")
+	*message_self = span_notice("I'm sewn back together by Verdan's sacred medicine!")
 
 	target.adjustToxLoss(-*situational_bonus)
 	target.blood_volume += BLOOD_VOLUME_SURVIVE / 3

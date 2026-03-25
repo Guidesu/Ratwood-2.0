@@ -140,7 +140,7 @@
 //BEAUTY'S RESTORATION
 /datum/coven_power/eora/beautys_restoration
 	name = "Beauty's Restoration"
-	desc = "Channel Eora's power to restore physical beauty and heal disfigurements."
+	desc = "Channel Aelis's power to restore physical beauty and heal disfigurements."
 
 	level = 4
 	research_cost = 1

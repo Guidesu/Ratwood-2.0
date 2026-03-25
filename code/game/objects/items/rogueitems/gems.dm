@@ -318,7 +318,7 @@
 /obj/item/pearl/blue
 	name = "Blue pearl"
 	icon_state = "bpearl"
-	desc = "A beautiful blue pearl. A bounty of Abyssor. Can be strung up into amulets."
+	desc = "A beautiful blue pearl. A bounty of Tempestia. Can be strung up into amulets."
 	sellprice = 60
 
 /obj/item/pearl/blue/Initialize(mapload)

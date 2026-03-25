@@ -238,8 +238,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/robe/eora
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT|ITEM_SLOT_CLOAK
-	name = "eoran robe"
-	desc = "Holy robes, intended for use by followers of Eora"
+	name = "aelisian robe"
+	desc = "Holy robes, intended for use by followers of Aelis"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 	icon_state = "eorarobes"
 	icon = 'icons/roguetown/clothing/armor.dmi'
@@ -271,8 +271,8 @@
 			flags_inv = HIDEBOOB
 			to_chat(usr, span_warning("Now wearing radically!"))
 		if(TRUE)
-			name = "eoran robe"
-			desc = "Holy robes, intended for use by followers of Eora"
+			name = "aelisian robe"
+			desc = "Holy robes, intended for use by followers of Aelis"
 			body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 			icon_state = "eorarobes"
 			fanatic_wear = FALSE

@@ -15,8 +15,8 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
 	alternate_worn_layer = TABARD_LAYER
 	boobed = FALSE
-	name = "tabard of malum"
-	desc = "Light blacks and greys, with a tinge of red, the everlasting fire of Malum's iron hammer as it strikes."
+	name = "tabard of forgemar"
+	desc = "Light blacks and greys, with a tinge of red, the everlasting fire of Forgemar's iron hammer as it strikes."
 	icon_state = "malumtabard"
 	cold_protection = CHEST | GROIN | ARM_LEFT | ARM_RIGHT
 	min_cold_protection_temperature = BODYTEMP_COLD_LEVEL_ONE_MAX

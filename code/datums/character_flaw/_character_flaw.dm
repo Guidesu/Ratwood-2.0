@@ -5,6 +5,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Alcoholic"=/datum/charflaw/addiction/alcoholic,
 	"Annoying Face"=/datum/charflaw/annoying_face,
 	"Asundered Mind (+1 TRI)"=/datum/charflaw/mind_broken,
+	"Averse"=/datum/charflaw/averse,
 	"Bad Sight (+1 TRI)"=/datum/charflaw/badsight,
 	"Blindness (+1 TRI)"=/datum/charflaw/noeyeall,
 	"Clingy"=/datum/charflaw/clingy,
@@ -15,6 +16,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Devout Follower"=/datum/charflaw/addiction/godfearing,
 	"Greedy"=/datum/charflaw/greedy,
 	"Hunted (+1 TRI)"=/datum/charflaw/hunted,
+	"Indebted"=/datum/charflaw/addiction/indebted,
 	"Isolationist"=/datum/charflaw/isolationist,
 	"Junkie"=/datum/charflaw/addiction/junkie,
 	"Marked by Baotha" =/datum/charflaw/marked_by_baotha,
@@ -50,11 +52,11 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Chronic Back Pain (+2 TRI)"=/datum/charflaw/chronic_back_pain,
 	"Old War Wound (+3 TRI)"=/datum/charflaw/old_war_wound,
 	"Hard of Hearing (+2 TRI)"=/datum/charflaw/hard_of_hearing,
-	"Noc-Scorched (+2 TRI)"=/datum/charflaw/noc_scorched,
+	"Luneth-Scorched (+2 TRI)"=/datum/charflaw/noc_scorched,
 	"Big Ears (+1 TRI)"=/datum/charflaw/big_ears,
 	"Disgraced Noble"=/datum/charflaw/disgraced_noble,
 	"Spurned (+2 TRI)"=/datum/charflaw/spurned,
-	"Astrata-Scorched (+2 TRI)"=/datum/charflaw/astrata_scorched,
+	"Solarius-Scorched (+2 TRI)"=/datum/charflaw/astrata_scorched,
 	"Carnivore"=/datum/charflaw/carnivore,
 	"Herbivore"=/datum/charflaw/herbivore,
 	"Lithovore"=/datum/charflaw/lithovore,
@@ -64,6 +66,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	var/name
 	var/desc
 	var/ephemeral = FALSE // This flaw is currently disabled and will not process
+	var/needs_life_tick = FALSE // Whether this flaw needs to process life ticks
 
 /datum/charflaw/proc/on_mob_creation(mob/user)
 	return
@@ -1262,7 +1265,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	REMOVE_TRAIT(user, TRAIT_PARTIAL_DEAF, TRAIT_GENERIC)
 
 /datum/charflaw/noc_scorched
-	name = "Noc-Scorched (+2 TRI)"
+	name = "Luneth-Scorched (+2 TRI)"
 	desc = "I was exposed to lycanthropy and bear its scar. Under the open night sky without headgear: I gain night vision and silver weakness, suffer periodic burning (oxygen damage), and involuntarily growl/howl/drool. Silver cannot cure me again. +2 TRI"
 	var/in_moonlight = FALSE
 	var/next_emote = 0
@@ -1493,10 +1496,10 @@ GLOBAL_LIST_INIT(character_flaws, list(
 		return
 	REMOVE_TRAIT(user, TRAIT_ILLITERATE, TRAIT_GENERIC)
 
-//ASTRATA-SCORCHED - Sunlight discomfort, silver weakness, and critical fragility in direct sun
+//SOLARIUS-SCORCHED - Sunlight discomfort, silver weakness, and critical fragility in direct sun
 /datum/charflaw/astrata_scorched
-	name = "Astrata-Scorched (+2 TRI)"
-	desc = "You once bore the dark hunger of the sanguine, but were cured. Astrata's light now scorches your once-shadowed flesh. Silver burns you deeply, the sun's gaze strips away your resilience, and the old hunger lingers — blood is still your only true sustenance. Incompatible with Hemophage."
+	name = "Solarius-Scorched (+2 TRI)"
+	desc = "You once bore the dark hunger of the sanguine, but were cured. Solarius's light now scorches your once-shadowed flesh. Silver burns you deeply, the sun's gaze strips away your resilience, and the old hunger lingers — blood is still your only true sustenance. Incompatible with Hemophage."
 	var/in_sunlight = FALSE
 	var/next_burn = 0
 
@@ -1506,7 +1509,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	var/mob/living/carbon/human/H = user
 	// Incompatible with hemophage - if somehow applied remove without effect
 	if(HAS_TRAIT(H, TRAIT_HEMOPHAGE))
-		to_chat(H, span_warning("Astrata-Scorched is incompatible with Hemophage. It has been removed without effect."))
+		to_chat(H, span_warning("Solarius-Scorched is incompatible with Hemophage. It has been removed without effect."))
 		return
 	ADD_TRAIT(H, TRAIT_ASTRATA_SCORCHED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SILVER_WEAK, TRAIT_GENERIC)
@@ -1516,7 +1519,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_VAMP_DREAMS, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NIGHT_OWL, TRAIT_GENERIC)
-	to_chat(H, span_warning("Astrata's light finds me... and it burns. Silver scalds my flesh, the sun strips me bare, and the old hunger has never truly left me."))
+	to_chat(H, span_warning("Solarius's light finds me... and it burns. Silver scalds my flesh, the sun strips me bare, and the old hunger has never truly left me."))
 	H.adjust_triumphs(2)
 
 /datum/charflaw/astrata_scorched/on_removal(mob/user)

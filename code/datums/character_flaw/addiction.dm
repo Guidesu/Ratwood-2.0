@@ -256,3 +256,16 @@
 	needsate_text = "I need to see someone indulge..."
 	sated_text = "Watching them satisfy their needs satisfies mine..."
 	stress_event = /datum/stressevent/vice/voyeur
+
+/// INDEBTED
+
+/datum/charflaw/addiction/indebted
+	name = "Indebted"
+	desc = "I owe money to someone, be it from gambling debts, divorce, or land taxes. Every day, I must pay a sum or face mounting stress and potential legal consequences."
+	time = 30 MINUTES // Daily payments
+	needsate_text = "My debts are coming due..."
+	sated_text = "I've made my payment. That buys me some time..."
+	stress_event = /datum/stressevent/vice/indebted
+	needs_life_tick = TRUE
+	var/daily_debt = 50 // Amount owed per day
+	var/debt_percent = 5 // Or 5% of total money, whichever is higher

@@ -1,8 +1,8 @@
 /datum/patron/divine/malum
-	name = "Malum"
-	domain = "Craft, Fire, Destruction, Ingenuity"
-	desc = "The Opinionless God teaches that tools for killing or saving are tools, either way. The well-oiled guillotine and the well-sharpened axe are merely tools, and there is no good and evil to their craft."
-	worshippers = "Smiths, Miners, Engineers, Dwarves"
+	name = "Forgemar"
+	domain = "Craft, Fire, Creation, Ingenuity"
+	desc = "The Lord of the Forge lost His left hand during the Godswar while attempting to reforge one of the Shattered Spheres. The injury never healed, leaving Him with a blackened stump that still smolders with divine flame. He teaches that tools have no morality - the well-oiled guillotine and the well-sharpened axe are merely instruments of their wielder's will. His followers believe that in a dying world, only through tireless craft can mortals build something that will survive the coming Final Winter."
+	worshippers = "Smiths, Miners, Engineers, Dwarves, Craftsmen"
 	mob_traits = list(TRAIT_FORGEBLESSED, TRAIT_BETTER_SLEEP)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison			= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/invoked/malum_flame_rogue 	= CLERIC_T0,
@@ -16,7 +16,7 @@
 					/obj/effect/proc_holder/spell/invoked/resurrect/malum		= CLERIC_T4,
 	)
 	confess_lines = list(
-		"MALUM IS MY MUSE!",
+		"FORGEMAR IS MY MUSE!",
 		"TRUE VALUE IS IN THE TOIL!",
 		"I AM AN INSTRUMENT OF CREATION!",
 	)
@@ -44,7 +44,7 @@
 	// Allows prayer near smelters.
 	for(var/obj/machinery/light/rogue/smelter/H in view(4, get_turf(follower)))
 		return TRUE
-	to_chat(follower, span_danger("For Malum to hear my prayer I must either pray within the church, the smithy's workshop, near a psycross, near a smelter, or hearth to bask in Malum's glory.."))
+		to_chat(follower, span_danger("For Forgemar to hear my prayer I must either pray within the church, the smithy's workshop, near a holy symbol, near a smelter, or hearth to bask in His glory.."))
 	return FALSE
 
 /datum/patron/divine/malum/on_lesser_heal(
@@ -56,7 +56,7 @@
 	situational_bonus
 )
 	*message_out = span_info("A tempering heat is discharged out of [target]!")
-	*message_self = span_info("I feel the heat of a forge soothing my pains!")
+	*message_self = span_info("I feel the heat of Forgemar's anvil soothing my pains!")
 
 	var/list/firey_stuff = list(/obj/machinery/light/rogue/torchholder, /obj/machinery/light/rogue/campfire, /obj/machinery/light/rogue/hearth, /obj/machinery/light/rogue/campfire/fireplace, /obj/machinery/light/rogue/candle, /obj/machinery/light/rogue/forge)
 	var/bonus = 0

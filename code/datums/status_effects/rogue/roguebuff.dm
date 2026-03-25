@@ -1351,7 +1351,7 @@
 	REMOVE_TRAIT(owner, TRAIT_STRONGBITE, id)
 
 /atom/movable/screen/alert/status_effect/buff/pacify
-	name = "Blessing of Eora"
+	name = "Blessing of Aelis"
 	desc = "I feel my heart as light as feathers. All my worries have washed away."
 	icon_state = "buff"
 
@@ -1372,9 +1372,9 @@
 	to_chat(owner, span_warning("My mind is my own again, no longer awash with foggy peace!"))
 	REMOVE_TRAIT(owner, TRAIT_PACIFISM, id)
 
-//A lesser variant of Eoran blessing meant for peacecake consumption.
+//A lesser variant of Aelisian blessing meant for peacecake consumption.
 /atom/movable/screen/alert/status_effect/buff/peacecake
-	name = "Lesser blessing of Eora"
+	name = "Lesser blessing of Aelis"
 	desc = "I feel my heart lighten. All my worries ease away."
 	icon_state = "buff"
 

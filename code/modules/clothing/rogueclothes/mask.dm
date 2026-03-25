@@ -69,7 +69,7 @@
 /obj/item/clothing/mask/rogue/spectacles/inq
 	name = "otavan nocshade lens-pair"
 	icon_state = "bglasses"
-	desc = "Made to both ENDURE and incite debate within those few Noc-Sainted within Otava. Noc-lit walks, yae or nae? The lenses look like they can be brushed aside with a carefully guided right-pointer finger led motion."
+	desc = "Made to both ENDURE and incite debate within those few Luneth-Sainted within Otava. Moon-lit walks, yae or nae? The lenses look like they can be brushed aside with a carefully guided right-pointer finger led motion."
 	attacked_sound = 'sound/combat/hits/onglass/glasshit.ogg'
 	max_integrity = 300
 	integrity_failure = 0.5
@@ -320,7 +320,7 @@
 
 /obj/item/clothing/mask/rogue/wildguard
 	name = "wild guard"
-	desc = "A mask shaped after the snarling beasts of Dendor."
+	desc = "A mask shaped after the snarling beasts of Silvanus."
 	icon_state = "wildguard"
 	blocksound = PLATEHIT
 	break_sound = 'sound/foley/breaksound.ogg'
@@ -392,7 +392,7 @@
 
 /obj/item/clothing/mask/rogue/facemask/psydonmask
 	name = "psydonic mask"
-	desc = "A silver mask, forever locked in a rigor of uncontestable joy. The Order of Saint Xylix can't decide on whether it's meant to represent Psydon's 'mirthfulness,' 'theatricality,' or the unpredictable melding of both."
+	desc = "A silver mask, forever locked in a rigor of uncontestable joy. The Order of Saint Fortis can't decide on whether it's meant to represent Psydon's 'mirthfulness,' 'theatricality,' or the unpredictable melding of both."
 	icon_state = "psydonmask"
 	item_state = "psydonmask"
 
@@ -426,7 +426,7 @@
 	for(var/name in GLOB.outlawed_players)
 		if(user.real_name == name)
 			GLOB.outlawed_players -= user.real_name
-			priority_announce("[user.real_name] has completed their penance. Justice has been served in the eyes of Ravox.", "PENANCE", 'sound/misc/bell.ogg')
+			priority_announce("[user.real_name] has completed their penance. Justice has been served in the eyes of Valorax.", "PENANCE", 'sound/misc/bell.ogg')
 	playsound(src.loc, pick('sound/items/pickgood1.ogg','sound/items/pickgood2.ogg'), 5, TRUE)
 	if(QDELETED(src))
 		return

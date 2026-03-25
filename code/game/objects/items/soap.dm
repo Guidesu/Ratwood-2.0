@@ -1,6 +1,6 @@
 /obj/item/soap
 	name = "soap"
-	desc = "One of Pestra's more humble and unassuming gifts. Take care not to slip!"
+	desc = "One of Verdan's more humble and unassuming gifts. Take care not to slip!"
 	gender = PLURAL
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "soap"

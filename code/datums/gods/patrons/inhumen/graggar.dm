@@ -1,8 +1,8 @@
 /datum/patron/inhumen/graggar
-	name = "Graggar"
-	domain = "Conquest, Cruelty, Kinslaying, Slaughter, Cannibalism, Rape"
-	desc = "The Gorebound Star was a half-orc warlord who sought to strike Ravox down in rage at the cruel fate of His lover. He was decapitated, and His head revived as a mutilated aberration of blue flesh and sickening tendrils. Gazing upon the Star will drive anyone mad."
-	worshippers = "Fallen Warriors, Cannibals, Serial Killers, The Cruel"
+	name = "Khargath"
+	domain = "Conquest, Cruelty, Slaughter, Bloodlust, War"
+	desc = "The Bloodreaver was a half-orc warlord so consumed by rage during the Godswar that he challenged Valorax himself to single combat. The war god decapitated him, but Khargath's fury was so intense that his severed head refused to die - reviving as a mutilated aberration of blue flesh and writhing tendrils. He teaches that violence is the only pure truth in a dying world, that strength through cruelty will survive the Final Winter. Gazing upon the Bloodreaver's visage drives mortals mad with bloodlust."
+	worshippers = "Fallen Warriors, Cannibals, Serial Killers, The Cruel, Berserkers"
 	mob_traits = list(TRAIT_HORDE, TRAIT_ORGAN_EATER)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison					= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/self/graggar_bloodrage				= CLERIC_T0,
@@ -13,7 +13,7 @@
 					/obj/effect/proc_holder/spell/invoked/revel_in_slaughter 			= CLERIC_T3,
 	)
 	confess_lines = list(
-		"GRAGGAR IS THE BEAST I WORSHIP!",
+		"KHARGATH IS THE BEAST I WORSHIP!",
 		"THROUGH VIOLENCE, DIVINITY!",
 		"THE GOD OF CONQUEST DEMANDS BLOOD!",
 	)
@@ -30,7 +30,7 @@
 )
 	*is_inhumen = TRUE
 	*message_out = span_info("Foul fumes billow outward as [target] is restored!")
-	*message_self = span_notice("A noxious scent burns my nostrils, but I feel better!")
+	*message_self = span_notice("A noxious scent burns my nostrils, but Khargath's fury fills me!")
 
 	var/bonus = 0
 

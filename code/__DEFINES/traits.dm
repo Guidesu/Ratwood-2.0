@@ -115,8 +115,8 @@
 
 //Hearthstone port (Tracking)
 #define TRAIT_PERFECT_TRACKER "Huntmaster" //Will always find any tracks and analyzes them perfectly.
-#define TRAIT_ZIZOSIGHT "Blessing of Zizo" // I can see just a bit more clearly in darkness.
-#define TRAIT_NOCSIGHT "Blessing of Noc" // I can see just a bit more clearly in darkness.
+#define TRAIT_ZIZOSIGHT "Blessing of Aethros" // I can see just a bit more clearly in darkness.
+#define TRAIT_NOCSIGHT "Blessing of Luneth" // I can see just a bit more clearly in darkness.
 #define TRAIT_DEATHSIGHT "Veiled Whispers" // Is notified when a player character dies, but not told exactly where or how.
 //Hearthstone/Azure end.
 
@@ -131,18 +131,18 @@
 #define TRAIT_WATERBREATHING "Water Breathing"
 
 // PATRON GOD TRAITS
-#define TRAIT_ROT_EATER "Blessing of Pestra" //can eat rotten food
-#define TRAIT_ORGAN_EATER "Blessing of Graggar" //can eat organs
-#define TRAIT_KNEESTINGER_IMMUNITY "Blessing of Dendor"
-#define TRAIT_SOUL_EXAMINE "Blessing of Necra" //can check bodies to see if they have departed
-#define TRAIT_CRACKHEAD "Blessing of Baotha" //will never overdose
-#define TRAIT_CHOSEN "Astrata's Chosen"
-#define TRAIT_ABYSSOR_SWIM "Blessing of Abyssor" //less base fatigue drain when swimming
-#define TRAIT_XYLIX "Blessing of Xylix" //secret thieves cant language
-#define TRAIT_FORGEBLESSED "Blessing of Malum" //Reduces the fatigue cost of smithing a bit.
+#define TRAIT_ROT_EATER "Blessing of Verdan" //can eat rotten food
+#define TRAIT_ORGAN_EATER "Blessing of Khargath" //can eat organs
+#define TRAIT_KNEESTINGER_IMMUNITY "Blessing of Silvanus"
+#define TRAIT_SOUL_EXAMINE "Blessing of Mortara" //can check bodies to see if they have departed
+#define TRAIT_CRACKHEAD "Blessing of Luxara" //will never overdose
+#define TRAIT_CHOSEN "Solarius's Chosen"
+#define TRAIT_ABYSSOR_SWIM "Blessing of Tempestia" //less base fatigue drain when swimming
+#define TRAIT_XYLIX "Blessing of Fortis" //secret thieves cant language
+#define TRAIT_FORGEBLESSED "Blessing of Forgemar" //Reduces the fatigue cost of smithing a bit.
 #define TRAIT_APRICITY	"Apricity" //Decreased stamina regen time during "day" and less so during night
 #define TRAIT_SHARPER_BLADES "Sharper Blades" //Weapons lose less blade integrity
-#define TRAIT_JUSTICARSIGHT "Blessing of Ravox" //Allows seeing bounties and crimes when examining outlaws.
+#define TRAIT_JUSTICARSIGHT "Blessing of Valorax" //Allows seeing bounties and crimes when examining outlaws.
 #define TRAIT_EXTEROCEPTION	"Exteroception" //See others' hunger and thirst; pairs well with empath.
 #define TRAIT_BETTER_SLEEP	"Better Sleep" //Recover more energy (blue bar) when sleeping
 #define TRAIT_LEECHIMMUNE "Unleechable" //leeches wont attach in bog squares + dendor boon.
@@ -156,16 +156,16 @@
 // PATRON GOD CURSES
 
 #define TRAIT_CURSE "Curse" //source
-#define TRAIT_CURSE_ASTRATA "Curse of Astrata" //Cannot sleep and burn up in sunlight
-#define TRAIT_CURSE_NOC "Curse of Noc" //Cannot use magic and burn up in moonlight
-#define TRAIT_CURSE_DENDOR "Curse of Dendor"//It will do something once I decide what that will be
-#define TRAIT_CURSE_ABYSSOR "Curse of Abyssor" //fears the water and cannot open sleep menu
-#define TRAIT_CURSE_RAVOX "Curse of Ravox" // effect same as -2 (-40% parry -40% dodge -40% accuracy) to all weapon skills
-#define TRAIT_CURSE_NECRA "Curse of Necra" //critical weakness and CON nuke
-#define TRAIT_CURSE_XYLIX "Curse of Xylix" //no fortune
-#define TRAIT_CURSE_PESTRA "Curse of Pestra" //less stamina, cannot run and missing nose
-#define TRAIT_CURSE_MALUM "Curse of Malum" //cannot craft or use smith hammer or level skills in sleep menu
-#define TRAIT_CURSE_EORA "Curse of Eora" //world is ugly
+#define TRAIT_CURSE_ASTRATA "Curse of Solarius" //Cannot sleep and burn up in sunlight
+#define TRAIT_CURSE_NOC "Curse of Luneth" //Cannot use magic and burn up in moonlight
+#define TRAIT_CURSE_DENDOR "Curse of Silvanus"//It will do something once I decide what that will be
+#define TRAIT_CURSE_ABYSSOR "Curse of Tempestia" //fears the water and cannot open sleep menu
+#define TRAIT_CURSE_RAVOX "Curse of Valorax" // effect same as -2 (-40% parry -40% dodge -40% accuracy) to all weapon skills
+#define TRAIT_CURSE_NECRA "Curse of Mortara" //critical weakness and CON nuke
+#define TRAIT_CURSE_XYLIX "Curse of Fortis" //no fortune
+#define TRAIT_CURSE_PESTRA "Curse of Verdan" //less stamina, cannot run and missing nose
+#define TRAIT_CURSE_MALUM "Curse of Forgemar" //cannot craft or use smith hammer or level skills in sleep menu
+#define TRAIT_CURSE_EORA "Curse of Aelis" //world is ugly
 #define TRAIT_CURSE_RESIST "Curse Resistance" //Some folk with a tendency to get cursed are resistant
 
 // ASCENDANT CULTIST TRAITS (all of them recognize each other)
@@ -301,7 +301,7 @@
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SPURNED = span_warning("The gods have forsaken me. Healing miracles have no effect on me."),
 	TRAIT_ILLITERATE = span_warning("I never learned to read and never will. The written word is forever beyond me."),
-	TRAIT_ASTRATA_SCORCHED = span_warning("Astrata's light burns through me. Silver cuts deep, the sun drains my resilience, and direct sunlight sears my flesh."),
+	TRAIT_ASTRATA_SCORCHED = span_warning("Solarius's light burns through me. Silver cuts deep, the sun drains my resilience, and direct sunlight sears my flesh."),
 	TRAIT_NOC_SCORCHED = span_warning("The moon's curse marks me. Under the night sky I become feral, and the beast within hungers for raw flesh."),
 	TRAIT_NO_REFLECTION = span_warning("I cast no reflection in mirrors or water. A damning sign of my cursed nature."),
 	TRAIT_STAKE_VULNERABLE = span_warning("A wooden stake through my heart would be my end."),
@@ -317,7 +317,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_RITUALIST = span_info("I am skilled in the holy arts. Using ritual chalk, I can more deftly channel my God's powers via runes."),
 	TRAIT_INSPIRING_MUSICIAN = span_info("The flow of battle dances to my song!"),
 	TRAIT_INQUISITION = span_info("I serve the Holy Otavan Inquisition. From a passing glance, I can recognize all other adherents within the local sect."),
-	TRAIT_CHOSEN = "Astrata choose you to represent her glory.",
+	TRAIT_CHOSEN = "Solarius chose you to represent His glory.",
 	TRAIT_WEBWALK = "I can move freely between webs.",
 	TRAIT_NOSTINK = span_dead("My nose is numb to the smell of decay."),
 	TRAIT_ZJUMP = "Time to reach a new high.",
@@ -389,8 +389,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LIMPDICK = span_crit("My soldier refuses to rise to attention! Curses!"),
 	TRAIT_SEEDKNOW = span_info("I know which seeds grow which crops."),
 	TRAIT_PERFECT_TRACKER = span_info("I am a master at pursuing those I hunt. I can discern every last detail within a spotted track, and any attempts to hide said-tracks will fail to deceive me."),//Hearthstone port.
-	TRAIT_ZIZOSIGHT = span_info("Zizo blesses my eyes to be unburdened by the night."), //Hearthstone change.
-	TRAIT_NOCSIGHT = span_info("My nocturnal nature allows me to see during the time of Noc."),
+	TRAIT_ZIZOSIGHT = span_info("Aethros blesses my eyes to be unburdened by the night."), //Hearthstone change.
+	TRAIT_NOCSIGHT = span_info("My nocturnal nature allows me to see during the time of Luneth."),
 	TRAIT_CIVILIZEDBARBARIAN = span_info("My rigorous training in the martial arts has turned me into a living weapon. No limb is out of reach for my fists and feet, and my unarmed strikes now have a higher chance to inflict critical damage."),
 	TRAIT_COMICSANS = span_sans("I am cursed with a odd voice."),
 	TRAIT_SQUIRE_REPAIR = span_info("Trained at my Master's side, I can restore any kind of gears with time and polish them until they gleam like new."),
@@ -407,10 +407,10 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_TOXRESIST = span_info("My body has adapted to resist poisons, though I am not fully immune."),
 	TRAIT_FORGEBLESSED = span_info("Countless long nights spent forging metal have honed my endurance, allowing me to work an anvil far longer than most without tiring."),
 	TRAIT_XYLIX = span_info("I know how to speak in code that only fellow tricksters can understand."),
-	TRAIT_APRICITY = span_info("Astrata's light blesses and rejuvenates me, allowing me to regain my stamina quicker."),
+	TRAIT_APRICITY = span_info("Solarius's light blesses and rejuvenates me, allowing me to regain my stamina quicker."),
 	TRAIT_SHARPER_BLADES = span_info("My blades go dull slower, ensuring they stay sharp longer."),
 	TRAIT_CABAL = span_info("In secret, I have studied the ways of Her ascension."),
-	TRAIT_HORDE = span_info("BY BLOOD AND BONE, I AM OF GRAGGAR'S ANOINTED!"),
+	TRAIT_HORDE = span_info("BY BLOOD AND BONE, I AM OF KHARGATH'S ANOINTED!"),
 	TRAIT_PSYDONITE = span_info("Divine contempt leaves me unable to receive most miracles."),
 	TRAIT_PSYDONIAN_GRIT = span_info("While I still stand, there is yet hope for mankind. The stronger my willpower is, the better I can struggle through crippling wounds."),
 	TRAIT_BLACKBAGGER = span_info("I've been trained to properly abduct individuals through the use of seizing garrotes and blackbags."),
@@ -437,7 +437,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SCREENSHAKE = span_suicide("I don't feel very steady anymore..."),
 	TRAIT_TREMORS = span_warning("My hands shake uncontrollably at times, causing me to drop what I'm holding."),
 	TRAIT_WEAK_HEART = span_bloody("My heart is weak. Heart attacks at half stress (15 vs 30), chest pains when stressed, increased risk during exhaustion."),
-	TRAIT_GRAVEROBBER = span_info("My experience with 'post-mortem artifact recovery' has allowed me to resist Necra's curse placed upon those who disturb resting places."),
+	TRAIT_GRAVEROBBER = span_info("My experience with 'post-mortem artifact recovery' has allowed me to resist Mortara's curse placed upon those who disturb resting places."),
 	TRAIT_PURITAN = span_info("I am an emissary of the Holy Otavan Inquisition, and the one who shepherds the local sect. With a silver psycross, I can force restrained heathens to kneel before a crucifix and proclaim their true allegiance."),
 	TRAIT_PURITAN_ADVENTURER = span_info("With a silver psycross, I can force the restrained to kneel before a crucifix and proclaim their true allegiance."),
 	TRAIT_MIRROR_MAGIC = span_info("Mirror, mirror on the wall, who's the fairest of them all?"),
@@ -472,27 +472,27 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_PERMAMUTE = span_notice("I am a mute. I cannot speak."),
 	TRAIT_STRENGTH_UNCAPPED = span_warning("MY STRENGTH IS UNBOUND!"),
 	TRAIT_MONK_ROBE = span_notice("I feel closer to the gods in my meager robes.. I feel vigorous, empowered by their light!"),
-	TRAIT_EORAN_CALM = span_notice("Eora has touched me, granting me some calm. She protects me from the peaks of my stress."),
-	TRAIT_EORAN_SERENE = span_greentext("Eora has blessed me with all-encompassing serenity. I feel no more stress."),
-	TRAIT_NECRAS_VOW = span_warning("I've pledged myself to Necra. If I fall, I am Hers."),
-	TRAIT_PESTRAS_BLESSING = span_infection("The sacred black rot of Pestra burns within me. Should intelligent foes try to harm me, they will feel her greatest plague."),
+	TRAIT_EORAN_CALM = span_notice("Aelis has touched me, granting me some calm. She protects me from the peaks of my stress."),
+	TRAIT_EORAN_SERENE = span_greentext("Aelis has blessed me with all-encompassing serenity. I feel no more stress."),
+	TRAIT_NECRAS_VOW = span_warning("I've pledged myself to Mortara. If I fall, I am Hers."),
+	TRAIT_PESTRAS_BLESSING = span_infection("The sacred black rot of Verdan burns within me. Should intelligent foes try to harm me, they will feel her greatest plague."),
 	TRAIT_HERESIARCH = span_warning("I've been touched by the truth of Psydonia. Lyfe as we understand cannot persist under the Ten or the pretense of Psydon. Something must change."),
 	TRAIT_ZURCH = span_warning("I know of sacred sites of worship where followers of the Ascendants convene, and the path to the nearest conclave is etched into my memory."),
-	TRAIT_CURSE_ASTRATA = span_warning("I am forsaken by the Sun. I will find no rest under Her unwavering gaze."),
+	TRAIT_CURSE_ASTRATA = span_warning("I am forsaken by the Sun. I will find no rest under His unwavering gaze."),
 	TRAIT_CURSE_NOC = span_warning("I am forsaken by the Moon. I will find no salvation in His grace."),
 	TRAIT_CURSE_DENDOR = span_warning("I am forsaken by the Treefather. Reason and common sense abandon me."),
-	TRAIT_CURSE_ABYSSOR = span_warning("I am forsaken by the Dreamer. His domain will surely become my grave."),
-	TRAIT_CURSE_RAVOX = span_warning("I am forsaken by the Justicar. My opponents will show me no clemency."),
-	TRAIT_CURSE_NECRA = span_warning("I am forsaken by the Undermaiden. Even the lightest strike could send me into Her embrace."),
-	TRAIT_CURSE_XYLIX = span_warning("I am forsaken by the Trickster. Misfortune follows me on every step."),
+	TRAIT_CURSE_ABYSSOR = span_warning("I am forsaken by the Dreaming Tide. Her domain will surely become my grave."),
+	TRAIT_CURSE_RAVOX = span_warning("I am forsaken by the Battleborn. My opponents will show me no clemency."),
+	TRAIT_CURSE_NECRA = span_warning("I am forsaken by the Pale Shepherdess. Even the lightest strike could send me into Her embrace."),
+	TRAIT_CURSE_XYLIX = span_warning("I am forsaken by the Laughing Gambler. Misfortune follows me on every step."),
 	TRAIT_CURSE_PESTRA = span_warning("I am forsaken by the Plaguemother. Sickness overwhelms my body rendering even simplest of tasks into a challenge."),
-	TRAIT_CURSE_MALUM = span_warning("I am forsaken by the Maker. My hands tremble and fog overwhelms my mind."),
-	TRAIT_CURSE_EORA = span_warning("I am forsaken by the Lover. There is no beauty to be found for me in this world."),
+	TRAIT_CURSE_MALUM = span_warning("I am forsaken by the Lord of the Forge. My hands tremble and fog overwhelms my mind."),
+	TRAIT_CURSE_EORA = span_warning("I am forsaken by the Lady of the Hearth. There is no beauty to be found for me in this world."),
 	TRAIT_EXCOMMUNICATED = span_warning("I have been excommunicated."),
-	TRAIT_CURSE_ZIZO = span_warning("I am forsaken by the Architect. Her grasp reaches for my heart."),
-	TRAIT_CURSE_GRAGGAR = span_warning("I am forsaken by the Warlord. Bloodlust is only thing I know for real."),
-	TRAIT_CURSE_MATTHIOS = span_warning("I am forsaken by the Dragon. Greed will be my only salvation."),
-	TRAIT_CURSE_BAOTHA = span_warning("I am forsaken by the Heartbreaker. I am drowning in her promises."),
+	TRAIT_CURSE_ZIZO = span_warning("I am forsaken by the Voidgazer. Her grasp reaches for my heart."),
+	TRAIT_CURSE_GRAGGAR = span_warning("I am forsaken by the Bloodreaver. Bloodlust is only thing I know for real."),
+	TRAIT_CURSE_MATTHIOS = span_warning("I am forsaken by the Gilded Serpent. Greed will be my only salvation."),
+	TRAIT_CURSE_BAOTHA = span_warning("I am forsaken by the Crimson Ecstasy. I am drowning in her promises."),
 	TRAIT_BLOODLOSS_IMMUNE = span_notice("While I may bleed, I will feel nothing from it."),
 	TRAIT_ADRENALINE_RUSH = span_notice("I'm invigorated in the midst of battle! I don't feel my wounds!"),
 	TRAIT_MEDICINE_EXPERT = span_greentext("I've deep, intricate knowledge of my craft. I can learn to become a Master or above."),
@@ -510,7 +510,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_VENOMOUS = span_necrosis("I am venomous. When chewing someone I've bitten, I will inject venom."),
 	TRAIT_COMBAT_AWARE = span_notice("My honed senses and intuition allow me to spot notable things in the midst of battle with ease."),
 	TRAIT_DREAMWALKER = span_warning("I walk the dream and reality at the same time. My mind frays, but my vision shall be reality."),
-	TRAIT_BLACKLEG = span_warning("My people have an inherent connection to Xylix. This grants me the ability to rig coin flips and dice rolls in my favour."),
+	TRAIT_BLACKLEG = span_warning("My people have an inherent connection to Fortis. This grants me the ability to rig coin flips and dice rolls in my favour."),
 	TRAIT_OVERTHERETIC = span_bloody("I've played my cards. Hallowed ground is now my bane."),
 	TRAIT_DEATHBYSNUSNU = "With strong intent, I am a violent partner in bed. Breaking pelvis and spirit alike.",
 	TRAIT_HUMEN_INGENUITY = span_notice("Like most of my people, I am blessed with knowledge. Learning comes easier."),

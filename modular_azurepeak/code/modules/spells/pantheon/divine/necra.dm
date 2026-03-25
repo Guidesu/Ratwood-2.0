@@ -184,8 +184,8 @@
 
 
 /obj/effect/proc_holder/spell/invoked/necra_vow
-	name = "Vow to Necra"
-	desc = "Make a vow to Necra. Your chances of revival or recovery of limb will be greatly reduced. You will harm undeath and heal yourself at a slow rate."
+	name = "Vow to Mortara"
+	desc = "Make a vow to Mortara. Your chances of revival or recovery of limb will be greatly reduced. You will harm undeath and heal yourself at a slow rate."
 	range = 1
 	overlay_state = "necra"
 	releasedrain = 30
@@ -222,8 +222,8 @@
 		H.apply_status_effect(/datum/status_effect/buff/healing/necras_vow)
 
 /atom/movable/screen/alert/status_effect/buff/necras_vow
-	name = "Vow to Necra"
-	desc = "I have pledged a promise to Necra. Undeath shall be harmed or lit aflame if they strike me. Rot will not claim me. Lost limbs can only be restored if they are myne."
+	name = "Vow to Mortara"
+	desc = "I have pledged a promise to Mortara. Undeath shall be harmed or lit aflame if they strike me. Rot will not claim me. Lost limbs can only be restored if they are myne."
 	icon_state = "necravow"
 
 #define NECRAVOW_FILTER "necravow_glow"

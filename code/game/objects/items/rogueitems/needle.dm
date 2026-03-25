@@ -260,7 +260,7 @@
 	anvilrepair = null
 
 /obj/item/needle/pestra
-	name = "needle of pestra"
+	name = "needle of verdan"
 	desc = span_green("This needle has been blessed by the goddess of medicine herself!")
 	infinite = TRUE
 

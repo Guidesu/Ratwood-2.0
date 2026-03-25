@@ -76,7 +76,7 @@
 
 /obj/item/natural/head/minotaur
 	name = "minotaur head"
-	desc = "The head of a dangerous beast of Dendor's madness."
+	desc = "The head of a dangerous beast of Silvanus's madness."
 	icon_state = "minotaurhead"
 	layer = 3.1
 	w_class = WEIGHT_CLASS_NORMAL // We want them to be placeable in headhook

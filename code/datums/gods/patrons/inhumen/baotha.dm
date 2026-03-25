@@ -1,8 +1,8 @@
 /datum/patron/inhumen/baotha
-	name = "Baotha"
-	domain = "Hedonism, Debauchery, Addiction, Heartbreak"
-	desc = "The Lady of Debauchery was the only snow elf to have survived Zizo's massacre, having been kept by the Naledi as a concubine. Until one dae, She was consumed by Her depravity and addiction, stealing a shard of SYON from Her captors and ascending to godhood. Her followers desire only to experience mind-rotting pleasures."
-	worshippers = "Widows, Gamblers, Addicts, Scorned Lovers, Far-Gone Prostitutes"
+	name = "Luxara"
+	domain = "Hedonism, Pleasure, Addiction, Passionate Love"
+	desc = "The Crimson Ecstasy teaches that if the world ends tomorrow, why not spend tonight in rapture? She ascended during the Cataclysm itself - not through great deeds but through experiencing such overwhelming pleasure and pain simultaneously that She transcended mortality. Her followers believe the wounded gods preach restraint because They fear what mortals might become if truly unleashed. If the Final Winter comes, let it find you wrapped in silk and smiling. Virtue is the lie the powerful tell to control the desperate."
+	worshippers = "Widows, Gamblers, Addicts, Scorned Lovers, Hedonists"
 	mob_traits = list(TRAIT_DEPRAVED, TRAIT_CRACKHEAD)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison					= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/invoked/baothavice					= CLERIC_T0,
@@ -17,9 +17,9 @@
 					/obj/effect/proc_holder/spell/invoked/painkiller					= CLERIC_T3,
 	)
 	confess_lines = list(
-		"BAOTHA DEMANDS PLEASURE!",
+		"LUXARA DEMANDS PLEASURE!",
 		"LIVE, LAUGH, LOVE!",
-		"BAOTHA IS MY JOY!",
+		"LUXARA IS MY JOY!",
 	)
 	storyteller = /datum/storyteller/baotha
 
@@ -46,7 +46,7 @@
 	// Allows praying atop ritual chalk of the god.
 	for(var/obj/structure/ritualcircle/baotha in view(1, get_turf(follower)))
 		return TRUE
-	to_chat(follower, span_danger("For Baotha to hear my prayers I must either be in the church of the abandoned, near an inverted psycross, within the town's bathhouse, or actively partaking in one of various types of nose-candy!"))
+		to_chat(follower, span_danger("For Luxara to hear my prayers I must either be in the church of the abandoned, near an inverted psycross, within the town's bathhouse, or actively partaking in one of various types of nose-candy!"))
 	return FALSE
 
 #define BAOTHA_SUFFERING_DIVIDER 3.535 // max bonus at 50 pain/bleedrate and pain_mod = 1
@@ -62,7 +62,7 @@
 )
 	*is_inhumen = TRUE
 	*message_out = span_info("Hedonistic impulses and emotions throb all about from [target].")
-	*message_self = span_notice("An intoxicating rush of narcotic delight soothes my suffering!")
+	*message_self = span_notice("An intoxicating rush of Luxara's narcotic delight soothes my suffering!")
 
 	if(!ishuman(target))
 		*message_self = span_notice("An intoxicating rush of narcotic delight flows through me!")

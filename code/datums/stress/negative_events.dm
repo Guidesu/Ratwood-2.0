@@ -46,6 +46,9 @@
 /datum/stressevent/vice/voyeur
 	desc = list(span_boldred("I need to see someone indulge..."),span_boldred("I crave witnessing others' satisfaction."))
 
+/datum/stressevent/vice/indebted
+	desc = list(span_boldred("My debts are coming due..."),span_boldred("I need to pay what I owe!"))
+
 /datum/stressevent/debt
 	timer = 5 MINUTES
 	stressadd = 3
@@ -74,7 +77,7 @@
 /datum/stressevent/vice/astrata_scorched
 	timer = 10 SECONDS
 	stressadd = 3
-	desc = list(span_boldred("Astrata's light sears through me!"),span_boldred("The sun burns me to the marrow!"),span_boldred("Get me out of the light!"))
+	desc = list(span_boldred("Solarius's light sears through me!"),span_boldred("The sun burns me to the marrow!"),span_boldred("Get me out of the light!"))
 /datum/stressevent/chastity_frustration
 	timer = 999 MINUTES
 	stressadd = 1

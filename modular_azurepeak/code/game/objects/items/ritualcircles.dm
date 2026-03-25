@@ -25,7 +25,7 @@
 /obj/structure/ritualcircle/astrata
 	name = "Rune of the Sun" // defines name of the circle itself
 	icon_state = "astrata_chalky" // the icon state, so, the sprite the runes use on the floor. As of making, we have 6, each needs an active/inactive state.
-	desc = "A Holy Rune of Astrata. Warmth irradiates from the rune." // description on examine
+	desc = "A Holy Rune of Solarius. Warmth irradiates from the rune." // description on examine
 	var/solarrites = list("Guiding Light") // This is important - This is the var which stores every ritual option available to a ritualist - Ideally, we'd have like, 3 for each God. Right now, just 1.
 
 /obj/structure/ritualcircle/astrata/attack_hand(mob/living/user)
@@ -75,7 +75,7 @@
 /obj/structure/ritualcircle/noc
 	name = "Rune of the Moon"
 	icon_state = "noc_chalky"
-	desc = "A Holy Rune of Noc. Moonlight shines upon thee."
+	desc = "A Holy Rune of Luneth. Moonlight shines upon thee."
 	var/lunarrites = list("Moonlight Dance") // list for more to be added later
 
 /obj/structure/ritualcircle/noc/attack_hand(mob/living/user)

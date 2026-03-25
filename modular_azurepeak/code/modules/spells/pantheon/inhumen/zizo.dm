@@ -264,7 +264,7 @@
 
 /obj/effect/proc_holder/spell/invoked/evil_resurrect
 	name = "Perfect Reanimation" //Wretch Heresiarch-exclusive variant of Anastasis
-	desc = "Rip the target's soul out of Necra's grasp and revive them at a cost of a humanoid being's heart. The target's attributes will be temporarily reduced."
+	desc = "Rip the target's soul out of Mortara's grasp and revive them at a cost of a humanoid being's heart. The target's attributes will be temporarily reduced."
 	overlay_state = "noc_revive"
 	releasedrain = 90
 	chargedrain = 0

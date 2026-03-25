@@ -353,7 +353,7 @@
 
 /datum/virtue/utility/ugly
 	name = "Ugly"
-	desc = "Be it your family's habits in and out of womb, your own choices or Xylix's cruel roll of fate, you have been left unbearable to look at. Stuck to the unseen pits and crevices of the town, you've grown used to the foul odours of lyfe that often follow you. Corpses do not stink for you, and that is all the company you might find."
+	desc = "Be it your family's habits in and out of womb, your own choices or Fortis's cruel roll of fate, you have been left unbearable to look at. Stuck to the unseen pits and crevices of the town, you've grown used to the foul odours of lyfe that often follow you. Corpses do not stink for you, and that is all the company you might find."
 	category = "feats"
 	virtue_cost = 0
 	custom_text = "Incompatible with Beautiful virtue."
@@ -639,11 +639,11 @@
 // Vampirism that was "cured" but left its mark
 
 /datum/virtue/astrata_scorched
-	name = "Astrata-Scorched"
-	desc = "You once bore the dark hunger of the sanguine, but were cured. Astrata's light now scorches your once-shadowed flesh. Silver burns you deeply, the sun's gaze strips away your resilience, you cast no reflection, and the old hunger lingers — blood is your only sustenance. If starved, you'll lose control. You heal in coffins. Stakes can end you."
+	name = "Solarius-Scorched"
+	desc = "You once bore the dark hunger of the sanguine, but were cured. Solarius's light now scorches your once-shadowed flesh. Silver burns you deeply, the sun's gaze strips away your resilience, you cast no reflection, and the old hunger lingers — blood is your only sustenance. If starved, you'll lose control. You heal in coffins. Stakes can end you."
 	category = "" // None for now.
 	triumph_cost = 0
-	custom_text = "A powerful vampiric transformation that provides both benefits and severe drawbacks. Cannot be combined with Noc-Scorched."
+	custom_text = "A powerful vampiric transformation that provides both benefits and severe drawbacks. Cannot be combined with Luneth-Scorched."
 	added_traits = list(TRAIT_ASTRATA_SCORCHED, TRAIT_SILVER_WEAK, TRAIT_HEMOPHAGE, TRAIT_VAMPBITE, TRAIT_SILVER_CURED, TRAIT_DARKVISION, TRAIT_VAMP_DREAMS, TRAIT_NIGHT_OWL, TRAIT_NO_REFLECTION, TRAIT_STAKE_VULNERABLE)
 	
 	var/in_sunlight = FALSE

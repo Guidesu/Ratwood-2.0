@@ -1,8 +1,8 @@
 /datum/patron/divine/necra
-	name = "Necra"
-	domain = "Death, The Afterlife, Rebirth"
-	desc = "The Undermaiden is the custodian of the Afterlife, where all souls must eventually go. She tasks the lost with the Trials of the Forgotten, where they must ruminate on their lyfe to be reborn. Her followers find resurrection to be abhorrent, choosing to isolate themselves to their graveyards."
-	worshippers = "Gravediggers, Morticians, Disgraced Physicians, Loners"
+	name = "Mortara"
+	domain = "Death, The Afterlife, Passage, Rebirth"
+	desc = "The Pale Shepherdess guides all souls to the realm of the dead, Her duty unchanged since before the Godswar. While other gods were wounded in body, Mortara bore a wound of the spirit - She now remembers every soul that perished in the Cataclysm, an endless litany of names that drives Her to solitude. Her followers revere the natural cycle of death and rebirth, seeing resurrection magic as a perversion that traps souls in a broken world. Only through death can one escape the coming Final Winter."
+	worshippers = "Gravediggers, Morticians, Death Knights, Mourners"
 	mob_traits = list(TRAIT_SOUL_EXAMINE, TRAIT_NOSTINK)	//No stink is generic but they deal with dead bodies so.. makes sense, I suppose?
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison				= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/invoked/necras_sight				= CLERIC_T0,
@@ -17,9 +17,9 @@
 					/obj/effect/proc_holder/spell/targeted/churn					= CLERIC_T4,//Priest/Acolytes only. Thanks.
 	)
 	confess_lines = list(
-		"ALL SOULS FIND THEIR WAY TO NECRA!",
-		"THE UNDERMAIDEN IS OUR FINAL REPOSE!",
-		"I FEAR NOT DEATH, MY LADY AWAITS ME!",
+		"ALL SOULS FIND THEIR WAY TO MORTARA!",
+		"THE SHEPHERDESS GUIDES US HOME!",
+		"I FEAR NOT DEATH!",
 	)
 	storyteller = /datum/storyteller/necra
 
@@ -38,7 +38,7 @@
 	// Allows prayer near a grave.
 	for(var/obj/structure/closet/dirthole/grave/G in view(4, get_turf(follower)))
 		return TRUE
-	to_chat(follower, span_danger("For Necra to hear my prayer I must either pray within the church, near a psycross, or near a grave where we all go to be given our final embrace.."))
+		to_chat(follower, span_danger("For Mortara to hear my prayer I must either pray within the church, near a holy symbol, or near a grave where all souls find their rest.."))
 	return FALSE
 
 /datum/patron/divine/necra/on_lesser_heal(
@@ -49,8 +49,8 @@
 	conditional_buff,
 	situational_bonus
 )
-	*message_out = span_info("A sense of quiet respite radiates from [target]!")
-	*message_self = span_notice("I feel the Undermaiden's gaze turn from me for now!")
+	*message_out = span_info("A sense of peaceful inevitability radiates from [target]!")
+	*message_self = span_notice("Mortara turns Her gaze from me... for now!")
 
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon = target

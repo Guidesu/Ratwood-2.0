@@ -1,8 +1,8 @@
 /datum/patron/divine/ravox
-	name = "Ravox"
-	domain = "Justice, Battle, Glory, Righteous Fury"
-	desc = "The Glorious Justice plays as foil to Astrata's Order, preventing the world from being ruled by the Sun's Tyranny. He is an impartial God who exists solely to enforce Divine Justice. His followers are often misguided in their pursuit of such."
-	worshippers = "Warriors, Mercenaries, Knights, Seekers of Justice"
+	name = "Valorax"
+	domain = "War, Battle, Honor, Righteous Fury"
+	desc = "The Battleborn lost His left arm in single combat with a Titan during the Godswar. The wound never healed, eternally reminding Him that even gods can fall. He serves as Solarius' champion, ensuring that justice through strength does not become tyranny through cruelty. His followers seek glory in honorable combat, knowing that in battle, the worthy prove themselves. The Battleborn judges not by words, but by deeds in the crucible of war."
+	worshippers = "Warriors, Mercenaries, Knights, Honorbound"
 	mob_traits = list(TRAIT_SHARPER_BLADES)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison			= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/invoked/tug_of_war			= CLERIC_T0,
@@ -15,9 +15,9 @@
 					/obj/effect/proc_holder/spell/invoked/resurrect/ravox		= CLERIC_T4,
 	)
 	confess_lines = list(
-		"RAVOX IS JUSTICE!",
-		"THROUGH STRIFE, GRACE!",
-		"THROUGH PERSISTENCE, GLORY!",
+		"VALORAX DEMANDS HONOR!",
+		"THROUGH STRIFE, GLORY!",
+		"I FEAR NOT THE BLADE!",
 	)
 	storyteller = /datum/storyteller/ravox
 	COOLDOWN_DECLARE(lesser_heal_buff_cooldown)
@@ -37,7 +37,7 @@
 	// Allows prayer near any knight statue and its subtypes.
 	for(var/obj/structure/fluff/statue/knight/K in view(4, get_turf(follower)))
 		return TRUE
-	to_chat(follower, span_danger("For Ravox to hear my prayer I must either pray within the church, near a psycross, or near a knighly statue in memorium of the fallen.."))
+		to_chat(follower, span_danger("For Valorax to hear my prayer I must either pray within the church, near a holy symbol, or near a monument to fallen warriors.."))
 	return FALSE
 
 /datum/patron/divine/ravox/on_lesser_heal(
@@ -48,8 +48,8 @@
 	conditional_buff,
 	situational_bonus
 )
-	*message_out = span_info("An air of righteous defiance rises near [target]!")
-	*message_self = span_notice("I'm filled with an urge to fight on!")
+	*message_out = span_info("An aura of battle-fury rises around [target]!")
+	*message_self = span_notice("Valorax fills me with the will to fight on!")
 
 	var/bonus = 0
 

@@ -374,7 +374,7 @@
 
 /obj/item/book/rogue/robber
 	name = "Reading for Robbers"
-	desc = "By Flavius of Dendor"
+	desc = "By Flavius of Silvanus"
 	icon_state ="basic_book_0"
 	base_icon_state = "basic_book"
 	bookfile = "tales4.json"
@@ -408,15 +408,15 @@
 	bookfile = "tales8.json"
 
 /obj/item/book/rogue/necra
-	name = "Burial Rites for Necra"
-	desc = "By Hunlaf, Gravedigger. Revised by Lenore, Priest of Necra."
+	name = "Burial Rites for Mortara"
+	desc = "By Hunlaf, Gravedigger. Revised by Lenore, Priest of Mortara."
 	icon_state ="book6_0"
 	base_icon_state = "book6"
 	bookfile = "tales9.json"
 
 /obj/item/book/rogue/noc
 	name = "Dreamseeker"
-	desc = "By Hunlaf, Gravedigger. Revised by Lenore, Priest of Necra."
+	desc = "By Hunlaf, Gravedigger. Revised by Lenore, Priest of Mortara."
 	icon_state ="book6_0"
 	base_icon_state = "book6"
 	bookfile = "tales10.json"

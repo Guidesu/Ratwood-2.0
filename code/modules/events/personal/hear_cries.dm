@@ -48,8 +48,8 @@
 	var/datum/objective/listen_whispers/new_objective = new(owner = chosen_one.mind)
 	chosen_one.mind.add_personal_objective(new_objective)
 
-	to_chat(chosen_one, span_userdanger("YOU ARE NECRA'S CHOSEN!"))
-	to_chat(chosen_one, span_notice("You must understand death better to be able to prepare for it. For that purpose, go to the church and listen to the whispers of the dead while wearing amulet of Necra."))
+	to_chat(chosen_one, span_userdanger("YOU ARE MORTARA'S CHOSEN!"))
+	to_chat(chosen_one, span_notice("You must understand death better to be able to prepare for it. For that purpose, go to the church and listen to the whispers of the dead while wearing amulet of Mortara."))
 	chosen_one.playsound_local(chosen_one, 'sound/ambience/noises/genspooky (1).ogg', 100)
 
 	chosen_one.mind.announce_personal_objectives()

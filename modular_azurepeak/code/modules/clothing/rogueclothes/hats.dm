@@ -11,8 +11,8 @@
 
 
 /obj/item/clothing/head/roguetown/helmet/heavy/malum
-	name = "helm of malum"
-	desc = "Forged in a coal-black, this helmet carries a sigiled blade upon it's visor, ever reminding it's wearer of Malum's powerful gaze."
+	name = "helm of forgemar"
+	desc = "Forged in a coal-black, this helmet carries a sigiled blade upon it's visor, ever reminding it's wearer of Forgemar's powerful gaze."
 	icon_state = "malumhelm"
 	item_state = "malumhelm"
 	emote_environment = 3
@@ -54,8 +54,8 @@
 	REMOVE_TRAIT(user, TRAIT_NOSTINK, "[type]")
 
 /obj/item/clothing/head/roguetown/helmet/heavy/eoran
-	name = "eoran helmet"
-	desc = "A visage of beauty, this helm made in soft pink and beige reminds one of the grace of Eora."
+	name = "aelisian helmet"
+	desc = "A visage of beauty, this helm made in soft pink and beige reminds one of the grace of Aelis."
 	icon_state = "eorahelm"
 	item_state = "eorahelm"
 	emote_environment = 3

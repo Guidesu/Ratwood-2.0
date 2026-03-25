@@ -3,7 +3,7 @@
 /obj/item/natural/hide
 	name = "hide"
 	icon_state = "hide"
-	desc = "Hide from one of Dendor's creachers."
+	desc = "Hide from one of Silvanus's creachers."
 	force = 0
 	throwforce = 0
 	w_class = WEIGHT_CLASS_SMALL
@@ -28,7 +28,7 @@
 /obj/item/natural/cured/essence
 	name = "essence of wilderness"
 	icon_state = "wessence"
-	desc = "A mystical essence embued with the power of Dendor. Merely holding it transports one's mind to ancient times."
+	desc = "A mystical essence embued with the power of Silvanus. Merely holding it transports one's mind to ancient times."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
@@ -38,7 +38,7 @@
 /obj/item/natural/fur
 	name = "fur"
 	icon_state = "wool1"
-	desc = "Fur from one of Dendor's creachers."
+	desc = "Fur from one of Silvanus's creachers."
 	force = 0
 	throwforce = 0
 	w_class = WEIGHT_CLASS_SMALL
@@ -78,7 +78,7 @@
 	color = null
 
 /obj/item/natural/fur/direbear
-	desc = "fur from one of Dendor's mightiest creachers."
+	desc = "fur from one of Silvanus's mightiest creachers."
 	icon_state = "pelt_direbear"
 	color = "#33302b"
 	sellprice = 28

@@ -658,7 +658,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = null
 	droning_sound_dawn = 'sound/music/area/forest.ogg'
 	converted_type = /area/rogue/indoors/shelter/woods
-	deathsight_message = "A sacred place of dendor, beneath the tree of Aeons.."
+	deathsight_message = "A sacred place of silvanus, beneath the tree of Aeons.."
 	warden_area = TRUE
 	town_area = FALSE
 
@@ -753,7 +753,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound = 'sound/music/area/druid.ogg'
 	droning_sound_dawn = 'sound/music/area/forest.ogg'
 	converted_type = /area/rogue/indoors/town/grove
-	deathsight_message = "A sacred place of dendor, near the tree of Aeons.."
+	deathsight_message = "A sacred place of silvanus, near the tree of Aeons.."
 	droning_sound_dusk = null
 	droning_sound_night = null
 	warden_area = TRUE

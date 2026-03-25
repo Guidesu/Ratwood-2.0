@@ -1,8 +1,8 @@
 /datum/patron/divine/astrata
-	name = "Astrata"
-	domain = "The Day, The Sun, Order"
-	desc = "The Absolute Order is the glorious sunlight that permeates our lands and drives back evil. By Her Light is the world given Order, and by her Blessing is Nobility deigned to rule. Ravox stands at Her side to ensure Her Order does not become Tyranny."
-	worshippers = "Nobility, The Righteous, The Zealous"
+	name = "Solarius"
+	domain = "The Sun, Justice, Order, Dawn"
+	desc = "The Radiant Judge was gravely wounded in the Godswar against the Titans. Though weakened, His burning light still pierces all falsehood and drives back the creatures of chaos. By His blessing, nobility is granted the right to rule, and by His law, order is maintained. Valorax the Battleborn stands at His side to ensure justice does not become tyranny."
+	worshippers = "Nobility, Paladins, The Righteous, Judges"
 	mob_traits = list(TRAIT_APRICITY)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison			= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/invoked/ignition				= CLERIC_T0,
@@ -15,9 +15,9 @@
 					/obj/effect/proc_holder/spell/invoked/immolation			= CLERIC_T4,
 	)
 	confess_lines = list(
-		"ASTRATA IS MY LIGHT!",
-		"ASTRATA BRINGS LAW!",
-		"I SERVE THE GLORY OF THE SUN!",
+		"SOLARIUS IS MY LIGHT!",
+		"SOLARIUS BRINGS JUSTICE!",
+		"I SERVE THE RADIANT JUDGE!",
 	)
 	storyteller = /datum/storyteller/astrata
 
@@ -36,7 +36,7 @@
 	// Allows prayer during daytime if outside.
 	if(istype(get_area(follower), /area/rogue/outdoors) && (GLOB.tod == "day" || GLOB.tod == "dawn"))
 		return TRUE
-	to_chat(follower, span_danger("For Astrata to hear my prayer I must either be in her blessed daylight, within the church, or near a psycross.."))
+		to_chat(follower, span_danger("For Solarius to hear my prayer I must either be in His blessed daylight, within the church, or near a holy symbol.."))
 	return FALSE
 
 /datum/patron/divine/astrata/on_lesser_heal(
@@ -47,8 +47,8 @@
 	conditional_buff,
 	situational_bonus
 )
-	*message_out = span_info("A wreath of gentle light passes over [target]!")
-	*message_self = ("I'm bathed in holy light!")
+	*message_out = span_info("A wreath of golden sunlight passes over [target]!")
+	*message_self = ("I'm bathed in Solarius' radiance!")
 
 	if(GLOB.tod == "day")
 		*conditional_buff = TRUE

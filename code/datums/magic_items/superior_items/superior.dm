@@ -1,7 +1,7 @@
 ///T2 Enchantments
 /datum/magic_item/superior/nightvision
 	name = "night vision"
-	description = "It has a sigil of Noc's eye."
+	description = "It has a sigil of Luneth's eye."
 	var/active_item = FALSE
 
 /datum/magic_item/superior/nightvision/on_equip(obj/item/i, mob/living/user, slot)

@@ -1,7 +1,7 @@
 /datum/patron/divine/dendor
-	name = "Dendor"
-	domain = "Plants, Animals, Nature, Agriculture"
-	desc = "The Treefather was the First Druid, driven mad by the abuse of His realm. Even still, He stands vigil over the woods and the plains, blessing our harvests and our livelihoods. His beasts show us no quarter, but we can learn to avoid their jaws."
+	name = "Silvanus"
+	domain = "Plants, Animals, Nature, Agriculture, The Wild"
+	desc = "The Treefather was driven to the edge of madness watching His forests burn during the Godswar. What chaos-corruption could not destroy, the battling gods trampled underfoot. Now He stands eternal vigil over what wilderness remains, blessing harvests while His maddened beasts hunt those who would despoil the green places. The druids claim He speaks through the trees, warning of the Final Winter's approach."
 	worshippers = "Druids, Beasts, Madmen, Farmers, Elves, Wildkin"
 	mob_traits = list(TRAIT_KNEESTINGER_IMMUNITY, TRAIT_LEECHIMMUNE)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison			= CLERIC_ORI,
@@ -17,8 +17,8 @@
 					/obj/effect/proc_holder/spell/invoked/resurrect/dendor		= CLERIC_T4,
 	)
 	confess_lines = list(
-		"DENDOR PROVIDES!",
-		"THE TREEFATHER BRINGS BOUNTY!",
+		"SILVANUS PROVIDES!",
+		"THE TREEFATHER ENDURES!",
 		"I ANSWER THE CALL OF THE WILD!",
 	)
 	storyteller = /datum/storyteller/dendor
@@ -41,7 +41,7 @@
 		return TRUE
 	for(var/obj/structure/flora/roguetree/wise in view(4, get_turf(follower)))
 		return TRUE
-	to_chat(follower, span_danger("I must either be in Dendor's wilds, the Grove, near a wise tree, or near a Panetheon Cross for the 'Tree Father' to hear my prays..."))
+		to_chat(follower, span_danger("I must either be in Silvanus' wilds, the Grove, near a wise tree, or near a Pantheon symbol for the Treefather to hear my prayers..."))
 	return FALSE
 
 /datum/patron/divine/dendor/on_lesser_heal(
@@ -52,8 +52,8 @@
 	conditional_buff,
 	situational_bonus
 )
-	*message_out = span_info("A rush of primal energy spirals about [target]!")
-	*message_self = span_notice("I'm infused with primal energies!")
+	*message_out = span_info("A rush of primal verdant energy spirals about [target]!")
+	*message_self = span_notice("I'm infused with Silvanus' wild power!")
 
 	var/list/natural_stuff = list(/obj/structure/flora/roguegrass, /obj/structure/flora/roguetree, /obj/structure/flora/rogueshroom, /obj/structure/soil, /obj/structure/flora/newtree, /obj/structure/flora/tree, /obj/structure/glowshroom)
 	var/bonus = 0

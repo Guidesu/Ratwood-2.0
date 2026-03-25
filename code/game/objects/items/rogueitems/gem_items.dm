@@ -741,7 +741,7 @@
 
 /obj/item/carvedgem/coral/shark
 	name = "heartstone shark statue"
-	desc = "A statue of a shark carved out of heartstone. Some sailors believe them to be agents of Abyssor."
+	desc = "A statue of a shark carved out of heartstone. Some sailors believe them to be agents of Tempestia."
 	icon_state = "shark_coral"
 	grid_height = 64
 	grid_width = 64
