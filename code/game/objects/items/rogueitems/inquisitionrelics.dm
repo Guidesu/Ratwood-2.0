@@ -88,7 +88,7 @@
 		soundloop.stop()
 		user.remove_status_effect(/datum/status_effect/buff/cranking_soulchurner)
 
-/obj/item/psydonmusicbox/Initialize()
+/obj/item/psydonmusicbox/Initialize(mapload)
 	soundloop = new(src, FALSE)
 	. = ..()
 
@@ -267,7 +267,7 @@ Inquisitorial armory down here
 	new /obj/item/rogueweapon/flail/sflail/psyflail
 	new /obj/item/rogueweapon/spear/psyspear(src)
 	new /obj/item/rogueweapon/sword/long/psysword(src)
-	new /obj/item/rogueweapon/mace/goden/psymace(src)
+	new /obj/item/rogueweapon/mace/goden/psy(src)
 	new /obj/item/rogueweapon/stoneaxe/battle/psyaxe(src)
 	*/
 
@@ -383,7 +383,7 @@ Inquisitorial armory down here
 					playsound(H, 'sound/magic/holyshield.ogg', 100)
 					new /obj/effect/temp_visual/censer_dust(get_turf(H))
 			else
-				to_chat(span_warning("They've already been blessed."))
+				to_chat(user, span_warning("They've already been blessed."))
 
 		else
 			to_chat(user, span_warning("They do not share our faith."))
@@ -746,8 +746,8 @@ Inquisitorial armory down here
 		visible_message(span_info("[user] warms [src] with [I]."))
 		update_icon()
 
-	if(istype(I, /obj/item/clothing/ring/signet))	
-		if(tallow && heatedup)	
+	if(istype(I, /obj/item/clothing/ring/signet))
+		if(tallow && heatedup)
 			var/obj/item/clothing/ring/signet/ring = I
 			ring.tallowed = TRUE
 			ring.update_icon()
@@ -1379,7 +1379,7 @@ Inquisitorial armory down here
 		icon_state = "[initial(icon_state)]"
 	update_icon_state()
 
-/obj/item/inqarticles/bmirror/Initialize()
+/obj/item/inqarticles/bmirror/Initialize(mapload)
 	soundloop = new(src, FALSE)
 	. = ..()
 

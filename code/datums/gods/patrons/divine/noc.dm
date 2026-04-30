@@ -3,6 +3,8 @@
 	domain = "The Night, The Moon, Knowledge, Magic, Secrets"
 	desc = "The Father of Secrets is the glorious moonlight that grants us power through knowledge. We are granted visions of His vault of secrets, and given the ability to wield the Arcyne through His benevolence."
 	worshippers = "Wizards, Scholars, Night Owls"
+	virtues = "Wisdom, Curiosity, Pursuit of Arcyne"
+	sins = "Ignorance, Censorship, Bookburning"
 	mob_traits = list(TRAIT_NIGHT_OWL, TRAIT_NOCSIGHT)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison			= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/invoked/noc_sight				= CLERIC_T0,
@@ -43,12 +45,12 @@
 	return FALSE
 
 /datum/patron/divine/noc/on_lesser_heal(
-    mob/living/user,
-    mob/living/target,
-    message_out,
-    message_self,
-    conditional_buff,
-    situational_bonus
+	mob/living/user,
+	mob/living/target,
+	message_out,
+	message_self,
+	conditional_buff,
+	situational_bonus
 )
 	*message_out = span_info("A shroud of soft moonlight falls upon [target]!")
 	*message_self = span_notice("I'm shrouded in gentle moonlight!")

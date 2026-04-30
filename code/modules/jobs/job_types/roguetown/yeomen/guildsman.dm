@@ -98,6 +98,10 @@
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 		beltr = /obj/item/roguekey/crafterguild
 		cloak = /obj/item/clothing/cloak/apron/blacksmith
+	if(SSmapping.config.map_name == "Desert Town")
+		pants = /obj/item/clothing/under/roguetown/sirwal/plainrandom
+		head = /obj/item/clothing/head/roguetown/turban/random
+		shoes = /obj/item/clothing/shoes/roguetown/sandals
 
 /datum/advclass/guildsman/artificer
 	name = "Artificer"
@@ -158,7 +162,11 @@
 						/obj/item/recipe_book/builder = 1,
 						/obj/item/recipe_book/survival = 1,
 						/obj/item/clothing/mask/rogue/spectacles/golden = 1, //putting them in the bag because bad eye sight virtue strips these
-						/obj/item/contraption/linker = 1,					/obj/item/repair_kit/metal = 1,						)
+						/obj/item/contraption/linker = 1,
+						/obj/item/repair_kit/metal = 1,
+						)
+	if(SSmapping.config.map_name == "Desert Town")
+		shoes = /obj/item/clothing/shoes/roguetown/sandals
 	// Not a real mage, no free spell point. Take Arcyne Potential if you want it.
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
@@ -195,12 +203,13 @@
 		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/craft/traps = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/craft/ceramics = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/craft/ceramics = SKILL_LEVEL_EXPERT,
 	)
 
 /datum/outfit/job/roguetown/guildsman/architect/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/hatblu
+	mask = /obj/item/clothing/mask/rogue/spectacles/golden
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	cloak = /obj/item/clothing/cloak/apron/waist/bar
 	pants = /obj/item/clothing/under/roguetown/trou
@@ -212,20 +221,25 @@
 	backr = /obj/item/rogueweapon/stoneaxe/woodcut/steel/woodcutter
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backpack_contents = list(
-					/obj/item/rogueweapon/hammer/steel = 1,
-					/obj/item/rogueweapon/handsaw = 1,
-					/obj/item/storage/belt/rogue/pouch/coins/mid = 1,
-					/obj/item/rogueweapon/chisel = 1,
-					/obj/item/flashlight/flare/torch = 1,
-					/obj/item/flint = 1,
-					/obj/item/rogueweapon/huntingknife = 1,
-					/obj/item/rogueweapon/handsaw = 1,
-					/obj/item/dye_brush = 1,
-					/obj/item/recipe_book/engineering = 1,
-					/obj/item/recipe_book/builder = 1,
-					/obj/item/recipe_book/survival = 1,
-					/obj/item/roguekey/crafterguild = 1,
-					/obj/item/repair_kit = 1
+						/obj/item/rogueweapon/hammer/steel = 1,
+						/obj/item/rogueweapon/handsaw = 1,
+						/obj/item/storage/belt/rogue/pouch/coins/mid = 1,
+						/obj/item/rogueweapon/chisel = 1,
+						/obj/item/flashlight/flare/torch = 1,
+						/obj/item/flint = 1,
+						/obj/item/rogueweapon/huntingknife = 1,
+						/obj/item/rogueweapon/handsaw = 1,
+						/obj/item/dye_brush = 1,
+						/obj/item/recipe_book/engineering = 1,
+						/obj/item/recipe_book/builder = 1,
+						/obj/item/recipe_book/survival = 1,
+						/obj/item/roguekey/crafterguild = 1,
+						/obj/item/repair_kit = 1,
+						/obj/item/rogueweapon/blowrod = 1
 						)
+	if(SSmapping.config.map_name == "Desert Town")
+		pants = /obj/item/clothing/under/roguetown/sirwal/plainrandom
+		head = /obj/item/clothing/head/roguetown/turban/random
+		shoes = /obj/item/clothing/shoes/roguetown/sandals
 	ADD_TRAIT(H, TRAIT_MASTER_CARPENTER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MASTER_MASON, TRAIT_GENERIC)

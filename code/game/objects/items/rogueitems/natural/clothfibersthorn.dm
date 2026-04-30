@@ -19,7 +19,7 @@
 	sellprice = 2
 	bundletype = /obj/item/natural/bundle/fibers
 
-/obj/item/natural/fibers/Initialize()
+/obj/item/natural/fibers/Initialize(mapload)
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
 		/datum/crafting_recipe/roguetown/survival/stonehoe,
@@ -164,21 +164,22 @@
 	w_class = WEIGHT_CLASS_TINY
 	spitoutmouth = FALSE
 	experimental_inhand = FALSE
+	nudist_approved = TRUE
 	bundletype = /obj/item/natural/bundle/cloth
 	sellprice = 4
 	detail_tag = "_soaked"
 	var/wet = 0
 	/// Effectiveness when used as a bandage, how much it'll lower the bloodloss, bloodloss will get multiplied by this.
-	var/bandage_effectiveness = 0.5 
+	var/bandage_effectiveness = 0.5
 	var/bandage_speed = 7 SECONDS
 	///How much you can bleed into the bandage until it needs to be changed
 	var/bandage_health = 150 //75 total blood stopped
 	//bandage_health * (1 - bandage_effectiveness) = total amount of blood saved from one bandage
 	/// If the bandage is soaked in some kind of medicine.
-	var/medicine_quality 
+	var/medicine_quality
 	var/medicine_amount = 0
 
-/obj/item/natural/cloth/Initialize()
+/obj/item/natural/cloth/Initialize(mapload)
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
 		/datum/crafting_recipe/roguetown/survival/longbowpartial,
@@ -330,7 +331,6 @@
 /obj/item/natural/cloth/proc/bandage(mob/living/M, mob/user)
 	if(!M.can_inject(user, TRUE))
 		return
-	// Support both humans and simple animals
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
@@ -342,7 +342,7 @@
 		var/used_time = bandage_speed
 		used_time -= ((user.get_skill_level(/datum/skill/misc/medicine) * 0.15) * bandage_speed) //15% time reduction per level
 		playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
-		if(!do_mob(user, M, used_time))
+		if(!move_after(user, used_time, target = M))
 			return
 		playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
 
@@ -351,9 +351,9 @@
 		H.update_damage_overlays()
 
 		if(M == user)
-			user.visible_message(span_notice("[user] bandages [user.p_their()] [affecting]."), span_notice("I bandage my [affecting]."))
+			user.visible_message(span_notice("[user] bandages [user.p_their()] [affecting]."), span_notice("I bandage my [affecting.name]."))
 		else
-			user.visible_message(span_notice("[user] bandages [M]'s [affecting]."), span_notice("I bandage [M]'s [affecting]."))
+			user.visible_message(span_notice("[user] bandages [M]'s [affecting]."), span_notice("I bandage [M]'s [affecting.name]."))
 	else if(istype(M, /mob/living/simple_animal))
 		// Simple animal bandaging
 		var/used_time = bandage_speed
@@ -390,7 +390,7 @@
 	resistance_flags = FLAMMABLE
 	max_integrity = 20
 
-/obj/item/natural/thorn/Initialize()
+/obj/item/natural/thorn/Initialize(mapload)
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
 		/datum/crafting_recipe/roguetown/survival/tneedle,
@@ -581,7 +581,7 @@
 
 /obj/item/natural/bundle/bone/rdm
 
-/obj/item/natural/bundle/bone/rdm/Initialize()
+/obj/item/natural/bundle/bone/rdm/Initialize(mapload)
 	..()
 	amount = rand(2,6)
 /*/obj/item/natural/bone/attackby(obj/item/I, mob/living/user, params)
@@ -620,7 +620,7 @@
 	spitoutmouth = FALSE
 	experimental_inhand = FALSE
 
-/obj/item/natural/bowstring/Initialize()
+/obj/item/natural/bowstring/Initialize(mapload)
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
 		/datum/crafting_recipe/roguetown/survival/bow,

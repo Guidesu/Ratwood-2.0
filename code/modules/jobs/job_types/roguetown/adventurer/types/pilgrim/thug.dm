@@ -3,11 +3,12 @@
 	tutorial = "You're a working-class tough—the kind who does odd jobs, manual labor, and whatever needs doing to get by. You've learned skills from a dozen different trades: hauling cargo, working construction, helping on farms, doing repairs. You're strong, practical, and know how to handle yourself in a scrap. Maybe you've bent the law here and there, but mostly you're just trying to make an honest-ish living with your hands and your back."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/thug
 	subclass_social_rank = SOCIAL_RANK_PEASANT
-	traits_applied = list(TRAIT_HOMESTEAD_EXPERT)
-	cmode_music = 'sound/music/cmode/towner/combat_towner2.ogg'
+	traits_applied = list(TRAIT_HOMESTEAD_EXPERT, TRAIT_SEEPRICES_SHITTY, TRAIT_DRUNK_HEALING)
 	category_tags = list(CTAG_TOWNER)
+	cmode_music = 'sound/music/combat_bum.ogg'
+	outfit = /datum/outfit/job/roguetown/adventurer/thug
+	maximum_possible_slots = 8 // I dont want an army of towner thugs
 	subclass_languages = list(/datum/language/thievescant)
 	subclass_stats = list(
 		STATKEY_STR = 2,

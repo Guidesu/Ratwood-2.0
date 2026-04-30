@@ -7,6 +7,7 @@
 	subclass_social_rank = SOCIAL_RANK_PEASANT
 	cmode_music = 'sound/music/cmode/towner/combat_towner2.ogg'
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
+	maximum_possible_slots = 20 // Should never fill, for the purpose of players to know what types towners are in round at the menu
 	subclass_stats = list(
 		STATKEY_STR = 2,
 		STATKEY_CON = 2,
@@ -101,12 +102,15 @@
 						)
 	beltl = /obj/item/rogueweapon/sickle
 	backr = /obj/item/rogueweapon/hoe
-	
-	// Age bonuses for experienced farmers
+	if(SSmapping.config.map_name == "Desert Town")
+		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/thawb/random
+		pants = /obj/item/clothing/under/roguetown/sirwal/plainrandom
+		shoes = /obj/item/clothing/shoes/roguetown/sandals
 	if(H.age == AGE_MIDDLEAGED)
-		H.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
+		H.adjust_skillrank_up_to(/datum/skill/labor/farming, 5, TRUE)
+		H.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 4, TRUE)
+		H.adjust_skillrank_up_to(/datum/skill/labor/butchering, 3, TRUE)
 	if(H.age == AGE_OLD)
-		H.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
+		H.adjust_skillrank_up_to(/datum/skill/labor/farming, 6, TRUE)
+		H.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 5, TRUE)
+		H.adjust_skillrank_up_to(/datum/skill/labor/butchering, 4, TRUE)

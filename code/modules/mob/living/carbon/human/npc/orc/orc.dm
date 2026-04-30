@@ -7,8 +7,10 @@
 
 	race = /datum/species/orc
 	gender = MALE
-	bodyparts = list(/obj/item/bodypart/chest, /obj/item/bodypart/head, /obj/item/bodypart/l_arm,
-					 /obj/item/bodypart/r_arm, /obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg)
+	bodyparts = list(
+		/obj/item/bodypart/chest, /obj/item/bodypart/head, /obj/item/bodypart/l_arm,
+		/obj/item/bodypart/r_arm, /obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg,
+	)
 	ambushable = FALSE
 	
 	base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, /datum/intent/unarmed/claw)
@@ -25,7 +27,7 @@
 	wander = FALSE
 	cmode_music = FALSE
 
-/mob/living/carbon/human/species/orc/npc/Initialize()
+/mob/living/carbon/human/species/orc/npc/Initialize(mapload)
 	. = ..()
 	set_species(/datum/species/orc)
 	addtimer(CALLBACK(src, PROC_REF(after_creation)), 1 SECONDS)
@@ -100,10 +102,13 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	if(prob(5))
 		beltl = /obj/item/reagent_containers/glass/bottle/alchemical/healthpot
-	if(prob(50))
-		beltr = /obj/item/storage/belt/rogue/pouch/treasure/
-	else
-		beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
+	switch(rand(1, 100))
+		if(1 to 50)
+			beltr = null
+		if(51 to 95)
+			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
+		if(96 to 100)
+			beltr = /obj/item/storage/belt/rogue/pouch/treasure/
 	if(prob(5))
 		id = /obj/item/clothing/ring/gold
 

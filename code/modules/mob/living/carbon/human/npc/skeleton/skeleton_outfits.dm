@@ -20,7 +20,7 @@
 	skel_outfit = /datum/outfit/job/roguetown/skeleton/npc/hard
 
 // For Duke Manor & Zizo Manor - Ground based spread, so no pirate in pool!
-/mob/living/carbon/human/species/skeleton/npc/mediumspread/Initialize()
+/mob/living/carbon/human/species/skeleton/npc/mediumspread/Initialize(mapload)
 	var/outfit = rand(1, 4)
 	switch(outfit)
 		if(1)
@@ -37,7 +37,7 @@
 	faction = list("lich")
 
 // for Lich Dungeon
-/mob/living/carbon/human/species/skeleton/npc/hardspread/Initialize()
+/mob/living/carbon/human/species/skeleton/npc/hardspread/Initialize(mapload)
 	var/outfit = rand(1,4)
 	switch(outfit)
 		if(1)
@@ -68,10 +68,13 @@
 		pants = /obj/item/clothing/under/roguetown/loincloth
 	if(prob(5))
 		belt = /obj/item/storage/belt/rogue/leather/rope
-		if(prob(50))
-			beltr = /obj/item/storage/belt/rogue/pouch/treasure/
-		else
-			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
+		switch(rand(1, 100))
+			if(1 to 50)
+				beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
+			if(51 to 95)
+				beltr = null
+			if(96 to 100)
+				beltr = /obj/item/storage/belt/rogue/pouch/treasure/
 	if(prob(5))
 		id = /obj/item/clothing/ring/aalloy
 	var/weapon_choice = rand(1, 4)
@@ -108,10 +111,13 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/aalloy
 	if(prob(20))
 		belt = /obj/item/storage/belt/rogue/leather/rope
-		if(prob(50))
-			beltr = /obj/item/storage/belt/rogue/pouch/treasure/
-		else
-			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
+		switch(rand(1, 100))
+			if(1 to 50)
+				beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
+			if(51 to 95)
+				beltr = null
+			if(96 to 100)
+				beltr = /obj/item/storage/belt/rogue/pouch/treasure/
 	if(prob(5))
 		id = /obj/item/clothing/ring/aalloy
 	var/weapon_choice = rand(1, 4)
@@ -155,10 +161,13 @@
 		r_hand = /obj/item/rogueweapon/knuckles/aknuckles
 	if(prob(20))
 		belt = /obj/item/storage/belt/rogue/leather/rope
-		if(prob(50))
-			beltr = /obj/item/storage/belt/rogue/pouch/treasure/
-		else
-			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
+		switch(rand(1, 100))
+			if(1 to 50)
+				beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
+			if(51 to 95)
+				beltr = null
+			if(96 to 100)
+				beltr = /obj/item/storage/belt/rogue/pouch/treasure/
 	if(prob(5))
 		id = /obj/item/clothing/ring/aalloy
 	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
@@ -192,11 +201,13 @@
 	if(prob(15))
 		beltl = /obj/item/repair_kit/bad
 	if(prob(30))
-		belt = /obj/item/storage/belt/rogue/leather/rope
-		if(prob(50))
-			beltr = /obj/item/storage/belt/rogue/pouch/treasure/
-		else
-			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
+		switch(rand(1, 100))
+			if(1 to 50)
+				beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
+			if(51 to 95)
+				beltr = null
+			if(96 to 100)
+				beltr = /obj/item/storage/belt/rogue/pouch/treasure/
 	if(prob(5))
 		id = /obj/item/clothing/ring/aalloy
 	if(prob(33)) // 33% chance of shield, so ranged don't get screwed over entirely
@@ -257,13 +268,16 @@
 			r_hand = /obj/item/rogueweapon/greatsword/aalloy
 		else
 			r_hand = /obj/item/rogueweapon/mace/goden/aalloy
-	
+
 	if(prob(60))
 		belt = /obj/item/storage/belt/rogue/leather/rope
-		if(prob(50))
-			beltr = /obj/item/storage/belt/rogue/pouch/treasure/
-		else
-			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
+		switch(rand(1, 100))
+			if(1 to 50)
+				beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
+			if(51 to 95)
+				beltr = null
+			if(96 to 100)
+				beltr = /obj/item/storage/belt/rogue/pouch/treasure/
 	if(prob(5))
 		id = /obj/item/clothing/ring/aalloy
 	H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
@@ -317,7 +331,7 @@
 		r_hand = /obj/item/rogueweapon/flail/aflail
 	if(prob(40))
 		belt = /obj/item/storage/belt/rogue/leather/rope
-		if(prob(50))
+		if(prob(10))
 			beltr = /obj/item/storage/belt/rogue/pouch/treasure/
 		else
 			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
@@ -360,7 +374,7 @@
 		pants = /obj/item/clothing/under/roguetown/loincloth
 	if(prob(20))
 		belt = /obj/item/storage/belt/rogue/leather/rope
-		if(prob(50))
+		if(prob(20))
 			beltr = /obj/item/storage/belt/rogue/pouch/treasure/
 		else
 			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
@@ -386,3 +400,47 @@
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+
+
+/mob/living/carbon/human/species/skeleton/npc/miner
+	skel_outfit = /datum/outfit/job/roguetown/skeleton/npc/miner
+
+/datum/outfit/job/roguetown/skeleton/npc/miner/pre_equip(mob/living/carbon/human/H)
+	..()
+	H.STASTR = 14
+	H.STASPD = 8
+	H.STACON = 6
+	H.STAWIL = 15
+	H.STAINT = 1
+	name = "Skeleton"
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	pants = /obj/item/clothing/under/roguetown/loincloth/brown
+	if(prob(40))
+		pants =	/obj/item/clothing/under/roguetown/trou
+	if(prob(25))
+		head = /obj/item/clothing/head/roguetown/helmet
+	if(prob(25))
+		head = /obj/item/clothing/head/roguetown/helmet/horned
+	neck = /obj/item/clothing/neck/roguetown/collar/leather
+	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	r_hand = /obj/item/rogueweapon/pick/aalloy
+	if(prob(20))
+		r_hand = /obj/item/rogueweapon/shovel/aalloy
+	if(prob(40))
+		belt = /obj/item/storage/belt/rogue/leather/rope
+		if(prob(10))
+			beltr = /obj/item/storage/belt/rogue/pouch/treasure/
+		else
+			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor/
+	if(prob(5))
+		id = /obj/item/clothing/ring/aalloy
+	H.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)

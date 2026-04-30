@@ -3,6 +3,8 @@
 	domain = "Necromancy, Progress, The Rot, Left-Handed Magicks"
 	desc = "The God-Head was the mortal snow elf Zinoviya, abandoned by Her Divine Father PSYDON. When She found out She was denied godhood, She struck PSYDON down and took it Herself, plunging the world into the Second Coming of the Rot. Burn the world to ash, and build it anew."
 	worshippers = "Necromancers, Maddened Mages, The Undead"
+	virtues = "Progress, Undeath, Ambition"
+	sins = "Ignorance, Stagnation, Humility"
 	mob_traits = list(TRAIT_CABAL, TRAIT_ZIZOSIGHT)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison					= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/self/zizo_snuff						= CLERIC_T0,
@@ -19,6 +21,14 @@
 		"ZIZO IS QUEEN!",
 	)
 	storyteller = /datum/storyteller/zizo
+
+/datum/patron/inhumen/zizo/post_equip(mob/living/pious)
+	. = ..()
+	if(ishuman(pious))
+		var/mob/living/carbon/human/human = pious
+		var/datum/devotion/pious_devotion = human.devotion
+		if(pious_devotion?.level >= CLERIC_T2)
+			pious.grant_language(/datum/language/undead)
 
 // When the sun is blotted out, zchurch, bad-cross, or ritual chalk
 /datum/patron/inhumen/zizo/can_pray(mob/living/follower)
@@ -45,12 +55,12 @@
 	return FALSE
 
 /datum/patron/inhumen/zizo/on_lesser_heal(
-    mob/living/user,
-    mob/living/target,
-    message_out,
-    message_self,
-    conditional_buff,
-    situational_bonus,
+	mob/living/user,
+	mob/living/target,
+	message_out,
+	message_self,
+	conditional_buff,
+	situational_bonus,
 	is_inhumen
 )
 	*is_inhumen = TRUE

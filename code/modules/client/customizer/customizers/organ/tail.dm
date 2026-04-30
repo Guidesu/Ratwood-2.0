@@ -120,6 +120,7 @@
 		/datum/sprite_accessory/tail/rattlesnake,
 		/datum/sprite_accessory/tail/lynx,
 		/datum/sprite_accessory/tail/pinecone,
+		/datum/sprite_accessory/tail/manticore,
 		/datum/sprite_accessory/tail/large_snake,
 		/datum/sprite_accessory/tail/large_snake_plain
 	)
@@ -206,7 +207,9 @@
 		/datum/sprite_accessory/tail/lizard/spikes,
 		/datum/sprite_accessory/tail/rattlesnake,
 		/datum/sprite_accessory/tail/lynx,
-		/datum/sprite_accessory/tail/pinecone
+		/datum/sprite_accessory/tail/pinecone,
+		/datum/sprite_accessory/tail/scorpian,
+		/datum/sprite_accessory/tail/manticore
 		)
 	allows_accessory_color_customization = TRUE
 
@@ -292,6 +295,8 @@
 		/datum/sprite_accessory/tail/haven,
 		/datum/sprite_accessory/tail/swallow,
 		/datum/sprite_accessory/tail/zorzor,
+		/datum/sprite_accessory/tail/manticore,
+		/datum/sprite_accessory/tail/scorpian,
 		/datum/sprite_accessory/tail/large_snake,
 		/datum/sprite_accessory/tail/large_snake_plain
 		)
@@ -368,6 +373,8 @@
 		/datum/sprite_accessory/tail/haven,
 		/datum/sprite_accessory/tail/swallow,
 		/datum/sprite_accessory/tail/zorzor,
+		/datum/sprite_accessory/tail/manticore,
+		/datum/sprite_accessory/tail/scorpian,
 		/datum/sprite_accessory/tail/large_snake,
 		/datum/sprite_accessory/tail/large_snake_plain
 		)
@@ -438,6 +445,28 @@
 		/datum/sprite_accessory/tail/lizard/ltiger,
 		/datum/sprite_accessory/tail/lizard/spikes,
 		/datum/sprite_accessory/tail/rattlesnake,
+		/datum/sprite_accessory/tail/manticore,
+		/datum/sprite_accessory/tail/scorpian,
 		/datum/sprite_accessory/tail/lynx
 		)
 	allows_accessory_color_customization = TRUE
+
+/datum/customizer/organ/tail/harpy
+	name = "Harpy Plumage"
+	customizer_choices = list(/datum/customizer_choice/organ/tail/harpy)
+	allows_disabling = TRUE
+	default_disabled = TRUE
+
+/datum/customizer_choice/organ/tail/harpy
+	name = "Harpy Plumage"
+	organ_type = /obj/item/organ/tail/harpy
+	generic_random_pick = TRUE
+	sprite_accessories = list(
+		/datum/sprite_accessory/tail/corvid,
+		/datum/sprite_accessory/tail/hawk,
+		/datum/sprite_accessory/tail/owl,
+		/datum/sprite_accessory/tail/forked_long,
+		/datum/sprite_accessory/tail/haven,
+		/datum/sprite_accessory/tail/swallow,
+		/datum/sprite_accessory/tail/pinecone
+	)

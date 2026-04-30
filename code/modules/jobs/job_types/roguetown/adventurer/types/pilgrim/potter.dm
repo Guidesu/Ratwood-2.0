@@ -6,14 +6,14 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/potter
 	subclass_social_rank = SOCIAL_RANK_YEOMAN
 	traits_applied = list(TRAIT_HOMESTEAD_EXPERT)
-
+	maximum_possible_slots = 20 // Should never fill, for the purpose of players to know what types towners are in round at the menu
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
 	subclass_stats = list(
 		STATKEY_PER = 2,
 		STATKEY_INT = 2,
 		STATKEY_WIL = 2,
 		STATKEY_CON = 1,
-		STATKEY_SPD = -1
+		STATKEY_STR = 1
 	)
 	subclass_skills = list(
 		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
@@ -102,9 +102,21 @@
 		/obj/item/rogueore/coal = 2,
 		/obj/item/roguegear/bronze = 1,
 		/obj/item/dye_brush = 1,
+		/obj/item/storage/roguebag,
 		/obj/item/recipe_book/ceramics = 1)
 	// Clay and glassBatch are raw materials
 	// Coal so he can build an ore furnace for glass blowing
 	// Coggers so he can build a potter's wheel.
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/digclay)
+
+	if(SSmapping.config.map_name == "Desert Town")
+		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/thawb/random
+		pants = /obj/item/clothing/under/roguetown/sirwal/plainrandom
+		shoes = /obj/item/clothing/shoes/roguetown/sandals
+
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/takeapprentice)
+	if(H.age == AGE_MIDDLEAGED)
+		H.adjust_skillrank_up_to(/datum/skill/craft/ceramics, 5, TRUE)
+	if(H.age == AGE_OLD)
+		H.adjust_skillrank_up_to(/datum/skill/craft/ceramics, 6, TRUE)
