@@ -15,7 +15,7 @@
 	No matter if they embrace their demonic ancestors or not, Tieflings have formed an importance upon their bloodline and family due to often being shunned and hunted through out time in which only those of their blood and kin they could truly trust. <br>\
 	(+1 Constitution, +1 Intelligence, Hellspawn Trait)"
 
-	skin_tone_wording = "Progenitor"
+	group_identity_type = /datum/group_identity/tieberian
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
 	default_features = MANDATORY_FEATURE_LIST

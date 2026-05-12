@@ -23,6 +23,8 @@
 	and the task they were created for. Consequently, many Kobolds sought new purposes and beliefs. Many \
 	even sought refuge in civilized societies. Yet, they remain bound by their nature and often take to \
 	thievery and pickpocketing, further cementing hatred and distrust toward them by civilized folk."
+	use_skintones = 1
+	group_identity_type = /datum/group_identity/kobold
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT

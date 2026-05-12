@@ -25,7 +25,7 @@
 	nation states under the Vakran name into chaos. Vassals left, either becoming free or aligning themselves with the neighboring \
 	Frostfell or Felsaad, while others faced internal strife, civils wars between those who believed the Vakran name still held strong, \
 	and those who saw the crown tainted, even the military council decimated itself between duels and the pitting of coups."
-	skin_tone_wording = "Pack"
+	group_identity_type = /datum/group_identity/lupian
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -33,7 +33,6 @@
 		HAIR,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	use_skintones = 1
 	attack_verb = "slash"
 	liked_food = GROSS | MEAT | FRIED
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
@@ -168,22 +167,6 @@
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
-/datum/species/lupian/get_skin_list()
-	return list(
-		"Vakran" = "271f1b",
-		"Lanarain" = "271f1c",
-		"Frostfell" = "271f1d",
-		"Varghelm" = "271f1e",
-		"Dawnbreak" = "271f1f",
-		"Bloodmoon" = "271f2a",
-		"Felsaad" = "271f2b",
-		"Hizmut" = "271f2c",
-		"Langqan" = "271f2d",
-		"a tangled lineage" = "271f2e",
-		"disputed" = "271f2f",
-		"bastardized" = "271f3a",
-		"Czwarteki" =  "271f3b",
-	) // This is a dirty hack that stops me using mob defines, the colors do not do anything, it just a var that relates to their pack name on examine
 
 /datum/species/lupian/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST

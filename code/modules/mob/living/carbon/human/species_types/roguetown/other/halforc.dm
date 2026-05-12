@@ -16,7 +16,7 @@
 	in the rough underbelly or outer reaches of society.<br>\
 	(+1 Strength, Big Guy Trait, Bed Breaker Trait)"
 
-	skin_tone_wording = "Clan"
+	group_identity_type = /datum/group_identity/halforc
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
 	default_features = MANDATORY_FEATURE_LIST

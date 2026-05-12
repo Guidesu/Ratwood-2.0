@@ -17,7 +17,7 @@
 	towards either their Humen or Elvish heritages.<br>\
 	(+1 Constitution, +1 Perception)"
 
-	skin_tone_wording = "Identity"
+	group_identity_type = /datum/group_identity/halfelf
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
 	default_features = MANDATORY_FEATURE_LIST

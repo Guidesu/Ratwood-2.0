@@ -12,7 +12,7 @@
 	Unable to truly rest, yet entirely sane of mind. Capable of detaching their heads through unknown arcyne means, they are oft wanderers due to their unknown origins and being ostracized by both the Church and many of the common masses around the lands."
 	// Stat balancing. Per-server decision. Preferably keep neutral until analysis post testmerges.
 	//race_bonus = list(STAT_INTELLIGENCE = 1, STAT_CONSTITUTION = 1)
-	skin_tone_wording = "Catalyst"
+	group_identity_type = /datum/group_identity/dullahan
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY,MUTCOLORS)
 	default_features = MANDATORY_FEATURE_LIST

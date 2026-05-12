@@ -276,8 +276,18 @@
 					. += (user_side == mob_side) ? span_notice("Fellow [their_god.name] supporter!") : span_userdanger("Vile [their_god.name] supporter!")
 
 
+		var/group_name = species_group
+		var/group_label = null
+		if(group_name && dna.species.group_identity_type)
+			// Use player-chosen label if available, else fall back to species default
+			group_label = species_group_label ? species_group_label : dna.species.get_group_label()
 		if(origin && origin != "Unknown")
-			. += span_info("[capitalize(m2)] ancestry is [origin].")
+			if(group_name && group_label)
+				. += span_info("[m1] from [origin], while [m2] [lowertext(group_label)] is [group_name].")
+			else
+				. += span_info("[m1] from [origin].")
+		else if(group_name && group_label)
+			. += span_info("[capitalize(m2)] [lowertext(group_label)] is [group_name].")
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user

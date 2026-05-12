@@ -19,6 +19,8 @@
 	Herself, Zizo. In truth however, the moth-kin forsake the paths of the Ten and the Inhumen, worshipping instead the whims of fate. \
 	As such, they oft find themselves as fortune tellers, mystics and spirit mediums, being the origin of mysticism in Grimoria as a whole."
 
+	use_skintones = 1
+	group_identity_type = /datum/group_identity/moth
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS,HAIR)
 	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT

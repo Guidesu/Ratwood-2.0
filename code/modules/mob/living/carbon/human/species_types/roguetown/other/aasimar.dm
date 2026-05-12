@@ -15,7 +15,7 @@
 	Due to their celestial nature, it is widely believed that an Aasimar's death is a bad omen...<br>\
 	(+1 Stat of their choice, Lack of Hunger & Thirst)"
 
-	skin_tone_wording = "Craft"
+	group_identity_type = /datum/group_identity/aasimar
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
 	inherent_traits = list(TRAIT_NOHUNGER)

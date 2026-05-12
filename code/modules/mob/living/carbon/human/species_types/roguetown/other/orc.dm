@@ -6,7 +6,7 @@
 	For courtesies sake however, I've tried to half-assedly balance it for use by players\
 	(+1 Strength, +1 Constitution, -1 Intelligence, -1 Speed)"
 
-	skin_tone_wording = "Clan"
+	group_identity_type = /datum/group_identity/orc
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
 	default_features = MANDATORY_FEATURE_LIST

@@ -28,6 +28,8 @@
 	When in reality, most Drakians are known for being bloody conquerors. \
 	However, the rise of humans have caused their ambitions to crumble, forcing them to work with other races, especially at the climax of the Great Sissean Uprising. \
 	Furthermore, dwindling numbers have caused Drakians to increasingly abandon the ways of old, forcing them to adapt to a more modern way of life."
+	use_skintones = 1
+	group_identity_type = /datum/group_identity/dracon
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT

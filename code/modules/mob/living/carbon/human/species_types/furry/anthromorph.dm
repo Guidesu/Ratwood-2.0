@@ -33,6 +33,8 @@
 	)
 
 	default_color = "444"
+	use_skintones = 1
+	group_identity_type = /datum/group_identity/anthromorph
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -192,7 +194,6 @@
 		/datum/descriptor_choice/prominent_three_wild,
 		/datum/descriptor_choice/prominent_four_wild,
 	)
-
 /datum/species/anthromorph/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))

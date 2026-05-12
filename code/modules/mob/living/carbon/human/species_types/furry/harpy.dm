@@ -22,7 +22,7 @@
 	Harpies tend to live and gather in colonies at the tops of great sequoia forests and in nearby cliffs. Due to their laden flight, they must employ use of updrafts and proximity to large objects or structures to bolster their limited range and air-dancing performances. \
 	Their serene songs and blissful music can be heard echoing far below, guiding travelers and thieves both to respite... or treasure. For as lifted into grace as they might be, these magpies earn such a nickname from instinctual Matthiosan greed and love for anything that shines. \
 	Yet if one can work past that distrust and compensate them well, harpies make for unparalleled couriers. </br>"
-	skin_tone_wording = "Ancestry"
+	group_identity_type = /datum/group_identity/harpy
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR, LIPS, HAIR, HARPY, OLDGREY, MUTCOLORS)
 	default_features = MANDATORY_FEATURE_LIST

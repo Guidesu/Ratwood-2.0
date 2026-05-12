@@ -8,6 +8,7 @@
 // END_PREFERENCES
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
+#include "_maps\roguetest.dm"
 #include "_maps\map_files\generic\CentCom.dmm"
 #include "_maps\templates\arcyne_fortress.dm"
 #include "_maps\templates\bog_shack_small.dm"
@@ -2202,6 +2203,7 @@
 #include "code\modules\mob\living\carbon\human\dummy.dm"
 #include "code\modules\mob\living\carbon\human\emote.dm"
 #include "code\modules\mob\living\carbon\human\examine.dm"
+#include "code\modules\mob\living\carbon\human\group_identity.dm"
 #include "code\modules\mob\living\carbon\human\examine_tgui.dm"
 #include "code\modules\mob\living\carbon\human\human.dm"
 #include "code\modules\mob\living\carbon\human\human_defense.dm"
@@ -2215,6 +2217,7 @@
 #include "code\modules\mob\living\carbon\human\physiology.dm"
 #include "code\modules\mob\living\carbon\human\say.dm"
 #include "code\modules\mob\living\carbon\human\skeletonize.dm"
+#include "code\modules\mob\living\carbon\human\group_identity.dm"
 #include "code\modules\mob\living\carbon\human\species.dm"
 #include "code\modules\mob\living\carbon\human\stats.dm"
 #include "code\modules\mob\living\carbon\human\status_procs.dm"

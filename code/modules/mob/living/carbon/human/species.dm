@@ -156,6 +156,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	/// Wording for skin tone on examine and on character setup
 	var/skin_tone_wording = "Skin Tone"
+	/// Type path of a /datum/group_identity subtype. When set, this species uses the group identity system.
+	/// Players pick a group name (pack/clan/tribe/etc.) in character creation; it shows on examine.
+	/// To add group support to a species: set this var to the appropriate /datum/group_identity subtype.
+	var/group_identity_type = null
 	/// Bodyparts to override base ones.
 	var/list/bodypart_overrides = list()
 	/// List of organs this species has.
@@ -326,6 +330,39 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species/proc/get_skin_list_tooltip()
 	return GLOB.skin_tones
+
+/// Returns a /datum/group_identity instance for this species, or null if none is configured.
+/datum/species/proc/get_group_identity()
+	if(!group_identity_type)
+		return null
+	return new group_identity_type()
+
+/// Returns the label (wording) for this species' group, e.g. "Pack", "Clan". Null if none.
+/datum/species/proc/get_group_label()
+	var/datum/group_identity/GI = get_group_identity()
+	if(!GI)
+		return null
+	var/label = GI.label
+	qdel(GI)
+	return label
+
+/// Returns the list of valid group name strings for this species. Null if none configured.
+/datum/species/proc/get_group_entries()
+	var/datum/group_identity/GI = get_group_identity()
+	if(!GI)
+		return null
+	var/list/entries = GI.entries.Copy()
+	qdel(GI)
+	return entries
+
+/// Returns the selectable label list for this species' group, or null if labels are fixed.
+/datum/species/proc/get_group_selectable_labels()
+	var/datum/group_identity/GI = get_group_identity()
+	if(!GI)
+		return null
+	var/list/labels = GI.selectable_labels ? GI.selectable_labels.Copy() : null
+	qdel(GI)
+	return labels
 
 /datum/species/proc/get_taur_list()
 	return allowed_taur_types

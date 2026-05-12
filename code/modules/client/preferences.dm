@@ -94,6 +94,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/facial_hairstyle = "Shaved"	//Face hair type
 	var/facial_hair_color = "000"		//Facial hair color
 	var/skin_tone = "caucasian1"		//Skin color
+	/// The character's chosen group identity name (pack/clan/tribe/etc.) for species that support it.
+	var/species_group = null
+	/// The character's chosen label for their group (e.g. "Pack", "Pride"). Null = use species default.
+	var/species_group_label = null
 	var/eye_color = "000"				//Eye color
 	var/extra_language = "None" // Extra language
 	var/extra_language_1 = "None" // Additional triumph language slot 1
@@ -683,6 +687,15 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				var/skin_tone_wording = pref_species.skin_tone_wording // Both the skintone names and the word swap here is useless fluff
 
 				dat += "<b>[skin_tone_wording]: </b><a href='?_src_=prefs;preference=s_tone;task=input'>Change </a>"
+				dat += "<br>"
+
+			var/list/group_entries = pref_species.get_group_entries()
+			if(group_entries)
+				var/group_label = species_group_label ? species_group_label : pref_species.get_group_label()
+				var/list/selectable = pref_species.get_group_selectable_labels()
+				if(selectable)
+					dat += "<b>Group Label: </b>[group_label] <a href='?_src_=prefs;preference=species_group_label;task=input'>Change</a><br>"
+				dat += "<b>[group_label]: </b>[species_group ? species_group : "None"] <a href='?_src_=prefs;preference=species_group;task=input'>Change</a>"
 				dat += "<br>"
 
 			if((MUTCOLORS in pref_species.species_traits) || (MUTCOLORS_PARTSONLY in pref_species.species_traits))
@@ -2541,6 +2554,21 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						skin_tone = listy[new_s_tone]
 						try_update_mutant_colors()
 
+				if("species_group")
+					var/list/group_entries = pref_species.get_group_entries()
+					if(group_entries)
+						var/group_label = species_group_label ? species_group_label : pref_species.get_group_label()
+						var/new_group = tgui_input_list(user, "Choose your character's [lowertext(group_label)]:", group_label, group_entries)
+						if(new_group)
+							species_group = new_group
+
+				if("species_group_label")
+					var/list/selectable = pref_species.get_group_selectable_labels()
+					if(selectable)
+						var/new_label = tgui_input_list(user, "Choose the word used to describe your character's group:", "Group Label", selectable)
+						if(new_label)
+							species_group_label = new_label
+
 				if("charflaw")
 					var/selectedflaw
 					selectedflaw = tgui_input_list(user, "Choose your character's flaw:", "FLAWS", GLOB.character_flaws)
@@ -3156,6 +3184,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	character.hair_color = hair_color
 	character.facial_hair_color = facial_hair_color
 	character.skin_tone = skin_tone
+	character.species_group = species_group
+	character.species_group_label = species_group_label
 	character.hairstyle = hairstyle
 	character.facial_hairstyle = facial_hairstyle
 	character.detail = detail

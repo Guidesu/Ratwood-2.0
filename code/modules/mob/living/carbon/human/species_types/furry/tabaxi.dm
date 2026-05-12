@@ -22,7 +22,8 @@
 	They have a good sense of balance and an acute sense of smell."
 
 
-	skin_tone_wording = "Fur Colors"
+	use_skintones = 1
+	group_identity_type = /datum/group_identity/tabaxi
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE, MUTCOLORS)
 	possible_ages = ALL_AGES_LIST
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mta.dmi'
@@ -150,18 +151,6 @@
 
 /datum/species/tabaxi/qualifies_for_rank(rank, list/features)
 	return TRUE
-
-/datum/species/tabaxi/get_skin_list()
-	return list(
-		"Orange" = ORANGE_FUR,
-		"Light grey" = LIGHTGREY_FUR,
-		"Dark grey" = DARKGREY_FUR,
-		"Light orange" = LIGHTORANGE_FUR,
-		"Light brown" = LIGHTBROWN_FUR,
-		"White brown" = WHITEBROWN_FUR,
-		"Dark brown" = DARKBROWN_FUR,
-		"Black" = BLACK_FUR,
-	)
 
 /datum/species/tabaxi/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST

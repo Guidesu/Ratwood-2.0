@@ -733,6 +733,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if (!voice_pitch)
 		voice_pitch = 1
 	S["skin_tone"]			>> skin_tone
+	S["species_group"]		>> species_group
+	S["species_group_label"]	>> species_group_label
 	S["hairstyle_name"]		>> hairstyle
 	S["facial_style_name"]	>> facial_hairstyle
 	S["accessory"]			>> accessory
@@ -970,6 +972,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	voice_color		= voice_color
 	voice_pitch		= voice_pitch
 	skin_tone		= skin_tone
+	species_group	= species_group
+	species_group_label = species_group_label
 	backpack		= sanitize_inlist(backpack, GLOB.backpacklist, initial(backpack))
 	jumpsuit_style	= sanitize_inlist(jumpsuit_style, GLOB.jumpsuitlist, initial(jumpsuit_style))
 	uplink_spawn_loc = sanitize_inlist(uplink_spawn_loc, GLOB.uplink_spawn_loc_list, initial(uplink_spawn_loc))
@@ -1002,6 +1006,20 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	for(var/skin_tone in pref_species.get_skin_list())
 		valid_skin_colors += valid_skin_tones[skin_tone]
 	skin_tone = sanitize_inlist(skin_tone, valid_skin_colors, valid_skin_colors[1])
+
+	// Validate species_group against the species' group identity entries, if any.
+	var/list/valid_groups = pref_species.get_group_entries()
+	if(valid_groups)
+		species_group = sanitize_inlist(species_group, valid_groups, valid_groups[1])
+	else
+		species_group = null
+
+	// Validate species_group_label against the selectable labels, if any.
+	var/list/valid_labels = pref_species.get_group_selectable_labels()
+	if(valid_labels)
+		species_group_label = sanitize_inlist(species_group_label, valid_labels, valid_labels[1])
+	else
+		species_group_label = null
 
 	joblessrole	= sanitize_integer(joblessrole, 1, 3, initial(joblessrole))
 	//Validate job prefs

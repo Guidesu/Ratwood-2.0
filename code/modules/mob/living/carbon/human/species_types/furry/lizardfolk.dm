@@ -19,7 +19,8 @@
 	makes them particularly valuable. Sissean often despise weakness and instead find solace in suffering. They tend to be \
 	highly religious, although of course, no race is monolithic. In fact, some Sissean have become successful with some rising to \
 	the rank of nobility in many different kingdoms despite all adversity, but this often makes them targets of their jealous peers."
-	skin_tone_wording = "Skin Colors"
+	use_skintones = 1
+	group_identity_type = /datum/group_identity/lizardfolk
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT

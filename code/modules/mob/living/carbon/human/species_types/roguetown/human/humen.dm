@@ -14,7 +14,7 @@
 	are dominant in their species.<br>\
 	(+1 Willpower, +1 Intelligence, Humen Ingenuity Trait)"
 
-	skin_tone_wording = "Ancestry"
+	group_identity_type = /datum/group_identity/humen
 
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)

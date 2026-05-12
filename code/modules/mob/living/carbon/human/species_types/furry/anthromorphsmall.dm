@@ -12,6 +12,8 @@
 	expanded_desc = "A race akin to wild-kin, except afflicted with significantly smaller stature. \
 	Sometimes referred to with the derogatory term 'verminfolk' by those that disrespect the small."
 	default_color = "444"
+	use_skintones = 1
+	group_identity_type = /datum/group_identity/anthromorphsmall
 
 	use_titles = TRUE
 	race_titles = list(
@@ -140,7 +142,6 @@
 		/datum/descriptor_choice/prominent_three_wild,
 		/datum/descriptor_choice/prominent_four_wild,
 	)
-
 /datum/species/anthromorphsmall/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))

@@ -33,6 +33,8 @@
 	kingdoms. Consequently, they are often looked upon with suspicion and fear in lands under threat by Hammerhold sea raiders."
 
 	default_color = "444"
+	use_skintones = 1
+	group_identity_type = /datum/group_identity/vulpkanin
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,

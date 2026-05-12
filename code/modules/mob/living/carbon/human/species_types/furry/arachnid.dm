@@ -10,7 +10,7 @@
 
 	expanded_desc = ""
 
-	skin_tone_wording = "Brood"
+	group_identity_type = /datum/group_identity/arachnid
 
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR, LIPS, HAIR, FACEHAIR, STUBBLE, SPIDER_ABDOMEN, OLDGREY, MUTCOLORS)

@@ -24,7 +24,7 @@
 	of their parent races. Hence, Half-kins tend to share a strong sense of kinship with similar Half-kins. \
 	Yet, their shared traits with respectable races do mean that Half-kins are more widely accepted into \
 	societies that they share blood ties with than other Beastling races."
-	skin_tone_wording = "Ancestry"
+	group_identity_type = /datum/group_identity/demihuman
 	default_color = "FFFFFF"
 
 	use_titles = TRUE
@@ -196,24 +196,6 @@
 	returned["mcolor2"] = main_color
 	returned["mcolor3"] = main_color
 	return returned
-
-/datum/species/demihuman/get_skin_list()
-	return list(
-		"Grenzelhoft" = SKIN_COLOR_GRENZELHOFT,
-		"Hammerhold" = SKIN_COLOR_HAMMERHOLD,
-		"Avar" = SKIN_COLOR_AVAR,
-		"Rockhill" = SKIN_COLOR_ROCKHILL,
-		"Otava" = SKIN_COLOR_OTAVA,
-		"Etrusca" = SKIN_COLOR_ETRUSCA,
-		"Gronn" = SKIN_COLOR_GRONN,
-		"North Zybantium (Chorodiaki)" = SKIN_COLOR_GIZA,
-		"West Zybantium (Vrdaqnan)" = SKIN_COLOR_SHALVISTINE,
-		"East Zybantium (Nshkormh)" = SKIN_COLOR_LALVESTINE,
-		"Naledi" = SKIN_COLOR_NALEDI,
-		"Naledi South" = SKIN_COLOR_NALEDI_LIGHT,
-		"Kazengun" = SKIN_COLOR_KAZENGUN,
-		"Czwarteki" = SKIN_COLOR_CZWARTEKI,
-	)
 
 /datum/species/demihuman/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()

@@ -19,7 +19,7 @@
 	more frail and fagile than most. In these lands, only a handful of the many Elvish tribes are seen.<br>\
 	(+1 Speed, Woodwalker Trait)"
 
-	skin_tone_wording = "Tribal Identity"
+	group_identity_type = /datum/group_identity/elf_wood
 
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,OLDGREY)

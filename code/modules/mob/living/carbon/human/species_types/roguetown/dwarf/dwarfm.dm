@@ -21,7 +21,7 @@
 	Each dwarf hails from a ancient fortress named after the most plentiful mineral.<br>\
 	(+1 Constitution, +1 Willpower, Drunken Healing Trait, Dwarvish Knowledge Trait)"
 
-	skin_tone_wording = "Dwarf Fortress"
+	group_identity_type = /datum/group_identity/dwarf_mountain
 
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,YOUNGBEARD,STUBBLE,OLDGREY)

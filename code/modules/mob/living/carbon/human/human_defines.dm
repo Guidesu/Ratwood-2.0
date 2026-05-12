@@ -37,6 +37,10 @@
 	var/detail_color = "000"
 
 	var/skin_tone = "caucasian1"	//Skin tone
+	/// The character's chosen group identity name (pack/clan/tribe/etc.). Set at character creation. Shown on examine.
+	var/species_group = null
+	/// The character's chosen label for their group (e.g. "Pack", "Pride", "Clan"). Null = use species default.
+	var/species_group_label = null
 
 	var/lip_style = null	//no lipstick by default- arguably misleading, as it could be used for general makeup
 	var/lip_color = "white"

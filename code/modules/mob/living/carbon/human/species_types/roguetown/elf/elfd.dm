@@ -37,7 +37,7 @@
 	without careful upkeep...\
 	They typically trace their beginnings to how their progenator died before being raised."
 */
-	skin_tone_wording = "Origin City-State"
+	group_identity_type = /datum/group_identity/elf_dark
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,OLDGREY)
 	allowed_taur_types = list(
