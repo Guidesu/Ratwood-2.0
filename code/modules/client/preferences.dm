@@ -82,6 +82,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/datum/statpack/statpack	= new /datum/statpack/wildcard/fated // LETHALSTONE EDIT: the statpack we're giving our char instead of racial bonuses
 	var/datum/virtue/virtue = new /datum/virtue/none // LETHALSTONE EDIT: the virtue we get for not picking a statpack
 	var/datum/virtue/virtuetwo = new /datum/virtue/none
+	var/datum/aspect_profile/aspect_profile
+	var/tmp/current_aspect_filter = "all"
+	var/tmp/current_aspect_search = ""
 	// New category-based virtue system
 	var/datum/virtue/origin_virtue = null  // Single origin selection (DEPRECATED - replaced by custom_origin_skills)
 	var/list/origin_items = list()  // Up to 2 origin heirloom items
@@ -3159,23 +3162,29 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	for(var/datum/charflaw/existing_vice in character.vices)
 		existing_vice.on_removal(character)
 
-	// Apply multiple vices system (supports up to 8 vices)
-	character.vices = list()
-	for(var/i = 1 to 8)
-		var/datum/charflaw/vice = vars["vice[i]"]
-		if(vice)
-			var/datum/charflaw/new_vice = new vice.type()
-			character.vices += new_vice
-			new_vice.on_mob_creation(character)
-			// Set first vice as the legacy charflaw for compatibility
-			if(i == 1)
-				character.charflaw = new_vice
+	var/use_aspects = should_apply_aspects(character)
 
-	// Legacy single vice support (if new system not used)
-	if(!length(character.vices) && charflaw)
-		character.charflaw = new charflaw.type()
-		character.charflaw.on_mob_creation(character)
-		character.vices += character.charflaw
+	// Apply the new aspects system for supported freeform roles. Unsupported roles keep legacy vices.
+	character.vices = list()
+	character.charflaw = null
+	if(use_aspects)
+		aspect_profile.apply_to_human(character)
+	else
+		for(var/i = 1 to 8)
+			var/datum/charflaw/vice = vars["vice[i]"]
+			if(vice)
+				var/datum/charflaw/new_vice = new vice.type()
+				character.vices += new_vice
+				new_vice.on_mob_creation(character)
+				// Set first vice as the legacy charflaw for compatibility
+				if(i == 1)
+					character.charflaw = new_vice
+
+		// Legacy single vice support (if new system not used)
+		if(!length(character.vices) && charflaw)
+			character.charflaw = new charflaw.type()
+			character.charflaw.on_mob_creation(character)
+			character.vices += character.charflaw
 
 	// Note: origin_virtue, origin_items, and feats are applied AFTER mind transfer
 	// See apply_origin_virtues_and_feats() which is called after character creation

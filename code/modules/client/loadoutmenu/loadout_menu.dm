@@ -40,7 +40,8 @@
 		UNTYPED_LIST_ADD(loadout_items, list(
 			"name" = item.name,
 			"desc" = initial(I.desc),
-			"triumph_cost" = item.desc, // Don't @ me... this is wack.
+			"triumph_cost" = item.triumph_cost,
+			"item_type" = "[item.path]",
 			"nobility_check" = noble_passed, // True means they passed. Returns true on items that don't have the check as well.
 			"donoritem" = donoritem_passed,
 			"ref" = ref(item),

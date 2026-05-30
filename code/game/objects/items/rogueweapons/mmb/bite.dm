@@ -275,6 +275,10 @@
 					var/poison = user.STACON/4
 					C.reagents.add_reagent(/datum/reagent/lam_venom, poison)
 					to_chat(user, span_necrosis("You inject venom into [C]!"))
+			if(user.aspect_venom_type && user.aspect_venom_amount > 0)
+				if(C.reagents)
+					C.reagents.add_reagent(user.aspect_venom_type, user.aspect_venom_amount)
+					to_chat(user, span_necrosis("You work your chosen venom into [C]'s wound."))
 
 /*
 	Code below is for a zombie smashing the brains of unit. The code expects the brain to be part of the head which is not the case with AP. Kept for posterity in case it's used in an overhaul.

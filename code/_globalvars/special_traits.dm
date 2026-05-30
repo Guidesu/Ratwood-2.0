@@ -34,11 +34,15 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 /proc/apply_character_post_equipment(mob/living/carbon/human/character, client/player)
 	if(!player)
 		player = character.client
-	apply_charflaw_equipment(character, player)
+	var/using_aspects = player?.prefs?.should_apply_aspects(character)
+	if(using_aspects)
+		player.prefs.aspect_profile.apply_post_equipment(character)
+	else
+		apply_charflaw_equipment(character, player)
 	apply_prefs_special(character, player)
 	apply_prefs_race_bonus(character, player)
 	// Apply new origin virtue system AFTER job equipment to prevent skills from being overridden
-	if(player.prefs)
+	if(player.prefs && !using_aspects)
 		player.prefs.apply_origin_virtues_and_feats(character)
 	apply_voicepacks(character, player)
 	if(player.prefs.dnr_pref)

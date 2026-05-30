@@ -569,6 +569,29 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	else
 		virtuetwo = GLOB.virtues[/datum/virtue/none]
 
+/datum/preferences/proc/_load_aspects(S)
+	var/list/stored_aspects
+	var/list/stored_configs
+	S["aspects"] >> stored_aspects
+	S["aspect_configs"] >> stored_configs
+	var/datum/aspect_profile/profile = ensure_aspect_profile()
+	profile.selected_aspects = list()
+	profile.aspect_configs = list()
+	if(islist(stored_aspects))
+		for(var/aspect_entry in stored_aspects)
+			var/aspect_type = profile.normalize_aspect_path(aspect_entry)
+			if(aspect_type && GLOB.aspects[aspect_type])
+				profile.selected_aspects += aspect_type
+	if(islist(stored_configs))
+		for(var/config_key in stored_configs)
+			var/aspect_type = profile.normalize_aspect_path(config_key)
+			if(!aspect_type)
+				continue
+			var/list/config = stored_configs[config_key]
+			if(islist(config))
+				profile.aspect_configs[aspect_type] = profile.deep_copy_aspect_config(config)
+	profile.sanitize()
+
 /datum/preferences/proc/_load_origin_virtues(S)
 	origin_virtue = null
 	origin_items = list()
@@ -935,6 +958,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	_load_virtue(S)
 	_load_origin_virtues(S)
 	_load_flaw(S)
+	_load_aspects(S)
 	enforce_feat_limit()
 
 	_load_culinary_preferences(S)
@@ -1187,6 +1211,15 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["vice6"], preferences_typepath_or_null(vice6))
 	WRITE_FILE(S["vice7"], preferences_typepath_or_null(vice7))
 	WRITE_FILE(S["vice8"], preferences_typepath_or_null(vice8))
+	var/list/aspect_types = list()
+	var/list/aspect_configs = list()
+	if(aspect_profile)
+		aspect_profile.sanitize()
+		aspect_types = aspect_profile.selected_aspects.Copy()
+		for(var/aspect_type in aspect_profile.aspect_configs)
+			aspect_configs["[aspect_type]"] = aspect_profile.deep_copy_aspect_config(aspect_profile.aspect_configs[aspect_type])
+	WRITE_FILE(S["aspects"], aspect_types)
+	WRITE_FILE(S["aspect_configs"], aspect_configs)
 	WRITE_FILE(S["averse_chosen_faction"], averse_chosen_faction)
 	WRITE_FILE(S["paranoid_chosen_faction"], paranoid_chosen_faction)
 	WRITE_FILE(S["feature_mcolor"]		, features["mcolor"])

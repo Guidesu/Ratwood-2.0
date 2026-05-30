@@ -524,6 +524,7 @@ GLOBAL_LIST_INIT(averse_factions, list(
 /datum/charflaw/nudist
 	name = "Nudist"
 	desc = "I refuse to wear clothes. They are a hindrance to my freedom. I can tolerate certain accessories."
+	var/next_removal_attempt = 0
 
 /datum/charflaw/nudist/on_mob_creation(mob/user)
 	..()

@@ -68,6 +68,10 @@
 		var/datum/virtue/virtue = new path()
 		GLOB.virtues[path] = virtue
 
+	for (var/path in subtypesof(/datum/aspect))
+		var/datum/aspect/aspect = new path()
+		GLOB.aspects[path] = aspect
+
 	// Loadout items
 	for (var/path in subtypesof(/datum/loadout_item))
 		var/datum/loadout_item/loadout_item = new path()
@@ -115,4 +119,3 @@
 		for(var/path in subtypesof(prototype))
 			L+= path
 		return L
-

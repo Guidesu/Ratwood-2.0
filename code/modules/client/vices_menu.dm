@@ -734,6 +734,150 @@
 // Global cache for loadout item icons to prevent memory leaks
 GLOBAL_LIST_EMPTY(cached_loadout_icons)
 
+/datum/preferences/proc/generate_aspects_html(mob/user, list/theme)
+	var/datum/aspect_profile/profile = ensure_aspect_profile()
+	var/list/errors = list()
+	profile.validate(src, errors)
+	var/statpack_stats = statpack?.generate_modifier_string()
+	var/balance = profile.get_balance(src)
+	var/current_filter = current_aspect_filter || "all"
+	var/current_search = html_encode(current_aspect_search || "")
+	var/html = {"
+		<div class='statpack-section'>
+			<h2>Statpack Selection</h2>
+			<div class='statpack-current'>
+	"}
+	if(statpack)
+		html += "<div class='statpack-name'>[statpack.name][statpack_stats ? " <span class='statpack-stats'>[statpack_stats]</span>" : ""]</div>"
+		html += "<div class='statpack-desc'>[statpack.desc]</div>"
+	else
+		html += "<div class='statpack-name'>None Selected</div>"
+	html += {"
+			</div>
+			<div class='actions'>
+				<a class='btn btn-select' href='byond://?src=\ref[src];statpack_action=change'>Change Statpack</a>
+			</div>
+		</div>
+		<div class='statpack-section aspect-builder'>
+			<h2>Aspects</h2>
+			<div style='display: grid; grid-template-columns: 1fr; gap: 6px; margin-top: 8px;'>
+				<div class='statpack-current'><b>Points</b><br><span style='color: [balance >= 0 ? "#4CAF50" : "#f44336"];'>[balance]</span></div>
+			</div>
+			<div class='actions' style='margin-top: 8px;'>
+				<a class='btn btn-select' href='byond://?src=\ref[src];aspect_action=import_legacy'>Import Legacy Choices</a>
+				<a class='btn btn-clear' href='byond://?src=\ref[src];aspect_action=clear'>Reset Aspects</a>
+			</div>
+		</div>
+	"}
+
+	if(LAZYLEN(errors))
+		html += "<div class='statpack-section' style='border-color: #f44336;'>"
+		html += "<h2>Warnings</h2>"
+		for(var/error in errors)
+			html += "<div style='font-size: 0.75em; color: #f44336; margin: 3px 0;'>[error]</div>"
+		html += "</div>"
+
+	html += {"
+		<div class='statpack-section'>
+			<h2>Selected Aspects</h2>
+	"}
+	if(LAZYLEN(profile.selected_aspects))
+		for(var/datum/aspect/A in profile.get_aspects())
+			var/value_text = "0"
+			if(A.kind == "positive")
+				value_text = "-[A.point_value]"
+			else if(A.kind == "negative")
+				value_text = "+[A.point_value]"
+			else
+				value_text = "Free"
+			var/kind_label = aspect_kind_label(A.kind)
+			var/kind_css = aspect_kind_css(A.kind)
+			var/config_text = A.describe_config(profile.get_config(A.type))
+			html += "<div class='statpack-current aspect-card aspect-selected-card' data-kind='[A.kind]' style='margin-top: 5px;'>"
+			html += "<div class='slot-header aspect-header'><div class='aspect-meta'><span class='aspect-badge [kind_css]'>[kind_label]</span><span class='aspect-badge aspect-badge-category'>[A.get_display_category()]</span></div><span class='slot-cost'>[value_text]</span></div>"
+			html += "<div class='vice-name'>[A.name]</div>"
+			html += "<div class='vice-desc'>[A.desc]</div>"
+			var/list/selected_effect_lines = A.get_effect_summary_lines()
+			if(LAZYLEN(selected_effect_lines))
+				for(var/effect_line in selected_effect_lines)
+					html += format_aspect_effect_line(effect_line)
+			if(config_text)
+				html += format_aspect_effect_line("Setup: [config_text]")
+			html += "<div class='actions'>"
+			if(A.is_configurable())
+				html += "<a class='btn' href='byond://?src=\ref[src];aspect_action=configure;aspect_type=[A.type]'>Configure</a>"
+			html += "<a class='btn btn-clear' href='byond://?src=\ref[src];aspect_action=toggle;aspect_type=[A.type]'>Remove</a></div>"
+			html += "</div>"
+	else
+		html += "<div class='statpack-current'><div class='vice-name'>No Aspects Selected</div><div class='vice-desc'>Import legacy choices or select aspects below.</div></div>"
+	html += "</div>"
+
+	html += {"
+		<div class='statpack-section'>
+			<h2>Aspect Catalog</h2>
+			<input id='aspectSearch' type='text' value='[current_search]' placeholder='Search aspects...' onkeyup='setAspectSearch(this.value)' style='width: 100%; box-sizing: border-box; margin-bottom: 8px; background: #00000066; border: 1px solid [theme["border"]]; color: [theme["text"]]; padding: 5px;'>
+			<div class='actions' style='margin-bottom: 8px;'>
+				<a class='btn [current_filter == "all" ? "active" : ""]' href='#' onclick=\"setAspectFilter('all'); return false;\">All</a>
+				<a class='btn btn-select [current_filter == "positive" ? "active" : ""]' href='#' onclick=\"setAspectFilter('positive'); return false;\">Positive</a>
+				<a class='btn btn-clear [current_filter == "negative" ? "active" : ""]' href='#' onclick=\"setAspectFilter('negative'); return false;\">Negative</a>
+				<a class='btn [current_filter == "neutral" ? "active" : ""]' href='#' onclick=\"setAspectFilter('neutral'); return false;\">Neutral</a>
+			</div>
+			<div>
+	"}
+
+	var/list/category_order = list("Physical", "Social", "Labor", "Magicks", "Drawbacks")
+	var/list/category_lists = list()
+	for(var/category_name in category_order)
+		category_lists[category_name] = list()
+	for(var/aspect_type in GLOB.aspects)
+		var/datum/aspect/A = GLOB.aspects[aspect_type]
+		if(!A || !A.listable)
+			continue
+		var/display_category = A.get_display_category()
+		if(!category_lists[display_category])
+			category_lists[display_category] = list()
+		category_lists[display_category] += A
+	for(var/category_name in category_order)
+		var/list/aspects_in_category = category_lists[category_name]
+		if(!LAZYLEN(aspects_in_category))
+			continue
+		sortTim(aspects_in_category, GLOBAL_PROC_REF(cmp_name_asc))
+		html += "<div class='aspect-category-section' data-category='[category_name]' style='margin-bottom: 14px;'>"
+		html += "<div style='font-size: 1.05em; font-weight: bold; color: [theme["title"]]; margin: 0 0 6px 2px;'>[category_name]</div>"
+		html += "<div style='display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;'>"
+		for(var/datum/aspect/A in aspects_in_category)
+			var/selected = (A.type in profile.selected_aspects)
+			var/value_text = "Free"
+			var/kind_label = aspect_kind_label(A.kind)
+			var/kind_css = aspect_kind_css(A.kind)
+			if(A.kind == "positive")
+				value_text = "[A.point_value] cost"
+			else if(A.kind == "negative")
+				value_text = "+[A.point_value]"
+			html += "<div class='vice-slot aspect-card [selected ? "selected" : ""]' data-kind='[A.kind]' data-search='[lowertext("[A.name] [A.desc] [category_name]")]'>"
+			html += "<div class='slot-header aspect-header'><div class='aspect-meta'><span class='aspect-badge [kind_css]'>[kind_label]</span></div><span class='slot-cost'>[value_text]</span></div>"
+			html += "<div class='vice-name'>[A.name]</div>"
+			html += "<div class='vice-desc'>[A.desc]</div>"
+			var/list/card_effect_lines = A.get_effect_summary_lines()
+			if(LAZYLEN(card_effect_lines))
+				for(var/effect_line in card_effect_lines)
+					html += format_aspect_effect_line(effect_line)
+			var/card_config_text = A.describe_config(profile.get_config(A.type))
+			if(card_config_text && selected)
+				html += format_aspect_effect_line("Setup: [card_config_text]")
+			html += "<div class='actions' style='margin-top: 6px;'>"
+			if(selected && A.is_configurable())
+				html += "<a class='btn' href='byond://?src=\ref[src];aspect_action=configure;aspect_type=[A.type]'>Configure</a>"
+			html += "<a class='btn [selected ? "btn-clear" : "btn-select"]' href='byond://?src=\ref[src];aspect_action=toggle;aspect_type=[A.type]'>[selected ? "Remove" : "Select"]</a>"
+			html += "</div></div>"
+		html += "</div></div>"
+
+	html += {"
+			</div>
+		</div>
+	"}
+	return html
+
 /datum/preferences/proc/save_to_history()
 	// Initialize history list if null
 	if(!customization_history)
@@ -751,6 +895,8 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 		"custom_origin_skills" = custom_origin_skills ? custom_origin_skills.Copy() : null,
 		"custom_origin_levels" = custom_origin_levels ? custom_origin_levels.Copy() : null,
 		"custom_origin_points_spent" = custom_origin_points_spent,
+		"aspects" = aspect_profile?.selected_aspects ? aspect_profile.selected_aspects.Copy() : list(),
+		"aspect_configs" = aspect_profile?.aspect_configs ? aspect_profile.deep_copy_aspect_config(aspect_profile.aspect_configs) : list(),
 		"vice1" = vice1,
 		"vice2" = vice2,
 		"vice3" = vice3,
@@ -849,6 +995,12 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 	else
 		custom_origin_levels = null
 	custom_origin_points_spent = snapshot["custom_origin_points_spent"]
+	var/list/stored_aspects = snapshot["aspects"]
+	var/list/stored_aspect_configs = snapshot["aspect_configs"]
+	ensure_aspect_profile()
+	aspect_profile.selected_aspects = stored_aspects ? stored_aspects.Copy() : list()
+	aspect_profile.aspect_configs = islist(stored_aspect_configs) ? aspect_profile.deep_copy_aspect_config(stored_aspect_configs) : list()
+	aspect_profile.sanitize()
 	vice1 = snapshot["vice1"]
 	vice2 = snapshot["vice2"]
 	vice3 = snapshot["vice3"]
@@ -1305,6 +1457,57 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 			else
 				seen_vices += vice.type
 
+/proc/aspect_kind_label(kind)
+	switch(kind)
+		if("positive")
+			return "Positive"
+		if("negative")
+			return "Drawback"
+		if("neutral")
+			return "Neutral"
+	return "Aspect"
+
+/proc/aspect_kind_css(kind)
+	switch(kind)
+		if("positive")
+			return "aspect-kind-positive"
+		if("negative")
+			return "aspect-kind-negative"
+		if("neutral")
+			return "aspect-kind-neutral"
+	return "aspect-kind-neutral"
+
+/proc/format_aspect_effect_line(effect_line)
+	if(!effect_line)
+		return ""
+	var/label = null
+	var/text = null
+	var/separator = findtext(effect_line, ": ")
+	if(separator)
+		label = copytext(effect_line, 1, separator)
+		text = copytext(effect_line, separator + 2)
+	else
+		text = effect_line
+	var/css_class = "aspect-effect-note"
+	switch(label)
+		if("Traits")
+			css_class = "aspect-effect-traits"
+		if("Skills")
+			css_class = "aspect-effect-skills"
+		if("Items")
+			css_class = "aspect-effect-items"
+		if("Stats")
+			css_class = "aspect-effect-stats"
+		if("Ability")
+			css_class = "aspect-effect-ability"
+		if("Effect")
+			css_class = "aspect-effect-effect"
+		if("Setup")
+			css_class = "aspect-effect-setup"
+	if(label)
+		return "<div class='aspect-effect [css_class]'><span class='aspect-effect-label'>[label]</span><span class='aspect-effect-value'>[text]</span></div>"
+	return "<div class='aspect-effect [css_class]'><span class='aspect-effect-value'>[text]</span></div>"
+
 /datum/preferences/proc/generate_vices_html(mob/user)
 	// Use same colors as main character creation menu
 	var/list/theme = list(
@@ -1418,11 +1621,13 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 				font-weight: bold;
 			}
 			.slot-cost {
-				background: #4CAF50;
-				color: #1C0000;
-				padding: 1px 5px;
+				background: rgba(255, 233, 176, 0.9);
+				color: #230000;
+				padding: 2px 6px;
 				font-size: 0.65em;
 				font-weight: bold;
+				text-transform: uppercase;
+				letter-spacing: 0.03em;
 			}
 			.vice-display {
 				display: flex;
@@ -1434,14 +1639,14 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 			}
 			.vice-name {
 				font-weight: bold;
-				color: [theme["text"]];
+				color: #f0d6d6;
 				margin-bottom: 2px;
-				font-size: 0.75em;
+				font-size: 0.78em;
 			}
 			.vice-desc {
-				font-size: 0.65em;
-				color: [theme["label"]];
-				line-height: 1.2;
+				font-size: 0.67em;
+				color: #d1aaaa;
+				line-height: 1.3;
 			}
 			.btn {
 				padding: 3px 6px;
@@ -1523,6 +1728,111 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 				margin: 6px 0;
 				border: 1px solid [theme["border"]];
 			}
+			.aspect-card {
+				min-height: 150px;
+				display: flex;
+				flex-direction: column;
+				transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+			}
+			.aspect-card:hover {
+				transform: translateY(-1px);
+			}
+			.aspect-card .actions {
+				margin-top: auto;
+			}
+			.aspect-card\[data-kind='positive'\] {
+				background: linear-gradient(180deg, rgba(39, 66, 34, 0.28) 0%, rgba(0, 0, 0, 0.36) 100%);
+				border-color: rgba(93, 186, 96, 0.45);
+				box-shadow: inset 0 0 0 1px rgba(93, 186, 96, 0.1);
+			}
+			.aspect-card\[data-kind='negative'\] {
+				background: linear-gradient(180deg, rgba(93, 24, 24, 0.3) 0%, rgba(0, 0, 0, 0.36) 100%);
+				border-color: rgba(214, 78, 78, 0.45);
+				box-shadow: inset 0 0 0 1px rgba(214, 78, 78, 0.1);
+			}
+			.aspect-card\[data-kind='neutral'\] {
+				background: linear-gradient(180deg, rgba(44, 55, 78, 0.28) 0%, rgba(0, 0, 0, 0.36) 100%);
+				border-color: rgba(110, 150, 215, 0.42);
+				box-shadow: inset 0 0 0 1px rgba(110, 150, 215, 0.1);
+			}
+			.aspect-card\[data-kind='positive'\] .slot-cost {
+				background: rgba(101, 196, 103, 0.92);
+			}
+			.aspect-card\[data-kind='negative'\] .slot-cost {
+				background: rgba(214, 78, 78, 0.92);
+				color: #fff0f0;
+			}
+			.aspect-card\[data-kind='neutral'\] .slot-cost {
+				background: rgba(110, 150, 215, 0.92);
+				color: #f3f7ff;
+			}
+			.aspect-card\[data-kind='positive'\] .vice-name { color: #dbf5db; }
+			.aspect-card\[data-kind='negative'\] .vice-name { color: #ffd0d0; }
+			.aspect-card\[data-kind='neutral'\] .vice-name { color: #d7e4ff; }
+			.aspect-card.selected {
+				box-shadow: 0 0 0 1px rgba(255, 233, 176, 0.25), 0 0 12px rgba(255, 233, 176, 0.12);
+			}
+			.aspect-selected-card {
+				min-height: 0;
+			}
+			.aspect-header {
+				align-items: flex-start;
+				gap: 6px;
+			}
+			.aspect-meta {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 4px;
+			}
+			.aspect-badge {
+				display: inline-block;
+				padding: 2px 6px;
+				font-size: 0.6em;
+				font-weight: bold;
+				text-transform: uppercase;
+				letter-spacing: 0.04em;
+				border: 1px solid transparent;
+			}
+			.aspect-kind-positive {
+				background: rgba(101, 196, 103, 0.18);
+				border-color: rgba(101, 196, 103, 0.55);
+				color: #9fe7a3;
+			}
+			.aspect-kind-negative {
+				background: rgba(214, 78, 78, 0.18);
+				border-color: rgba(214, 78, 78, 0.55);
+				color: #ff9a9a;
+			}
+			.aspect-kind-neutral {
+				background: rgba(110, 150, 215, 0.18);
+				border-color: rgba(110, 150, 215, 0.55);
+				color: #afcbff;
+			}
+			.aspect-badge-category {
+				background: rgba(255,255,255,0.06);
+				border-color: rgba(255,255,255,0.14);
+				color: #d5c2c2;
+			}
+			.aspect-effect {
+				margin-top: 4px;
+				font-size: 0.66em;
+				line-height: 1.35;
+			}
+			.aspect-effect-label {
+				font-weight: bold;
+				margin-right: 5px;
+			}
+			.aspect-effect-traits .aspect-effect-label { color: #86d691; }
+			.aspect-effect-skills .aspect-effect-label { color: #7dc3ff; }
+			.aspect-effect-items .aspect-effect-label { color: #d9b36d; }
+			.aspect-effect-stats .aspect-effect-label { color: #d884c8; }
+			.aspect-effect-ability .aspect-effect-label { color: #f0a96a; }
+			.aspect-effect-effect .aspect-effect-label { color: #ffd27a; }
+			.aspect-effect-setup .aspect-effect-label { color: #c6b4ff; }
+			.aspect-effect-note .aspect-effect-label { color: #d5c2c2; }
+			.aspect-effect-value {
+				color: #d7b8b8;
+			}
 			.statpack-name {
 				font-weight: bold;
 				color: [theme["text"]];
@@ -1562,6 +1872,53 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 				// Save current tab to cookie
 				document.cookie = 'vices_menu_tab=' + tabName + '; path=/';
 			}
+
+			var aspectKindFilter = '[current_aspect_filter || "all"]';
+			function setAspectCookie(name, value) {
+				document.cookie = name + '=' + encodeURIComponent(value) + '; path=/';
+			}
+			function getAspectCookie(name) {
+				var cookies = document.cookie.split(';');
+				for(var i = 0; i < cookies.length; i++) {
+					var cookie = cookies\[i\].trim();
+					if(cookie.indexOf(name + '=') == 0) {
+						return decodeURIComponent(cookie.substring(name.length + 1));
+					}
+				}
+				return '';
+			}
+			function setAspectFilter(kind) {
+				aspectKindFilter = kind;
+				setAspectCookie('aspect_kind_filter', kind);
+				filterAspects();
+			}
+			function setAspectSearch(value) {
+				setAspectCookie('aspect_search', value || '');
+				filterAspects();
+			}
+			function filterAspects() {
+				var searchBox = document.getElementById('aspectSearch');
+				var search = searchBox ? searchBox.value.toLowerCase() : '';
+				var cards = document.getElementsByClassName('aspect-card');
+				for(var i = 0; i < cards.length; i++) {
+					var kind = cards\[i\].getAttribute('data-kind');
+					var haystack = cards\[i\].getAttribute('data-search') || '';
+					var kindMatches = (aspectKindFilter == 'all' || kind == aspectKindFilter);
+					var searchMatches = (!search || haystack.indexOf(search) >= 0);
+					cards\[i\].style.display = (kindMatches && searchMatches) ? 'block' : 'none';
+				}
+				var sections = document.getElementsByClassName('aspect-category-section');
+				for(var j = 0; j < sections.length; j++) {
+					var sectionCards = sections\[j\].getElementsByClassName('aspect-card');
+					var visibleCount = 0;
+					for(var k = 0; k < sectionCards.length; k++) {
+						if(sectionCards\[k\].style.display != 'none') {
+							visibleCount++;
+						}
+					}
+					sections\[j\].style.display = visibleCount ? 'block' : 'none';
+				}
+			}
 			
 			// Restore active tab on load
 			window.onload = function() {
@@ -1573,6 +1930,15 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 						activeTab = cookie.substring('vices_menu_tab='.length);
 						break;
 					}
+				}
+				var savedAspectFilter = getAspectCookie('aspect_kind_filter');
+				if(savedAspectFilter) {
+					aspectKindFilter = savedAspectFilter;
+				}
+				var savedAspectSearch = getAspectCookie('aspect_search');
+				var aspectSearch = document.getElementById('aspectSearch');
+				if(aspectSearch && savedAspectSearch && !aspectSearch.value) {
+					aspectSearch.value = savedAspectSearch;
 				}
 				
 				// Activate the saved tab
@@ -1592,6 +1958,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 					
 					document.getElementById(activeTab).classList.add('active');
 				}
+				filterAspects();
 			};
 		</script>
 		<body>
@@ -1600,18 +1967,20 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 				<p>Configure all your character features</p>
 				<div style="margin-top: 10px; display: flex; gap: 5px; justify-content: center; flex-wrap: wrap;">
 					<a class='btn' href='byond://?src=\ref[src];undo_action=undo' style='font-size: 0.85em;'>⟲ Undo Last Change ([customization_history.len] available)</a>
-					<a class='btn btn-clear' href='byond://?src=\ref[src];virtue_action=reset_virtues_vices' style='font-size: 0.85em;'>⚠ Reset Virtues/Vices</a>
+					<a class='btn btn-clear' href='byond://?src=\ref[src];aspect_action=clear' style='font-size: 0.85em;'>⚠ Reset Aspects</a>
 					<a class='btn btn-clear' href='byond://?src=\ref[src];loadout_action=reset_loadout_languages' style='font-size: 0.85em;'>⚠ Reset Loadout/Languages</a>
 				</div>
 			</div>
 			
 			<div class="tabs">
-				<a class="tab active" onclick="showTab('traits')">Traits & Virtues</a>
+				<a class="tab active" onclick="showTab('traits')">Aspects</a>
 				<a class="tab" onclick="showTab('loadout')">Loadout Items</a>
 				<a class="tab" onclick="showTab('languages')">Languages</a>
 			</div>
 			
 			<div id="traits" class="tab-content active">
+			[generate_aspects_html(user, theme)]
+			<!-- Legacy Traits & Virtues page hidden by the Aspects milestone.
 			
 		<div class="statpack-section">
 			<h2>Statpack Selection</h2>
@@ -1870,6 +2239,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 	
 	html += {"
 			</div>
+			-->
 			</div>
 			
 		<div id="loadout" class="tab-content">
@@ -2211,6 +2581,49 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 				open_vices_menu(usr)
 			else
 				to_chat(usr, span_warning("No more changes to undo!"))
+		return
+
+	if(href_list["aspect_action"])
+		var/action = href_list["aspect_action"]
+		var/datum/aspect_profile/profile = ensure_aspect_profile()
+		if(href_list["aspect_filter"])
+			current_aspect_filter = href_list["aspect_filter"]
+		if(href_list["aspect_search"])
+			current_aspect_search = href_list["aspect_search"]
+		switch(action)
+			if("toggle")
+				save_to_history()
+				if(profile.toggle(href_list["aspect_type"], src, usr))
+					save_character()
+				open_vices_menu(usr)
+			if("configure")
+				var/aspect_type = profile.normalize_aspect_path(href_list["aspect_type"])
+				var/datum/aspect/A = GLOB.aspects[aspect_type]
+				if(!A || !(aspect_type in profile.selected_aspects) || !A.is_configurable())
+					open_vices_menu(usr)
+					return
+				save_to_history()
+				if(A.configure_for_profile(profile, src, usr))
+					save_character()
+				open_vices_menu(usr)
+			if("clear")
+				if(tgalert(usr, "This will remove all selected aspects. Legacy virtue and vice saves are not deleted.", "Reset Aspects", "Yes", "No") != "Yes")
+					open_vices_menu(usr)
+					return
+				save_to_history()
+				profile.clear()
+				save_character()
+				to_chat(usr, span_notice("Cleared selected aspects."))
+				open_vices_menu(usr)
+			if("import_legacy")
+				save_to_history()
+				profile.import_legacy_choices(src)
+				var/list/errors = list()
+				if(!profile.validate(src, errors) && LAZYLEN(errors))
+					to_chat(usr, span_warning(errors[1]))
+				save_character()
+				to_chat(usr, span_notice("Imported known legacy virtues and vices into aspects. The old saved data remains intact."))
+				open_vices_menu(usr)
 		return
 	
 	// Handle custom origin actions
@@ -2897,7 +3310,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 				virtuetwo = selected
 				save_character()
 				to_chat(usr, span_notice("Selected [choice] as second virtue."))
-				to_chat(usr, "<span class='info'>[selected.desc]</span>")
+				to_chat(usr, "<bspan class='info'>[selected.desc]</span>")
 			open_vices_menu(usr)
 			return
 	
@@ -3123,7 +3536,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 						vars["loadout_[slot]_hex"] = null
 					else
 						// Look up the hex value from colorlist
-						vars["loadout_[slot]_hex"] = colorlist[new_color]
+						vars["loadout_[slot]_hex"] = GLOB.colorlist[new_color]
 					save_character()
 					open_vices_menu(usr)
 				return
@@ -3247,4 +3660,3 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 						save_character()
 						to_chat(usr, span_notice("Selected [chosen_language] for language slot [slot] ([slot_cost] Triumphs)."))
 				open_vices_menu(usr)
-

@@ -40,8 +40,23 @@
 	if(!isatom(A))
 		return FALSE
 
+	var/strained_zjump = FALSE
 	if(A.z != z)
-		if(!HAS_TRAIT(src, TRAIT_ZJUMP))
+		if(HAS_TRAIT(src, TRAIT_STRAINED_LEAP) && !HAS_TRAIT(src, TRAIT_ZJUMP))
+			var/turf/target_turf = get_turf(A)
+			var/turf/source_turf = get_turf(src)
+			if(!target_turf || !source_turf || abs(target_turf.z - source_turf.z) > 1 || get_dist(source_turf, target_turf) > 1)
+				to_chat(src, span_warning("I can only strain myself to leap one nearby height."))
+				return FALSE
+			if(pulling)
+				to_chat(src, span_warning("I can't make that leap while pulling something."))
+				return FALSE
+			var/mob/living/simple_animal/strained_mount = get_buckled_animal_mount()
+			if(strained_mount)
+				to_chat(src, span_warning("I can't make that leap while mounted."))
+				return FALSE
+			strained_zjump = TRUE
+		else if(!HAS_TRAIT(src, TRAIT_ZJUMP))
 			to_chat(src, span_warning("That's too high for me..."))
 			return FALSE
 
@@ -86,7 +101,16 @@
 			jadded += 50
 			jrange = 1
 
+	if(strained_zjump)
+		jadded = 100
+		jrange = 1
+		jextra = FALSE
+		OffBalance(40)
+
 	jump_action_resolve(A, jadded, jrange, jextra)
+	if(strained_zjump)
+		Immobilize(15)
+		to_chat(src, span_warning("The strained leap empties my lungs and leaves me reeling."))
 	return TRUE
 
 #define FLIP_DIRECTION_CLOCKWISE 1
@@ -231,5 +255,12 @@
 		to_chat(src, span_warning("I should stand up first."))
 		return FALSE
 	if(A.z != z && !HAS_TRAIT(src, TRAIT_ZJUMP))
-		return FALSE
+		if(!HAS_TRAIT(src, TRAIT_STRAINED_LEAP))
+			return FALSE
+		var/turf/source_turf = get_turf(src)
+		var/turf/target_turf = get_turf(A)
+		if(!source_turf || !target_turf || abs(target_turf.z - source_turf.z) > 1 || get_dist(source_turf, target_turf) > 1)
+			return FALSE
+		if(pulling || get_buckled_animal_mount())
+			return FALSE
 	return TRUE
