@@ -145,6 +145,7 @@
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	anvilrepair = /datum/skill/craft/armorsmithing
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	dropshrink = null
 
 /obj/item/clothing/suit/roguetown/shirt/vampire
 	slot_flags = ITEM_SLOT_SHIRT
@@ -248,5 +249,6 @@
 /obj/structure/vampire/necromanticbook // Used to summon undead to attack town/defend manor.
 	name = "Tome of Souls"
 	icon_state = "tome"
+	pixel_x = -16
 	var/list/useoptions = list("Create Death Knight", "Steal the Sun")
 	var/sunstolen = FALSE

@@ -7,6 +7,8 @@ GLOBAL_PROTECT(admin_verbs_default)
 	return list(
 	/client/proc/check_pq,
 	/client/proc/adjust_pq,
+	/client/proc/recalc_pq_bulk,
+	/client/proc/recalc_pq_single,
 	/client/proc/hearallasghost,
 	/client/proc/hearglobalLOOC,
 	/client/proc/togglespawnmessages,
@@ -222,6 +224,8 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/returntolobby,
 	/client/proc/set_tod_override,
 	/client/proc/stresstest_chat,
+	/client/proc/cmd_admin_show_hostile_ai_metrics,
+	/client/proc/cmd_admin_reset_hostile_ai_metrics,
 	/client/proc/performance_stress_test, // Uncomment these if you tick the performance stress test .dm file
 	/client/proc/cleanup_stress_test_mobs
 	)

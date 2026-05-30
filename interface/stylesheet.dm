@@ -146,6 +146,7 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Pterra, TrueType;}
 .kazengunese 			{font-family: "Yuji Boku", Pterra;}
 .kazenaccent			{font-family: "Geishta", "Pterra"; font-size: 120%;}
 .otavan					{font-family: "Notredame", "Pterra"; font-size: 200%;}
+.posh					{font-family: "Parisish", "Pterra"; font-size: 130%;}
 .etruscan				{font-family: "Feronia", "Pterra"; font-size: 100%;}
 .gronnic				{font-family: "Jorvik Informal", "Pterra"; font-size: 100%;}
 .aavnic					{font-family: "Romeodn", "Pterra"; font-size: 100%;}
@@ -193,6 +194,7 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Pterra, TrueType;}
 .love_mid					{color: #e9a8d1;	font-size: 75%;}
 .love_high					{color: #f05ee1;	font-size: 75%;}
 .love_extreme					{color: #d146f5;	font-size: 75%;}
+.love_ludicrous					{color: #d61a43;	font-size: 75%;}
 
 .patreontalk			{color: #ff7a05;} /* TODO - CHANGE THIS TO THE DESIRED COLOR!!!! */
 </style>"}

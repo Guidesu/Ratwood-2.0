@@ -614,7 +614,7 @@
 	category = "Physical"
 	point_value = 2
 	added_skills = list(/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN)
-	added_stashed_items = list("Iron Saber" = /obj/item/rogueweapon/sword/saber/iron)
+	added_stashed_items = list("Iron Saber" = /obj/item/rogueweapon/sword/sabre/iron)
 	legacy_sources = list(/datum/virtue/combat/weapon_specialist)
 
 /datum/aspect/positive/weapon_bronze_hunting_knife
@@ -936,7 +936,6 @@
 	added_traits = list(TRAIT_SURVIVAL_EXPERT)
 	added_skills = list(
 		/datum/skill/craft/crafting = 2,
-		/datum/skill/craft/traps = 2,
 		/datum/skill/labor/butchering = 2,
 		/datum/skill/craft/sewing = 2,
 		/datum/skill/craft/tanning = 2,
@@ -1012,5 +1011,4 @@
 /datum/aspect/positive/legacy_virtue/natural_armor
 	category = "Physical"
 	virtue_type = /datum/virtue/combat/tough_hide
-
 

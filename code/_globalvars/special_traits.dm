@@ -40,6 +40,9 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	else
 		apply_charflaw_equipment(character, player)
 	apply_prefs_special(character, player)
+	apply_prefs_origin(character, player)
+	if(!using_aspects)
+		apply_prefs_virtue(character, player)
 	apply_prefs_race_bonus(character, player)
 	// Apply new origin virtue system AFTER job equipment to prevent skills from being overridden
 	if(player.prefs && !using_aspects)
@@ -95,26 +98,16 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	if (!player.prefs)
 		return
 
-	var/virtuous = FALSE
 	var/heretic = FALSE
 	if(istype(player.prefs.selected_patron, /datum/patron/inhumen))
 		heretic = TRUE
 
-	if(player.prefs.statpack.name == "Virtuous")
-		virtuous = TRUE
-
 	var/datum/virtue/virtue_type = player.prefs.virtue
-	var/datum/virtue/virtuetwo_type = player.prefs.virtuetwo
 	if(virtue_type)
 		if(virtue_check(virtue_type, heretic))
 			apply_virtue(character, virtue_type)
 		else
 			to_chat(character, "Incorrect Virtue parameters! (Heretic virtue on a non-heretic) It will not be applied.")
-	if(virtuetwo_type && virtuetwo_type.type != /datum/virtue/none && virtuous)
-		if(virtue_check(virtuetwo_type, heretic))
-			apply_virtue(character, virtuetwo_type)
-		else
-			to_chat(character, "Incorrect Second Virtue parameters! (Heretic virtue on a non-heretic) It will not be applied.")
 
 /proc/apply_prefs_race_bonus(mob/living/carbon/human/character, client/player)
 	if (!player)
@@ -134,6 +127,18 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 		character.change_stat(bonus, 1) //atm it only supports one stat getting a +1
 	if(bonus in GLOB.roguetraits)
 		ADD_TRAIT(character, bonus, TRAIT_GENERIC)
+
+/proc/apply_prefs_origin(mob/living/carbon/human/character, client/player)
+	if(!player)
+		player = character.client
+	if(!player?.prefs)
+		return
+	var/datum/origin/O = player.prefs.origin
+	if(!O)
+		O = new /datum/origin/ferentia
+	character.origin = O.origin_title
+	if(O.origin_language)
+		character.grant_language(O.origin_language)
 
 /proc/virtue_check(datum/virtue/V, heretic = FALSE)
 	if(V)

@@ -130,6 +130,7 @@
 	var/datum/inspiration/inspiration = null
 
 	var/headshot_link = null
+	var/origin = "Unknown"
 	var/flavortext = null
 	var/ooc_notes = null
 	var/ooc_extra

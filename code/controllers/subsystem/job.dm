@@ -72,6 +72,26 @@ SUBSYSTEM_DEF(job)
 		SetupOccupations()
 	return type_occupations[jobtype]
 
+/datum/controller/subsystem/job/proc/sync_resident_wanderer_knowledge(mob/living/carbon/human/H, include_towner_bankfolk = FALSE)
+	if(!H?.mind)
+		return
+
+	var/datum/job/roguetown/villager/towner_job = GetJob("Towner")
+	if(!towner_job)
+		return
+
+	for(var/X in towner_job.peopleknowme)
+		for(var/datum/mind/MF in get_minds(X))
+			if(isnull(H.mind?.special_role) && (MF?.special_role in list(ROLE_VAMPIRE, ROLE_NBEAST, ROLE_BANDIT, ROLE_LICH, ROLE_WRETCH, ROLE_UNBOUND_DEATHKNIGHT)))
+				continue
+			H.mind.person_knows_me(MF)
+
+	for(var/X in towner_job.peopleiknow)
+		for(var/datum/mind/MF in get_minds(X))
+			if(isnull(H.mind?.special_role) && (MF?.special_role in list(ROLE_VAMPIRE, ROLE_NBEAST, ROLE_BANDIT, ROLE_LICH, ROLE_WRETCH, ROLE_UNBOUND_DEATHKNIGHT)))
+				continue
+			H.mind.i_know_person(MF)
+
 /datum/controller/subsystem/job/proc/AssignRole(mob/player, rank, latejoin = FALSE)
 	JobDebug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
 	if(player && player.mind && rank)

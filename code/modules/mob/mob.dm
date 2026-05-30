@@ -59,6 +59,11 @@ GLOBAL_VAR_INIT(mobids, 1)
 	..()
 	return QDEL_HINT_QUEUE
 
+/mob/New()
+	// This needs to happen IMMEDIATELY. I'm sorry :(
+	GenerateTag()
+	return ..()
+
 /**
  * Intialize a mob
  *
@@ -107,6 +112,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  * This is simply "mob_"+ a global incrementing counter that goes up for every mob
  */
 /mob/GenerateTag()
+	. = ..()
 	tag = "mob_[next_mob_id++]"
 
 /**
@@ -597,7 +603,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  */
 /mob/verb/memory()
 	set name = "Notes"
-	set category = "Memory"
+	set category = "IC"
 	set desc = ""
 	if(mind)
 		mind.show_memory(src)
@@ -609,7 +615,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  */
 /mob/verb/add_memory(msg as message)
 	set name = "AddNote"
-	set category = "Memory"
+	set category = "IC"
 	if(mind)
 		if (world.time < memory_throttle_time)
 			return
@@ -1213,7 +1219,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 ///Show the language menu for this mob
 /mob/verb/open_language_menu()
 	set name = "Open Language Menu"
-	set category = "Memory"
+	set category = "IC"
 	set hidden = 0
 
 	var/datum/language_holder/H = get_language_holder()

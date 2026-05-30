@@ -87,7 +87,7 @@
 			"cost" = 1
 		),
 		"Iron Saber" = list(
-			"items" = list(/obj/item/rogueweapon/sword/saber/iron),
+			"items" = list(/obj/item/rogueweapon/sword/sabre/iron),
 			"skills" = list(/datum/skill/combat/swords),
 			"min_level" = SKILL_LEVEL_JOURNEYMAN,
 			"max_level" = SKILL_LEVEL_JOURNEYMAN,

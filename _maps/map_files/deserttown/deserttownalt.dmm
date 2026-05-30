@@ -230,10 +230,6 @@
 /obj/item/clothing/cloak/raincloak/drab,
 /turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/indoors/banditcamp/desert)
-"gd" = (
-/obj/machinery/light/rogue/firebowl,
-/turf/open/floor/rogue/tile/brownbrick,
-/area/rogue/indoors/banditcamp/desert)
 "ge" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -261,10 +257,10 @@
 /area/rogue/indoors/banditcamp/desert)
 "gA" = (
 /obj/structure/rack/rogue,
-/obj/item/cooking/platter/aalloy,
-/obj/item/cooking/platter/aalloy,
-/obj/item/cooking/platter/aalloy,
-/obj/item/cooking/platter/aalloy,
+/obj/item/cooking/platter/decrepit,
+/obj/item/cooking/platter/decrepit,
+/obj/item/cooking/platter/decrepit,
+/obj/item/cooking/platter/decrepit,
 /obj/machinery/light/rogue/candle/blue,
 /turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/indoors/banditcamp/desert)
@@ -346,6 +342,13 @@
 	icon_state = "tilegreyblu"
 	},
 /area/rogue/indoors/banditcamp/desert)
+"iN" = (
+/obj/structure/rack/rogue,
+/obj/item/clothing/head/roguetown/turban/red,
+/obj/item/clothing/head/roguetown/turban/red,
+/obj/item/clothing/head/roguetown/turban/red,
+/turf/open/floor/rogue/tile/brownbrick,
+/area/rogue/indoors/banditcamp/desert)
 "iS" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -373,6 +376,10 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/rogue/desert_grass,
 /area/rogue/outdoors/banditcamp/desert)
+"jC" = (
+/obj/machinery/light/rogue/firebowl,
+/turf/open/floor/rogue/tile/brownbrick,
+/area/rogue/indoors/banditcamp/desert)
 "jF" = (
 /obj/machinery/light/rogue/firebowl,
 /turf/open/floor/rogue/lightpath,
@@ -560,7 +567,7 @@
 /area/rogue/indoors/banditcamp/desert)
 "pF" = (
 /obj/structure/rack/rogue,
-/obj/item/cooking/pan/aalloy,
+/obj/item/cooking/pan/decrepit,
 /turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/indoors/banditcamp/desert)
 "pY" = (
@@ -818,7 +825,7 @@
 	},
 /obj/machinery/light/rogue/oven/south,
 /obj/structure/fluff/railing/border,
-/obj/item/reagent_containers/glass/bucket/pot/aalloy,
+/obj/item/reagent_containers/glass/bucket/pot/decrepit,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/banditcamp/desert)
 "yp" = (
@@ -978,13 +985,6 @@
 "ED" = (
 /obj/structure/toilet,
 /turf/open/floor/rogue/sandbrick,
-/area/rogue/indoors/banditcamp/desert)
-"EV" = (
-/obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/turban/red,
-/obj/item/clothing/head/roguetown/turban/red,
-/obj/item/clothing/head/roguetown/turban/red,
-/turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/indoors/banditcamp/desert)
 "Fh" = (
 /obj/item/rogueweapon/shield/wood,
@@ -1490,11 +1490,7 @@
 /obj/structure/fermentation_keg/sandpot/random/water,
 /turf/open/floor/rogue/darkpath,
 /area/rogue/indoors/banditcamp/desert)
-"VK" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/open/floor/rogue/desert_grass,
-/area/rogue/outdoors/desertdeep/safe)
-"VZ" = (
+"Vb" = (
 /obj/structure/rack/rogue,
 /obj/item/clothing/head/roguetown/roguehood/shalal,
 /obj/item/clothing/head/roguetown/roguehood/shalal/nomad,
@@ -1502,6 +1498,10 @@
 /obj/item/clothing/head/roguetown/roguehood/shalal,
 /turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/indoors/banditcamp/desert)
+"VK" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/safe)
 "Wk" = (
 /obj/item/cushion/desert2,
 /obj/effect/landmark/start/bandit{
@@ -7579,7 +7579,7 @@ cI
 tN
 tN
 tN
-VZ
+Vb
 gk
 DT
 he
@@ -7646,7 +7646,7 @@ eX
 py
 tN
 tN
-EV
+iN
 gk
 DT
 aI
@@ -7713,7 +7713,7 @@ eX
 Su
 vl
 fW
-gd
+jC
 gk
 DT
 oI
@@ -7730,14 +7730,14 @@ Sq
 Sq
 DE
 DE
-DE
-DE
-DE
-DE
-DE
-DE
-DE
-DE
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
 Gg
 Gg
 Gg
@@ -7797,12 +7797,12 @@ Sq
 Sq
 DE
 DE
-DE
-DE
-DE
-DE
-DE
-DE
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
 Gg
 Gg
 Gg
@@ -7864,11 +7864,11 @@ pl
 pl
 DE
 DE
-DE
-DE
-DE
-DE
-DE
+Gg
+Gg
+Gg
+Gg
+Gg
 Gg
 Gg
 Gg
