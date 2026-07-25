@@ -1,4 +1,5 @@
 /datum/antagonist/dreamwalker
+	storyteller_antag_flags = STORYTELLER_ANTAG_SOFT
 	name = "Dreamwalker"
 	roundend_category = "Dreamwalker"
 	antagpanel_category = "Dreamwalker"

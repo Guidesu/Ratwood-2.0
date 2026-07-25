@@ -95,6 +95,11 @@
 
 #define TRACK_FAIL_POINT_PENALTY_MULTIPLIER 0.75
 
+#define STORYTELLER_ANTAG_NONE 0
+#define STORYTELLER_ANTAG_VILLAIN (1<<0)
+#define STORYTELLER_ANTAG_ROUNDSTART (1<<1)
+#define STORYTELLER_ANTAG_SOFT (1<<2)
+
 #define GAMEMODE_PANEL_MAIN "Main"
 #define GAMEMODE_PANEL_VARIABLES "Variables"
 
@@ -108,6 +113,7 @@
 #define MODERATE_MIN_POP 6
 #define MAJOR_MIN_POP 20
 #define CHARACTER_INJECTION_MIN_POP 20
+#define HARD_ANTAG_MIN_POP 40
 #define OBJECTIVES_MIN_POP 20
 
 /// Defines for how much pop do we need to stop applying a pop scalling penalty to event frequency.
@@ -128,12 +134,34 @@
 
 #define STORYTELLER_VOTE "storyteller"
 
+// Optional Azure census categories absent from Ratwood's statistics defines.
+#define STATS_BEAUTIFUL_PEOPLE "beautiful_people"
+#define STATS_MARRIAGES_MADE "marriages_made"
+#define STATS_VOYEURS "voyeurs"
+#define STATS_NYMPHOMANIACS "nymphomaniacs"
+#define STATS_INDEBTED "indebted"
+#define STATS_THRILLSEEKERS "thrillseekers"
+#define STATS_ALIVE_SUN_ELVES "alive_sun_elves"
+#define STATS_ALIVE_VERMINFOLK "alive_verminfolk"
+
+/// How long after lobby start admins have to fine-tune the gamemode before the player vote fires.
+#define GAMEMODE_VOTE_ADMIN_WINDOW (120 SECONDS)
+/// Buffer kept clear between the gamemode vote ending and roundstart, so players see the result and prep.
+#define GAMEMODE_VOTE_END_BUFFER (60 SECONDS)
+/// Minimum time the gamemode vote runs for if the lobby is too short to give it a full window.
+#define GAMEMODE_VOTE_MIN_PERIOD (30 SECONDS)
+
+/// Gamemode vote pool names (the three pools players vote between).
+#define GAMEMODE_POOL_EXTENDED "PSYDON"
+#define GAMEMODE_POOL_GUARANTEED "ASCENDANT"
+#define GAMEMODE_POOL_NOANTAG "TEN"
+
 #define EVENT_TRACKS list(EVENT_TRACK_MUNDANE, EVENT_TRACK_PERSONAL, EVENT_TRACK_MODERATE, EVENT_TRACK_INTERVENTION, EVENT_TRACK_CHARACTER_INJECTION, EVENT_TRACK_OMENS, EVENT_TRACK_RAIDS)
 #define EVENT_PANEL_TRACKS list(EVENT_TRACK_MUNDANE, EVENT_TRACK_PERSONAL, EVENT_TRACK_MODERATE, EVENT_TRACK_INTERVENTION, EVENT_TRACK_CHARACTER_INJECTION, EVENT_TRACK_OMENS, EVENT_TRACK_RAIDS, UNCATEGORIZED_EVENTS, ALL_EVENTS)
 
 /// Defines for the antag cap to prevent midround injections.
 #define ANTAG_CAP_FLAT 2
-#define ANTAG_CAP_DENOMINATOR 15
+#define ANTAG_CAP_DENOMINATOR 20
 
 ///Below are defines for roundstart point pool. The GAIN ones are multiplied by ready population
 #define ROUNDSTART_MUNDANE_BASE 20

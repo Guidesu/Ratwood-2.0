@@ -93,7 +93,7 @@
 	track = EVENT_TRACK_MODERATE
 	typepath = /datum/round_event/trade_request
 	weight = 7
-	max_occurrences = 0
+	max_occurrences = 3
 	min_players = 0
 	earliest_start = 5 MINUTES
 
@@ -105,9 +105,16 @@
 
 /datum/round_event/trade_request/start()
 	. = ..()
+	if(!SSmerchant)
+		return
 	var/list/requests = list()
 	for(var/i = 1 to rand(1, 3))
 		var/datum/trade_request/new_request = new
 		requests |= new_request
 
 	SSmerchant.sending_stuff |= new /obj/item/paper/scroll/trade_requests(null, requests)
+
+/datum/round_event_control/trade_request/canSpawnEvent(players_amt, gamemode, fake_check)
+	if(!SSmerchant)
+		return FALSE
+	return ..()

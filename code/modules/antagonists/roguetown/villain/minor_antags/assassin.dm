@@ -1,5 +1,10 @@
 // Assassin, cultist of graggar. Normally found as a drifter.
 /datum/antagonist/assassin
+	storyteller_antag_flags = STORYTELLER_ANTAG_ROUNDSTART | STORYTELLER_ANTAG_SOFT
+	override_candidatereq = TRUE
+	storyteller_min_players = CHARACTER_INJECTION_MIN_POP
+	storyteller_slot_scaling = 1
+	storyteller_slot_default_cap = 2
 	name = "Assassin"
 	roundend_category = "assassins"
 	antagpanel_category = "Assassin"

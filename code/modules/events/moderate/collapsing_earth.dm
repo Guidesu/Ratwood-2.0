@@ -23,8 +23,17 @@ GLOBAL_LIST_INIT(mined_resource_loc, list())
 		/turf/closed/mineral/random/rogue = 20,
 	)
 
+/datum/round_event_control/collapsing_earth/canSpawnEvent(players_amt, gamemode, fake_check)
+	if(!length(GLOB.mined_resource_loc))
+		return FALSE
+	return ..()
+
 /datum/round_event/collapsing_earth/start()
 	. = ..()
+	if(!length(GLOB.mined_resource_loc))
+		return
 	for(var/i = 1 to rand(1, 25))
 		var/turf/open/turf = pick(GLOB.mined_resource_loc)
+		if(!turf)
+			continue
 		turf.try_respawn_mined_chunks(150, weighted_rocks)

@@ -406,23 +406,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
 	if(QDELETED(src))
 		return JOB_UNAVAILABLE_GENERIC
-	if(has_world_trait(/datum/world_trait/skeleton_siege))
-		if(rank != "Skeleton")
-			return JOB_UNAVAILABLE_GENERIC
-		else
-			return JOB_AVAILABLE
-	else
-		if(rank == "Skeleton")
-			return JOB_UNAVAILABLE_GENERIC
-
-	if(has_world_trait(/datum/world_trait/goblin_siege))
-		if(rank != "Goblin")
-			return JOB_UNAVAILABLE_GENERIC
-		else
-			return JOB_AVAILABLE
-	else
-		if(rank == "Goblin")
-			return JOB_UNAVAILABLE_GENERIC
+	if(rank == "Skeleton")
+		return has_world_trait(/datum/world_trait/skeleton_siege) ? JOB_AVAILABLE : JOB_UNAVAILABLE_GENERIC
+	if(rank == "Goblin")
+		return has_world_trait(/datum/world_trait/goblin_siege) ? JOB_AVAILABLE : JOB_UNAVAILABLE_GENERIC
 
 	var/datum/job/job = SSjob.GetJob(rank)
 	if(!job)
@@ -619,6 +606,16 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 			SSjob.prioritized_jobs -= prioritized_job
 	dat += "<table><tr><td valign='top'>"
 	var/column_counter = 0
+	if(has_world_trait(/datum/world_trait/skeleton_siege))
+		dat += "<fieldset style='width: 185px; border: 2px solid #df1919; display: inline'>"
+		dat += "<a class='job command' href='byond://?src=[REF(src)];SelectedJob=Skeleton'>BECOME AN EVIL SKELETON</a>"
+		dat += "</fieldset><br>"
+		column_counter++
+	if(has_world_trait(/datum/world_trait/goblin_siege))
+		dat += "<fieldset style='width: 185px; border: 2px solid #df1919; display: inline'>"
+		dat += "<a class='job command' href='byond://?src=[REF(src)];SelectedJob=Goblin'>BECOME A GOBLIN</a>"
+		dat += "</fieldset><br>"
+		column_counter++
 
 	var/list/omegalist = list()
 	omegalist += list(GLOB.noble_positions)
@@ -676,22 +673,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 
 			dat += "<fieldset style='width: 185px; border: 2px solid [cat_color]; display: inline'>"
 			dat += "<legend align='center' style='font-weight: bold; color: [cat_color]'>[cat_name]</legend>"
-
-			if(has_world_trait(/datum/world_trait/skeleton_siege))
-				dat += "<a class='job command' href='byond://?src=[REF(src)];SelectedJob=Skeleton'>BECOME AN EVIL SKELETON</a>"
-				dat += "</fieldset><br>"
-				column_counter++
-				if(column_counter > 0 && (column_counter % 3 == 0))
-					dat += "</td><td valign='top'>"
-			if(has_world_trait(/datum/world_trait/goblin_siege))
-				dat += "<a class='job command' href='byond://?src=[REF(src)];SelectedJob=Goblin'>BECOME A GOBLIN</a>"
-				dat += "</fieldset><br>"
-				column_counter++
-				if(column_counter > 0 && (column_counter % 3 == 0))
-					dat += "</td><td valign='top'>"
-
-			if(has_world_trait(/datum/world_trait/skeleton_siege)|| has_world_trait(/datum/world_trait/goblin_siege))
-				break
 
 			for(var/job in available_jobs)
 				var/datum/job/job_datum = SSjob.name_occupations[job]

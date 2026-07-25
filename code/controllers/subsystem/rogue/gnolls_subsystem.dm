@@ -29,6 +29,8 @@ SUBSYSTEM_DEF(gnoll_scaling)
 	switch(mode)
 		if(GNOLL_SCALING_NONE)
 			return "NONE"
+		if(GNOLL_SCALING_SINGLE)
+			return "SINGLE"
 		if(GNOLL_SCALING_DOUBLE)
 			return "DOUBLE"
 		if(GNOLL_SCALING_FLAT)
@@ -90,7 +92,7 @@ SUBSYSTEM_DEF(gnoll_scaling)
 		last_mode_origin = "random"
 		preferred_mode = pick(GNOLL_SCALING_DOUBLE, GNOLL_SCALING_FLAT, GNOLL_SCALING_DYNAMIC)
 
-	if(!(preferred_mode in list(GNOLL_SCALING_NONE, GNOLL_SCALING_DOUBLE, GNOLL_SCALING_FLAT, GNOLL_SCALING_DYNAMIC)))
+	if(!(preferred_mode in list(GNOLL_SCALING_NONE, GNOLL_SCALING_SINGLE, GNOLL_SCALING_DOUBLE, GNOLL_SCALING_FLAT, GNOLL_SCALING_DYNAMIC)))
 		last_mode_origin = "fallback"
 		preferred_mode = GNOLL_SCALING_DOUBLE
 
@@ -128,6 +130,8 @@ SUBSYSTEM_DEF(gnoll_scaling)
 	switch(mode)
 		if(GNOLL_SCALING_NONE)
 			target_slots = 0
+		if(GNOLL_SCALING_SINGLE)
+			target_slots = 1
 		if(GNOLL_SCALING_DOUBLE)
 			target_slots = double_mode_slots
 		if(GNOLL_SCALING_FLAT)

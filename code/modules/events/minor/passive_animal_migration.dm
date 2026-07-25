@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(animal_migration_points, list())
 	track = EVENT_TRACK_MUNDANE
 	typepath = /datum/round_event/animal_migration/passive
 	weight = 5
-	max_occurrences = 0	//Broken runtimes, can't figure out the fix. Fuck it.
+	max_occurrences = 4
 	min_players = 0
 	earliest_start = 5 MINUTES
 
@@ -32,10 +32,17 @@ GLOBAL_LIST_INIT(animal_migration_points, list())
 
 /datum/round_event/animal_migration/start()
 	. = ..()
+	if(length(GLOB.animal_migration_points) < 2 || !length(animals))
+		return
 
-	var/turf/start_turf = get_turf(pick(GLOB.animal_migration_points))
-	var/turf/end_turf = get_turf(pick(GLOB.animal_migration_points))
+	var/obj/effect/landmark/events/animal_migration_point/start_point = pick(GLOB.animal_migration_points)
+	var/turf/start_turf = get_turf(start_point)
+	var/list/end_points = GLOB.animal_migration_points.Copy()
+	end_points -= start_point
+	var/turf/end_turf = get_turf(pick(end_points))
 	var/mob/living/simple_animal/hostile/retaliate/rogue/animal = pick(animals)
+	if(!start_turf || !end_turf || !ispath(animal, /mob/living))
+		return
 	for(var/i = 1 to rand(3, 5))
 		var/mob/living/simple_animal/hostile/retaliate/rogue/created = new animal(start_turf)
 		if(created.ai_controller)
@@ -47,6 +54,11 @@ GLOBAL_LIST_INIT(animal_migration_points, list())
 			created.ai_controller.replace_planning_subtrees(ai_controller_paths)
 		else
 			created.GiveTarget(end_turf)
+
+/datum/round_event_control/passive_animal_migration/canSpawnEvent(players_amt, gamemode, fake_check)
+	if(length(GLOB.animal_migration_points) < 2)
+		return FALSE
+	return ..()
 
 /datum/round_event/animal_migration/passive
 	animals = list(

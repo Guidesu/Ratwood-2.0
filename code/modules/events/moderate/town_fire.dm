@@ -16,6 +16,14 @@
 /datum/round_event/town_fire/start()
 	. = ..()
 	var/list/turfs = get_area_turfs(/area/rogue/indoors/town, subtypes = TRUE)
-	for(var/i = 1 to rand(2, 5))
-		var/turf/turf = pick(turfs)
-		new /obj/effect/hotspot(turf)
+	if(!length(turfs))
+		return
+	for(var/i = 1 to min(rand(2, 5), length(turfs)))
+		var/turf/turf = pick_n_take(turfs)
+		if(turf)
+			new /obj/effect/hotspot(turf)
+
+/datum/round_event_control/town_fire/canSpawnEvent(players_amt, gamemode, fake_check)
+	if(!length(get_area_turfs(/area/rogue/indoors/town, subtypes = TRUE)))
+		return FALSE
+	return ..()

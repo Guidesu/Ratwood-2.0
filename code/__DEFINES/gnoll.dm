@@ -3,3 +3,4 @@
 #define GNOLL_SCALING_FLAT    2 // Mode 2: Uses 2 slots below 125 players and 4 slots at 125+.
 #define GNOLL_SCALING_DOUBLE  3 // Mode 3: Always keep gnolls at two slots.
 #define GNOLL_SCALING_NONE    4 // Mode 4: Disable gnoll spawning entirely (0 slots).
+#define GNOLL_SCALING_SINGLE  5 // Mode 5: Always keep gnolls at one slot.

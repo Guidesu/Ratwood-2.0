@@ -23,6 +23,7 @@
 	RegisterSignal(loc, list(COMSIG_SPECIES_ATTACKED_BY, COMSIG_LIVING_ARMOR_CHECKED, COMSIG_MOB_APPLY_DAMGE), PROC_REF(on_attacked_by), override = TRUE)
 
 /datum/antagonist/gnoll
+	storyteller_antag_flags = STORYTELLER_ANTAG_SOFT
 	name = "Gnoll"
 	roundend_category = "Gnolls"
 	antagpanel_category = "Gnolls"

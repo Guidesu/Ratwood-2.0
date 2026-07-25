@@ -346,6 +346,7 @@
 #define BITFLAG_ROYALTY (1<<1)
 #define BITFLAG_CONSTRUCTOR (1<<2)
 #define BITFLAG_GARRISON (1<<3)
+#define BITFLAG_HALF_COMBATANT (1<<4)
 
 #define MANOR_ROLES \
 	/datum/job/roguetown/jester,\

@@ -1,4 +1,5 @@
 /datum/antagonist/lich
+	storyteller_antag_flags = STORYTELLER_ANTAG_VILLAIN | STORYTELLER_ANTAG_ROUNDSTART
 	name = "Lich"
 	roundend_category = "Lich"
 	antagpanel_category = "Lich"

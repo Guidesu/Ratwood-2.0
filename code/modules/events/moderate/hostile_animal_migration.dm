@@ -3,7 +3,7 @@
 	track = EVENT_TRACK_MODERATE
 	typepath = /datum/round_event/animal_migration/hostile
 	weight = 5
-	max_occurrences = 0	//Broken runtimes, can't figure out the fix. Fuck it.
+	max_occurrences = 3
 	min_players = 0
 	earliest_start = 7 MINUTES
 
@@ -22,3 +22,8 @@
 		/mob/living/simple_animal/hostile/retaliate/rogue/wolf/bobcat,
 		/mob/living/simple_animal/hostile/retaliate/rogue/fox,
 	)
+
+/datum/round_event_control/hostile_animal_migration/canSpawnEvent(players_amt, gamemode, fake_check)
+	if(length(GLOB.animal_migration_points) < 2)
+		return FALSE
+	return ..()

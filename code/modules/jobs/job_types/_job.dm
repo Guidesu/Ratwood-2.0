@@ -1,4 +1,6 @@
 /datum/job
+	/// Set by direct admin job-slot editing; storyteller scaling must not overwrite it.
+	var/admin_slot_override = FALSE
 	//The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
 	var/title = "NOPE"
 	// Display title - If empty, uses the proper title instead

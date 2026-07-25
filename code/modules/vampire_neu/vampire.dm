@@ -1,6 +1,8 @@
 GLOBAL_LIST_EMPTY(vampire_objects)
 #define INITIAL_BLOODPOOL_PERCENTAGE 40
 /datum/antagonist/vampire
+	storyteller_antag_flags = STORYTELLER_ANTAG_VILLAIN | STORYTELLER_ANTAG_ROUNDSTART
+	storyteller_slot_scaling = 2
 	name = "Vampire"
 	roundend_category = "Vampires"
 	antagpanel_category = "Vampire"
@@ -246,5 +248,4 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /datum/antagonist/vampire/ancillae/New(incoming_clan = /datum/clan/nosferatu, forced_clan = FALSE, generation = GENERATION_ANCILLAE)
 	. = ..()
-
 
