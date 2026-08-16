@@ -39,12 +39,14 @@
 	if(HAS_BLOOD_DNA(src))
 		used_index += "_b"
 	var/static/list/onmob_sprites = list()
-	var/icon/onmob = onmob_sprites["[tag][behind][mirrored][used_index]"]
+	var/cache_key = "[type]|[tag]|[behind]|[mirrored]|[used_index]"
+	var/icon/onmob = onmob_sprites[cache_key]
 	if(!onmob || force_reupdate_inhand)
 		if(force_reupdate_inhand)
 			has_behind_state = null
 		onmob = fcopy_rsc(generateonmob(tag, prop, behind, mirrored))
-		onmob_sprites["[tag][behind][mirrored][used_index]"] = onmob
+		onmob_sprites[cache_key] = onmob
+		force_reupdate_inhand = FALSE
 	return onmob
 
 /obj/item/proc/get_extra_onmob_index()
